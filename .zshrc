@@ -3,3 +3,4 @@
 [ -f $HOME/.config/zsh/prompt.zsh ] && source $HOME/.config/zsh/prompt.zsh
 [ -f $HOME/.config/zsh/aliases.zsh ] && source $HOME/.config/zsh/aliases.zsh
 [ -f $HOME/.config/zsh/functions.zsh ] && source $HOME/.config/zsh/functions.zsh
+[ -f $HOME/.config/zsh/purs.zsh ] && source $HOME/.config/zsh/purs.zsh
