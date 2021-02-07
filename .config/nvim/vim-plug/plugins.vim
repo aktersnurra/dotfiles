@@ -23,6 +23,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'gilgigilgil/anderson.vim'
     Plug 'wadackel/vim-dogrun'
     Plug 'synul/githubsy'
+    Plug 'dylanaraps/wal.vim'
+    Plug 'richtan/pywal.vim'
 
     " Status line
     Plug 'vim-airline/vim-airline'
