@@ -4,5 +4,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias gp='git add . && git commit -m "auto push" && git push'
 alias zrc='nvim ~/.zshrc'
 alias zsource='source ~/.zshrc'
-alias kill_jupyter="killall jupyter-lab"
-
+alias config='/usr/bin/git --git-dir=/Users/aktersnurra/dotfiles/ --work-tree=/Users/aktersnurra'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'

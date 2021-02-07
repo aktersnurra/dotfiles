@@ -29,4 +29,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 PATH=$(pyenv root)/shims:$PATH
 
-alias config='/usr/bin/git --git-dir=/Users/aktersnurra/dotfiles/ --work-tree=/Users/aktersnurra'
