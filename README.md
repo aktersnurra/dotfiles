@@ -6,7 +6,7 @@ Installation of dependencies described here. Most of the config is stolen from h
 
 ## zsh
 
-# purs
+### purs
 
 https://github.com/aktersnurra/purs
 
@@ -15,4 +15,5 @@ https://github.com/aktersnurra/purs
 Tiling manager
 
 https://github.com/koekeishiya/yabai
+
 https://github.com/koekeishiya/skhd
