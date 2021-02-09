@@ -8,3 +8,9 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+if command -v exa > /dev/null; then
+  alias ls='exa -l'
+else
+  echo "install exa"
+fi

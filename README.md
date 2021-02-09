@@ -4,6 +4,11 @@
 
 Installation of dependencies described here. Most of the config is stolen from https://github.com/ChristianChiarulli/nvim
 
+## Rust
+
+* exa https://github.com/ogham/exa
+
+
 ## zsh
 
 ### purs
