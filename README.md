@@ -11,6 +11,10 @@ Installation of dependencies described here. Most of the config is stolen from h
 
 ## zsh
 
+## Antigen
+
+Install antigen https://github.com/zsh-users/antigen
+
 ### purs
 
 https://github.com/aktersnurra/purs
