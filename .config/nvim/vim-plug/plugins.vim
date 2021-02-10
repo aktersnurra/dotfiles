@@ -11,9 +11,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
     
-    " File Explorer
-    Plug 'scrooloose/NERDTree'
-    
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     
@@ -25,20 +22,25 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'synul/githubsy'
     Plug 'dylanaraps/wal.vim'
     Plug 'richtan/pywal.vim'
-
+    
+    " Better tabline
+    Plug 'romgrk/barbar.nvim'
+     " Terminal
+    Plug 'voldikss/vim-floaterm'
     " Status line
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    " Plug 'glepnir/galaxyline.nvim'
-
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
+    Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+    " Vista
+    Plug 'liuchengxu/vista.vim'   
     " If you want icons use one of these:
-    " Plug 'kyazdani42/nvim-web-devicons' " lua
-    " Plug 'ryanoasis/vim-devicons' " vimscript
-
+    Plug 'kyazdani42/nvim-web-devicons' " lua
+    Plug 'ryanoasis/vim-devicons' " vimscript
+    Plug 'kyazdani42/nvim-tree.lua'
     " Stable version of coc
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " Plug 'kevinhwang91/rnvimr'
+    Plug 'kevinhwang91/rnvimr'
    
     " Colorizer
     Plug 'norcalli/nvim-colorizer.lua'
