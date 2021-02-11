@@ -19,7 +19,8 @@ source $HOME/.config/nvim/plug-config/vim-rooter.vim
 
 " Theme
 " source $HOME/.config/nvim/themes/githubsy.vim
-source $HOME/.config/nvim/themes/wal.vim
+" source $HOME/.config/nvim/themes/wal.vim
+source $HOME/.config/nvim/themes/nord.vim
 
 " source $HOME/.config/nvim/themes/airline.vim
 source $HOME/.config/nvim/plug-config/coc.vim

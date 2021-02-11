@@ -22,7 +22,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'synul/githubsy'
     Plug 'dylanaraps/wal.vim'
     Plug 'richtan/pywal.vim'
+    Plug 'arcticicestudio/nord-vim'
 
+    " Color hex codes
     Plug 'ap/vim-css-color'
 
     " FZF
