@@ -4,14 +4,10 @@
 
 Installation of dependencies described here. Most of the config is stolen from https://github.com/ChristianChiarulli/nvim
 
-## Rust
-
-* exa https://github.com/ogham/exa
-
 
 ## zsh
 
-## Antigen
+### Antigen
 
 Install antigen https://github.com/zsh-users/antigen
 
@@ -26,3 +22,7 @@ Tiling manager
 https://github.com/koekeishiya/yabai
 
 https://github.com/koekeishiya/skhd
+
+# TODO
+
+* auto install missing packages. 
