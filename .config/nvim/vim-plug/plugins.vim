@@ -22,6 +22,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'synul/githubsy'
     Plug 'dylanaraps/wal.vim'
     Plug 'richtan/pywal.vim'
+
+    Plug 'ap/vim-css-color'
+
     " FZF
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'

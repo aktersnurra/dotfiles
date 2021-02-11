@@ -6,3 +6,5 @@
 [ -f $HOME/.config/zsh/purs.zsh ] && source $HOME/.config/zsh/purs.zsh
 [ -f $HOME/.config/zsh/history.zsh ] && source $HOME/.config/zsh/history.zsh
 [ -f $HOME/.config/zsh/antigen_pkgs.zsh ] && source $HOME/.config/zsh/antigen_pkgs.zsh
+[ -f $HOME/.config/zsh/keybindings.zsh ] && source $HOME/.config/zsh/keybindings.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
