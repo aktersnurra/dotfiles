@@ -10,6 +10,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
+    " Better Comments
+    Plug 'tpope/vim-commentary'
+
+    Plug 'machakann/vim-highlightedyank'
+    
+    Plug 'brooth/far.vim'
     
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
@@ -52,7 +58,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     
     " Stable version of coc
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+    Plug 'honza/vim-snippets'
+    
     Plug 'kevinhwang91/rnvimr'
    
     " Colorizer
@@ -69,6 +76,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     "Sneak
     Plug 'justinmk/vim-sneak'
+
+    " Display available key bindings
+    Plug 'liuchengxu/vim-which-key'
+
+    " Zen mode
+    Plug 'junegunn/goyo.vim'
+
+    " Rust Lang support
+    Plug 'rust-lang/rust.vim'   
+
+    " Text Navigation
+    Plug 'unblevable/quick-scope'
+
+    " Intuitive buffer closing
+    Plug 'moll/vim-bbye'
 
 call plug#end()
 

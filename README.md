@@ -1,9 +1,24 @@
 # Dotfiles
 
-## Nvim
 
-Installation of dependencies described here. Most of the config is stolen from https://github.com/ChristianChiarulli/nvim
+## Lazy
 
+### Docker
+
+https://github.com/jesseduffield/lazydocker
+
+### Git
+
+https://github.com/jesseduffield/lazygit
+
+
+
+
+## NCDU
+
+`sudo apt-get install ncdu`
+
+`brew install ncdu`
 
 ## zsh
 

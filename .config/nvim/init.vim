@@ -1,4 +1,3 @@
-
 "    ____      _ __        _
 "   /  _/___  (_) /__   __(_)___ ___
 "   / // __ \/ / __/ | / / / __ `__ \
@@ -8,8 +7,18 @@
 source $HOME/.config/nvim/plug-config/polyglot.vim
 source $HOME/.config/nvim/vim-plug/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
+
 source $HOME/.config/nvim/keys/mappings.vim
+source $HOME/.config/nvim/keys/which-key.vim
+
+
 source $HOME/.config/nvim/plug-config/rnvimr.vim
+source $HOME/.config/nvim/plug-config/highlightedyank.vim
+source $HOME/.config/nvim/plug-config/far.vim
+source $HOME/.config/nvim/plug-config/vim-commentary.vim
+source $HOME/.config/nvim/plug-config/quickscope.vim
+source $HOME/.config/nvim/plug-config/rust.vim
+source $HOME/.config/nvim/plug-config/goyo.vim
 source $HOME/.config/nvim/plug-config/ranger.vim
 source $HOME/.config/nvim/plug-config/barbar.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
