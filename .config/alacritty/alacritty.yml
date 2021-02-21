@@ -1,5 +1,6 @@
 draw_bold_text_with_bright_colors: true
-alt_send_esc: false
+# Set this if using macOS
+#alt_send_esc: false
 colors:
   primary:
     background: '#2e3440'
