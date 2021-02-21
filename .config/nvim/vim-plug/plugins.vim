@@ -20,7 +20,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Auto pairs for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
     
-    " Themse
+    " Themes
     Plug 'joshdick/onedark.vim'
     Plug 'agreco/vim-citylights'
     Plug 'gilgigilgil/anderson.vim'
@@ -37,7 +37,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     "Plug 'junegunn/fzf.vim'
     
-    "Rooter changes the working directory to the project root when you open a file or directory.
+    " Rooter changes the working directory to the project root when you open a file or directory.
     "Plug 'airblade/vim-rooter'   
     
     " Telescope a fuzzy finder
@@ -55,11 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'voldikss/vim-floaterm'
     
     " Status line
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-    " Vista
-    Plug 'liuchengxu/vista.vim'   
 
     " If you want icons use one of these:
     Plug 'kyazdani42/nvim-web-devicons' " lua
