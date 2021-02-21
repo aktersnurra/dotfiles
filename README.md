@@ -1,5 +1,26 @@
 # Dotfiles
 
+A living document...
+
+## Nerd Fonts
+
+```
+git clone https://github.com/ryanoasis/nerd-fonts
+
+./nerd-fonts/install.sh
+
+# If they don't show up
+fc-cache -r
+
+# Try finding Space Mono
+
+fc-match "Space Mono Nerd Font"
+
+# If installed correctly should return a match.
+
+```
+
+
 
 ## Lazy
 
@@ -11,8 +32,11 @@ https://github.com/jesseduffield/lazydocker
 
 https://github.com/jesseduffield/lazygit
 
+## Tmux
 
-
+```
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+```
 
 ## NCDU
 
