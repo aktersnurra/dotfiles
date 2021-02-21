@@ -34,13 +34,23 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ap/vim-css-color'
 
     " FZF
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'   
+    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    "Plug 'junegunn/fzf.vim'
+    
+    "Rooter changes the working directory to the project root when you open a file or directory.
+    "Plug 'airblade/vim-rooter'   
+    
+    " Telescope a fuzzy finder
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'   
     
     " Better tabline
     Plug 'romgrk/barbar.nvim'
-    
+  
+    " Better scrolling
+    Plug 'psliwka/vim-smoothie'
+
     " Terminal
     Plug 'voldikss/vim-floaterm'
     
@@ -54,8 +64,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " If you want icons use one of these:
     Plug 'kyazdani42/nvim-web-devicons' " lua
     Plug 'ryanoasis/vim-devicons' " vimscript
-    Plug 'kyazdani42/nvim-tree.lua'
-    
+
+    " Treesitter
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
     " Stable version of coc
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'honza/vim-snippets'

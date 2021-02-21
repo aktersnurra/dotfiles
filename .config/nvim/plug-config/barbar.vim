@@ -1,4 +1,5 @@
-let g:bufferline = { 'closable': v:false }
+let bufferline = get(g:, 'bufferline', {})
+"let g:bufferline = { 'closable': v:false }
 " Show a shadow over the editor in buffer-pick mode
 let bufferline.shadow = v:true
 
@@ -23,7 +24,7 @@ let bufferline.semantic_letters = v:true
 " optimal for the qwerty keyboard layout but might need adjustement
 " for other layouts.
 let bufferline.letters = 
-  \ 'asdfjkl;ghnmxcbziowerutyqpASDFJKLGHNMXCBZIOWERUTYQP'
+\ 'asdfjkl;ghnmxcbziowerutyqpASDFJKLGHNMXCBZIOWERUTYQP'
 
 let bg_current = get(nvim_get_hl_by_name('Normal',     1), 'background', '#000000')
 let bg_visible = get(nvim_get_hl_by_name('TabLineSel', 1), 'background', '#000000')
