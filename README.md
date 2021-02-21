@@ -18,6 +18,10 @@ fc-match "Space Mono Nerd Font"
 
 # If installed correctly should return a match.
 
+
+# When everything seems to be working, remove nerd-fonts/ directory as it is no longer needed.
+rm -rf nerd-fonts/
+
 ```
 
 
