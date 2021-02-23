@@ -1,5 +1,5 @@
 " Prevents the colorscheme from loading a custom bg color.
-" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 
 
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"

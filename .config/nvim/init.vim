@@ -39,3 +39,4 @@ source $HOME/.config/nvim/plug-config/vim-commentary.vim
 " Theme
 source $HOME/.config/nvim/themes/nord.vim
 
+" source $HOME/.config/nvim/themes/spaceway.vim
