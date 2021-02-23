@@ -39,5 +39,9 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 
 set laststatus=2                        " To get galaxyline to display
 
+" Autoload file if changed.
+set autoread                                                                                                                                                                                    
+au CursorHold * checktime 
+
 " You can't stop me
 cmap w!! w !sudo tee %

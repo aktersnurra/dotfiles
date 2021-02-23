@@ -29,6 +29,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'dylanaraps/wal.vim'
     Plug 'richtan/pywal.vim'
     Plug 'arcticicestudio/nord-vim'
+    Plug 'gavinok/spaceway.vim'
 
     " Color hex codes
     Plug 'ap/vim-css-color'
