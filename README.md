@@ -2,6 +2,12 @@
 
 A living document...
 
+
+## Alacritty
+
+https://github.com/alacritty/alacritty
+
+
 ## Nerd Fonts
 
 ```
@@ -24,6 +30,37 @@ rm -rf nerd-fonts/
 
 ```
 
+## Python
+
+No words needed, this is the setup:
+
+
+Install:
+
+* pyenv - https://github.com/pyenv/pyenv
+
+    ```
+    pyenv install 3.9.1
+    
+    pyenv shell 3.9.1
+    ```
+
+* pipx - https://github.com/pipxproject/pipx
+  
+    ```
+    pipx install poetry
+
+    pipx install black
+
+    pipx install flake8
+
+    pipx install nox 
+
+    ```
+
+## Rust
+
+Todo
 
 
 ## Lazy
