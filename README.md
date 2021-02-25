@@ -70,10 +70,11 @@ Install:
     pipx install flake8
 
     pipx install nox 
-
     ```
 
 https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+
+https://www.cosmicpython.com
 
 ## Rust
 
