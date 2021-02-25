@@ -2,6 +2,21 @@
 
 A living document...
 
+# Installation
+
+Write detailed installation instruction here...
+
+## Arch
+
+TBC
+
+## macOS
+
+TBC
+
+## Common
+
+TBC
 
 ## Alacritty
 
@@ -58,10 +73,13 @@ Install:
 
     ```
 
+https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
+
 ## Rust
 
-Todo
+Project structure:
 
+https://doc.rust-lang.org/cargo/guide/project-layout.html
 
 ## Lazy
 
