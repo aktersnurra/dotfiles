@@ -15,4 +15,5 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
     hi LineNr ctermbg=NONE guibg=NONE
+    hi SignColumn ctermbg=NONE guibg=NONE
 endif

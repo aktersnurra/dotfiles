@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'richtan/pywal.vim'
     Plug 'arcticicestudio/nord-vim'
     Plug 'gavinok/spaceway.vim'
+    Plug 'rakr/vim-two-firewatch'
 
     " Color hex codes
     Plug 'ap/vim-css-color'
@@ -100,6 +101,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Intuitive buffer closing
     Plug 'moll/vim-bbye'
+
+
+    " Vim wiki for notes
+    Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
