@@ -31,6 +31,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'arcticicestudio/nord-vim'
     Plug 'gavinok/spaceway.vim'
     Plug 'rakr/vim-two-firewatch'
+    Plug 'chriskempson/base16-vim'
 
     " Color hex codes
     Plug 'ap/vim-css-color'
