@@ -39,7 +39,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " FZF
     "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     "Plug 'junegunn/fzf.vim'
-    
+
+    " Skim fuzzy finder
+    Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' } 
+
     " Rooter changes the working directory to the project root when you open a file or directory.
     "Plug 'airblade/vim-rooter'   
     
@@ -103,6 +106,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Intuitive buffer closing
     Plug 'moll/vim-bbye'
 
+    " Pydocstring
+    Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
     " Vim wiki for notes
     Plug 'vimwiki/vimwiki'

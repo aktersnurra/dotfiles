@@ -36,7 +36,7 @@ else
   echo "install procs"
 fi
 
-if ! command -v ytop > /dev/null; then
-  echo "install ytop"
+if ! command -v btm > /dev/null; then
+  echo "install bottom"
 fi
 

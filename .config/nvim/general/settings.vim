@@ -45,3 +45,12 @@ au CursorHold * checktime
 
 " You can't stop me
 cmap w!! w !sudo tee %
+
+" Relative line numbers
+:set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END

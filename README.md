@@ -123,5 +123,6 @@ https://github.com/koekeishiya/yabai
 https://github.com/koekeishiya/skhd
 
 # TODO
-
+* Write install man page
+* Setup dotfiles man like https://www.atlassian.com/git/tutorials/dotfiles 
 * auto install missing packages. 

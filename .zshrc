@@ -9,3 +9,6 @@
 [ -f $HOME/.config/zsh/keybindings.zsh ] && source $HOME/.config/zsh/keybindings.zsh
 [ -f $HOME/.config/zsh/programs.zsh ] && source $HOME/.config/zsh/programs.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Created by `pipx` on 2021-03-01 21:32:03
+export PATH="$PATH:/home/aktersnurra/.local/bin"

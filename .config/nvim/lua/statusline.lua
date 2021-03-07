@@ -22,9 +22,9 @@ local one_dark_colors = {
 }
 
 local nord_colors = {
-  bg = "0x03050c",  # "#2E3440",
+  bg = "#2E3440",
   fg = "#81A1C1",
-  line_bg = "0x03050c",  # "#2E3440",
+  line_bg = "#2E3440",
   fg_green = "#8FBCBB",
   yellow = "#EBCB8B",
   cyan = "#A3BE8C",
@@ -247,6 +247,3 @@ section.short_line_right[1] = {
     highlight = {nord_colors.fg,nord_colors.bg}
   }
 }
-
-
-

@@ -33,9 +33,9 @@ source $HOME/.config/nvim/plug-config/telescope.vim
 luafile $HOME/.config/nvim/lua/statusline.lua
 source $HOME/.config/nvim/plug-config/vim-bbye.vim
 source $HOME/.config/nvim/plug-config/vim-commentary.vim
+source $HOME/.config/nvim/plug-config/vim-pydocstring.vim
 source $HOME/.config/nvim/plug-config/vimwiki.vim
 
 " Theme
 source $HOME/.config/nvim/themes/githubsy.vim
-" source $HOME/.config/nvim/themes/spaceway.vim
-
+" source $HOME/.config/nvim/themes/nord.vim
