@@ -32,19 +32,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'gavinok/spaceway.vim'
     Plug 'rakr/vim-two-firewatch'
     Plug 'chriskempson/base16-vim'
+    Plug 'sff1019/hogwarts.vim'
 
     " Color hex codes
     Plug 'ap/vim-css-color'
-
-    " FZF
-    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    "Plug 'junegunn/fzf.vim'
 
     " Skim fuzzy finder
     Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' } 
 
     " Rooter changes the working directory to the project root when you open a file or directory.
-    "Plug 'airblade/vim-rooter'   
+    Plug 'airblade/vim-rooter'   
     
     " Telescope a fuzzy finder
     Plug 'nvim-lua/popup.nvim'
