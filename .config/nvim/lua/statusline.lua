@@ -6,9 +6,9 @@ gl.short_line_list = {"LuaTree", "packager", "Floaterm", "coc-eplorer"}
 
 
 local colors = {
-  bg = "#0A0A0A",
+  bg = "#131313",
   fg = "#d0d0d0",
-  line_bg = "#0A0A0A",
+  line_bg = "#131313",
   fg_green = "#90a959",
   yellow = "#f4bf75",
   cyan = "#75b5aa",
