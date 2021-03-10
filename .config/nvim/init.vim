@@ -38,5 +38,4 @@ source $HOME/.config/nvim/plug-config/vim-rooter.vim
 source $HOME/.config/nvim/plug-config/vimwiki.vim
 
 " Theme
-source $HOME/.config/nvim/themes/base16.vim
-" source $HOME/.config/nvim/themes/nord.vim
+source $HOME/.config/nvim/themes/githubsy.vim

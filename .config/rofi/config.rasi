@@ -161,7 +161,7 @@ configuration {
 //----------------------
 
 * {
-    color0:			   #131313;
+    color0:			   #0f1419;
     color1: 			 #3B4252;
     color2: 			 #434C5E;
     color3: 			 #585858;

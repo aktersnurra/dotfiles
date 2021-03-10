@@ -21,18 +21,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     
     " Themes
-    Plug 'joshdick/onedark.vim'
-    Plug 'agreco/vim-citylights'
     Plug 'gilgigilgil/anderson.vim'
-    Plug 'wadackel/vim-dogrun'
-    Plug 'synul/githubsy'
     Plug 'dylanaraps/wal.vim'
     Plug 'richtan/pywal.vim'
     Plug 'arcticicestudio/nord-vim'
-    Plug 'gavinok/spaceway.vim'
-    Plug 'rakr/vim-two-firewatch'
     Plug 'chriskempson/base16-vim'
-    Plug 'sff1019/hogwarts.vim'
+    Plug 'synul/githubsy'
+
 
     " Color hex codes
     Plug 'ap/vim-css-color'

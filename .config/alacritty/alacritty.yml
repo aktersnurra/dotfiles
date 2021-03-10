@@ -5,22 +5,22 @@
 colors:
   # Default colors
   primary:
-    background: '#131313'
+    background: '#0f1419'
     foreground: '#d8d8d8'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '#181818'
+    text: '#303030'
     cursor: '#d8d8d8'
 
   # Normal colors
   normal:
-    black:   '#181818'
-    red:     '#ab4642'
+    black:   '#121212'
+    red:     '#d75f5f'
     green:   '#a1b56c'
     yellow:  '#f7ca88'
-    blue:    '#7cafc2'
-    magenta: '#ba8baf'
+    blue:    '#87afff'
+    magenta: '#d7afff'
     cyan:    '#86c1b9'
     white:   '#d8d8d8'
 
@@ -55,7 +55,7 @@ font:
     family: SpaceMono Nerd Font 
     # Style can be specified to pick a specific face.
     # style: Italic
-  size: 10.0
+  size: 9.0
 
   offset:
     x: 0

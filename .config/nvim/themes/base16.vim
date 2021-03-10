@@ -4,7 +4,8 @@ autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 hi Comment cterm=italic
 
 syntax on
-colorscheme base16-default-dark
+set background=dark
+colorscheme base16-classic-dark
 
 " checks if your terminal has 24-bit color support
 if (has("termguicolors"))
