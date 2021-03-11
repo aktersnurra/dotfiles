@@ -2,6 +2,13 @@ modkey = "Mod4"
 workspaces = []
 tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
+# Border config.
+border_width = 1
+margin = 8
+default_border_color = "#1E272B"
+floating_border_color = "#1E272B"
+focused_border_color = "#78824B"
+
 [[keybind]]
 command = "Execute"
 value = "dmenu_run"
@@ -211,10 +218,3 @@ value = "9"
 modifier = ["modkey", "Shift"]
 key = "9"
 
-[[workspaces]]
-# Border config.
-border_width = 1
-margin = 8
-default_border_color = "#1E272B"
-floating_border_color = "#1E272B"
-focused_border_color = "#78824B"
