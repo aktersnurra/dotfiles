@@ -26,8 +26,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'richtan/pywal.vim'
     Plug 'arcticicestudio/nord-vim'
     Plug 'chriskempson/base16-vim'
-    Plug 'synul/githubsy'
-
+    Plug 'aktersnurra/githubsy.vim'
 
     " Color hex codes
     Plug 'ap/vim-css-color'

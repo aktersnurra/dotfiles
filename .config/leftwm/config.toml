@@ -16,7 +16,7 @@ key = "Return"
 
 [[keybind]]
 command = "Execute"
-value = "rofi -modi drun -show drun -show-icons"
+value = "rofi -modi drun -show drun -width 512"
 modifier = ["modkey"]
 key = "space"
 
@@ -210,3 +210,11 @@ command = "MoveToTag"
 value = "9"
 modifier = ["modkey", "Shift"]
 key = "9"
+
+[[workspaces]]
+# Border config.
+border_width = 1
+margin = 8
+default_border_color = "#1E272B"
+floating_border_color = "#1E272B"
+focused_border_color = "#78824B"
