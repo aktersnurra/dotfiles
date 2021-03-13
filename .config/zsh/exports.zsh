@@ -7,6 +7,8 @@ zle_highlight=('paste:none')
 plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
+  git
+  kubectl
 )
 
 autoload -U colors && colors
