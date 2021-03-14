@@ -10,11 +10,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
+
     " Better Comments
     Plug 'tpope/vim-commentary'
 
+    " Highlights yanking 
     Plug 'machakann/vim-highlightedyank'
     
+    " Find and replace
     Plug 'brooth/far.vim'
     
     " Auto pairs for '(' '[' '{'
@@ -41,9 +44,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'   
-    
+    Plug 'nvim-telescope/telescope-media-files.nvim'
+
     " Better tabline
-    Plug 'romgrk/barbar.nvim'
+    Plug 'akinsho/nvim-bufferline.lua'
   
     " Better scrolling
     Plug 'psliwka/vim-smoothie'
@@ -58,13 +62,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'kyazdani42/nvim-web-devicons' " lua
     Plug 'ryanoasis/vim-devicons' " vimscript
 
+    " File explorer
+    Plug 'kyazdani42/nvim-tree.lua'
+
     " Treesitter
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-    " Stable version of coc
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Snippets
     Plug 'honza/vim-snippets'
-    
+
+    " Ranger
     Plug 'kevinhwang91/rnvimr'
    
     " Colorizer
@@ -97,11 +104,22 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Intuitive buffer closing
     Plug 'moll/vim-bbye'
 
+    " Python
+    " Env
+    Plug 'petobens/poet-v'
     " Pydocstring
     Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
     " Vim wiki for notes
     Plug 'vimwiki/vimwiki'
+
+    " LSP for autocomplete.
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'   
+    Plug 'glepnir/lspsaga.nvim'
+    Plug 'onsails/lspkind-nvim'
+    Plug 'kosayoda/nvim-lightbulb'
+    Plug 'mfussenegger/nvim-dap'
 
 call plug#end()
 
