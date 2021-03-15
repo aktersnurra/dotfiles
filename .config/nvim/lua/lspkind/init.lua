@@ -1,4 +1,4 @@
--- commented options are defaults
+-- symbols for autocomplete
 require('lspkind').init({
     with_text = false,
     symbol_map = {

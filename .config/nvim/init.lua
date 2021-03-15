@@ -1,0 +1,45 @@
+-- General mappings
+require('plugins')
+require('mappings')
+require('settings')
+require('colorscheme')
+
+-- Plugins
+require('_compe')
+require('_telescope')
+require('autopairs')
+require('_bufferline')
+require('closetag')
+require('colorizer')
+require('floaterm')
+require('galaxyline')
+require('gitblame')
+require('gitsigns')
+require('hop')
+require('kommentary')
+-- require('limeligth')
+require('neogit')
+require('nvimtree')
+require('quickscope')
+require('rnvimr')
+require('startify')
+require('treesitter')
+require('vim-rooter')
+
+
+-- Load vim scripts
+-- Which Key (Hope to replace with Lua plugin someday)
+vim.cmd('source ~/.config/nvim/lua/whichkey/init.vim')
+vim.cmd('source ~/.config/nvim/lua/goyo/init.vim')
+vim.cmd('source ~/.config/nvim/lua/vim-bbye/init.vim')
+
+-- LSP
+require('lspkind')
+require('lsp')
+require('utils')
+require('lsp.bash-ls')
+require('lsp.docker-ls')
+require('lsp.lua-ls')
+require('lsp.json-ls')
+require('lsp.python-ls')
+require('lsp.yaml-ls')
