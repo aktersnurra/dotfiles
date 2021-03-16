@@ -34,3 +34,14 @@ vim.o.timeoutlen=100                      --By default timeoutlen is 1000 ms
 vim.o.clipboard="unnamedplus"               --Copy paste between vim and everything else
 vim.o.incsearch=true
 vim.o.guifont="SpaceMono\\ Nerd\\ Font\\ Mono:h18"
+
+-- relative line numbers
+-- vim.cmd('set number relativenumber')
+--[[ local u = require('utils')
+
+u.define_augroups({
+    numbertoggle = {
+        {'BufEnter', 'FocusGained', 'InsertLeave * set relativenumber'},
+        {'BufLeave', 'FocusLost', 'InsertEnter * set norelativenumber'},
+    }, 
+}) ]]

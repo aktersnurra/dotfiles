@@ -35,15 +35,13 @@ let g:which_key_map['r'] = [ ':RnvimrToggle'                                   ,
 let g:which_key_map['T'] = [ ':TSHighlightCapturesUnderCursor'                 , 'treesitter highlight' ]
 let g:which_key_map['v'] = [ '<C-W>v'                                          , 'split right']
 " Add Zen mode, play nice with status line
-" let g:which_key_map['z'] = [ 'Goyo'                                            , 'zen' ]
+let g:which_key_map['z'] = [ 'Goyo'                                            , 'zen' ]
 
 " Group mappings
 
 " a is for actions
 let g:which_key_map.a = {
       \ 'name' : '+actions' ,
-      \ 'c' : [':ColorizerToggle'        , 'colorizer'],
-      \ 'e' : [':CocCommand explorer'    , 'explorer'],
       \ 'h' : [':let @/ = ""'            , 'remove search highlight'],
       \ 'l' : [':Bracey'                 , 'start live server'],
       \ 'L' : [':BraceyStop'             , 'stop live server'],
@@ -231,7 +229,7 @@ let g:which_key_map.t = {
       \ 'm' : [':FloatermNew lazynpm'                           , 'npm'],
       \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
       \ 't' : [':FloatermToggle'                                , 'toggle'],
-      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
+      \ 'y' : [':FloatermNew btm'                               , 'btm'],
       \ 'u' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
 

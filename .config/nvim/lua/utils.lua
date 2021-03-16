@@ -29,3 +29,10 @@ define_augroups(
         },
     }
 )
+
+define_augroups({
+    numbertoggle = {
+        {'BufEnter,FocusGained,InsertLeave', '*', 'set relativenumber'},
+        {'BufLeave,FocusLost,InsertEnter', '*', 'set norelativenumber'},
+    }, 
+})

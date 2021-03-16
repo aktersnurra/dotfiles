@@ -35,9 +35,9 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip-integ'
 
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'nvim-treesitter/playground'
-  use 'p00f/nvim-ts-rainbow'
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use 'nvim-treesitter/playground'
+  -- use 'p00f/nvim-ts-rainbow'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
@@ -46,7 +46,6 @@ return require('packer').startup(function()
   -- Status Line and Bufferline
   use 'glepnir/galaxyline.nvim'
   use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
-  use 'romgrk/barbar.nvim'
 
   -- Telescope
   use 'nvim-lua/popup.nvim'
@@ -95,5 +94,4 @@ return require('packer').startup(function()
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'vimwiki/vimwiki'
-  use 'kosayoda/nvim-lightbulb'
 end)
