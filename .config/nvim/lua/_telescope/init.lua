@@ -25,7 +25,7 @@ require('telescope').setup {
         results_height = 1,
         results_width = 0.8,
         border = {},
-        borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+        borderchars = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
         color_devicons = true,
         use_less = true,
         set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
@@ -71,3 +71,7 @@ require('telescope').setup {
         }
     }
 }
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', { noremap = true, silent = true })
