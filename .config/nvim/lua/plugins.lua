@@ -1,13 +1,16 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  execute 'packadd packer.nvim'
+    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    execute 'packadd packer.nvim'
 end
+
+vim.cmd [[packadd packer.nvim]]
+
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
 
 return require('packer').startup(function()
@@ -35,9 +38,9 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip-integ'
 
   -- Treesitter
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  -- use 'nvim-treesitter/playground'
-  -- use 'p00f/nvim-ts-rainbow'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'nvim-treesitter/playground'
+  use 'p00f/nvim-ts-rainbow'
 
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
@@ -56,7 +59,6 @@ return require('packer').startup(function()
   -- Explorer
   use 'kyazdani42/nvim-tree.lua'
 
-
   -- Color
   use 'aktersnurra/githubsy.vim'
   use 'christianchiarulli/nvcode-color-schemes.vim'
@@ -66,6 +68,8 @@ return require('packer').startup(function()
   use 'TimUntersberger/neogit'
   use {'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'f-person/git-blame.nvim'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
 
   -- Easily Create Gists
   use 'mattn/vim-gist'
@@ -86,10 +90,13 @@ return require('packer').startup(function()
   use 'turbio/bracey.vim'
   use 'AndrewRadev/tagalong.vim'
   use 'alvan/vim-closetag'
-  use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](1) end }
   use 'liuchengxu/vim-which-key'
   use 'tpope/vim-sleuth'
   use 'voldikss/vim-floaterm'
+  use 'liuchengxu/vista.vim'
+  use 'terrortylor/nvim-comment'
+  use 'bfredl/nvim-miniyank'
+  use 'andymass/vim-matchup'
   use 'phaazon/hop.nvim'
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'

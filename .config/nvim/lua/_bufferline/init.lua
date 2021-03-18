@@ -13,7 +13,7 @@ require'bufferline'.setup{
     max_prefix_length = 15, -- prefix used when a buffer is deduplicated
     tab_size = 18,
     diagnostics = "nvim_lsp",
-    show_buffer_close_icons = true,
+    show_buffer_close_icons = false,
     show_tab_indicators = true,
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
