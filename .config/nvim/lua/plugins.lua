@@ -74,25 +74,27 @@ return require('packer').startup(function()
   -- Easily Create Gists
   use 'mattn/vim-gist'
   use 'mattn/webapi-vim'
+  
+  -- Registers
+  use 'gennaro-tedesco/nvim-peekup'
 
   -- General Plugins
+  use 'turbio/bracey.vim'
+  use 'metakirby5/codi.vim'
   use 'windwp/nvim-autopairs'
   use 'kevinhwang91/nvim-bqf'
   use 'unblevable/quick-scope'
   use 'airblade/vim-rooter'
-  use 'b3nj5m1n/kommentary'
   use 'kevinhwang91/rnvimr'
-  use 'mhinz/vim-startify'
-  use 'metakirby5/codi.vim'
-  use 'psliwka/vim-smoothie'
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
   use 'moll/vim-bbye'
-  use 'turbio/bracey.vim'
-  use 'AndrewRadev/tagalong.vim'
   use 'alvan/vim-closetag'
-  use 'liuchengxu/vim-which-key'
-  use 'tpope/vim-sleuth'
   use 'voldikss/vim-floaterm'
+  use 'tpope/vim-sleuth'
+  use 'psliwka/vim-smoothie'
+  use 'mhinz/vim-startify'
+  use 'liuchengxu/vim-which-key'
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
+  use 'AndrewRadev/tagalong.vim'
   use 'liuchengxu/vista.vim'
   use 'terrortylor/nvim-comment'
   use 'bfredl/nvim-miniyank'
@@ -101,4 +103,5 @@ return require('packer').startup(function()
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'vimwiki/vimwiki'
+
 end)
