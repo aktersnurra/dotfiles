@@ -3,14 +3,6 @@ CASE_SENSITIVE="true"
 
 zle_highlight=('paste:none')
 
-# Which plugins would you like to load?
-plugins=(
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  git
-  kubectl
-)
-
 autoload -U colors && colors
 
 # History in cache directory:
