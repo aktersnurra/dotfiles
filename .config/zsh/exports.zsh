@@ -32,3 +32,7 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export GEM_HOME="$HOME/.gem"
+
+# Created by `pipx` on 2021-03-01 21:32:03
+export PATH="$PATH:/home/aktersnurra/.local/bin"
+
