@@ -5,6 +5,10 @@ zle_highlight=('paste:none')
 
 autoload -U colors && colors
 
+# For autocomplete to work
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
