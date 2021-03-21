@@ -4,4 +4,4 @@ vim.api.nvim_command([[
     augroup END
 ]])
 vim.cmd('colorscheme githubsy')
-vim.cmd('let g:nvcode_termcolors=256')
+-- vim.cmd('let g:nvcode_termcolors=256')

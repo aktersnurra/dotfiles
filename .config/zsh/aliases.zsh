@@ -8,7 +8,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias tmux='tmux -f .config/tmux/.tmux.conf'
+alias tmux='tmux -f $HOME/.config/tmux/.tmux.conf'
 
 # Rust CLI programs
 if command -v exa > /dev/null; then

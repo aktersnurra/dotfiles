@@ -103,5 +103,6 @@ return require('packer').startup(function()
   use 'junegunn/goyo.vim'
   use 'junegunn/limelight.vim'
   use 'vimwiki/vimwiki'
+  use {'heavenshell/vim-pydocstring', run = 'make install'}
 
 end)

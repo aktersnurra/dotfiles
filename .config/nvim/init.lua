@@ -26,6 +26,7 @@ require('_startify')
 require('_treesitter')
 require('_vim-rooter')
 require('_vim-bbye')
+require('_vim-pydocstring')
 require('_peekup')
 
 -- bufferline and statusline
