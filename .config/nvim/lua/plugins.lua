@@ -59,10 +59,11 @@ return require('packer').startup(function()
   -- Explorer
   use 'kyazdani42/nvim-tree.lua'
 
-  -- Color
+  -- Colorschemes
   use 'aktersnurra/githubsy.vim'
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use 'norcalli/nvim-colorizer.lua'
+  use 'RRethy/nvim-base16'
 
   -- Git
   use 'TimUntersberger/neogit'
