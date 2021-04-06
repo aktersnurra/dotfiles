@@ -1,3 +1,9 @@
+# Poetry autocompletion
+fpath+=~/.zfunc
+
+# kubectl autocompletion
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
 # FZF
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh

@@ -36,9 +36,8 @@ _utils.define_augroups({
     numbertoggle = {
         {'BufEnter,FocusGained,InsertLeave', '*', 'set relativenumber'},
         {'BufLeave,FocusLost,InsertEnter', '*', 'set norelativenumber'},
-    } 
+    }, 
 })
-
 -- Add this to lightbulb, java makes this annoying tho
 -- autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
