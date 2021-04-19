@@ -1,109 +1,131 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-    execute 'packadd packer.nvim'
+    execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+    execute "packadd packer.nvim"
 end
 
-vim.cmd [[packadd packer.nvim]]
+--- Check if a file or directory exists in this path
+local function require_plugin(plugin)
+    local plugin_prefix = fn.stdpath("data") .. "/site/pack/packer/opt/"
 
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+    local plugin_path = plugin_prefix .. plugin .. "/"
+    --	print('test '..plugin_path)
+    local ok, err, code = os.rename(plugin_path, plugin_path)
+    if not ok then
+        if code == 13 then
+            -- Permission denied, but it exists
+            return true
+        end
+    end
+    --	print(ok, err, code)
+    if ok then
+        vim.cmd("packadd " .. plugin)
+    end
+    return ok, err, code
+end
 
+vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 
-return require('packer').startup(function()
-  -- Packer can manage itself as an optional plugin
-  use {'wbthomason/packer.nvim'}
+return require("packer").startup(
+    function(use)-- Packer can manage itself as an optional plugin
+    -- Packer can manage itself as an optional plugin
+    use "wbthomason/packer.nvim"
 
-  -- Information
-  use 'nanotee/nvim-lua-guide'
+    -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
+    use {"neovim/nvim-lspconfig", opt = true}
+    use {"glepnir/lspsaga.nvim", opt = true}
+    use {"kabouzeid/nvim-lspinstall", opt = true}
 
-  -- Quality of life improvements
-  use 'norcalli/nvim_utils'
+    -- Telescope
+    use {"nvim-lua/popup.nvim", opt = true}
+    use {"nvim-lua/plenary.nvim", opt = true}
+    use {"nvim-telescope/telescope.nvim", opt = true}
+	use {"nvim-telescope/telescope-media-files.nvim", opt = true}
 
-  -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'glepnir/lspsaga.nvim'
-  use 'onsails/lspkind-nvim'
-  use 'kosayoda/nvim-lightbulb'
+    -- Autocomplete
+    use {"hrsh7th/nvim-compe", opt = true}
+    use {"hrsh7th/vim-vsnip", opt = true}
+    use {"rafamadriz/friendly-snippets", opt = true}
 
-  -- Debugging
-  use 'mfussenegger/nvim-dap'
+    -- Treesitter
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use {"windwp/nvim-ts-autotag", opt = true}
 
-  -- Autocomplete
-  use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
+    -- Explorer
+    use "kyazdani42/nvim-tree.lua"
+    -- TODO remove when open on dir is supported by nvimtree
+    use "kevinhwang91/rnvimr"
 
-  -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'nvim-treesitter/playground'
-  use 'p00f/nvim-ts-rainbow'
+    use {"liuchengxu/vim-which-key", opt = true}
+    use {"ChristianChiarulli/dashboard-nvim", opt = true}
+    use {"windwp/nvim-autopairs", opt = true}
+    use {"terrortylor/nvim-comment", opt = true}
+    use {"kevinhwang91/nvim-bqf", opt = true}
 
-  -- Icons
-  use 'kyazdani42/nvim-web-devicons'
-  use 'ryanoasis/vim-devicons'
+    -- Icons
+    use {"kyazdani42/nvim-web-devicons", opt = true}
 
-  -- Status Line and Bufferline
-  use 'glepnir/galaxyline.nvim'
-  use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+    -- Status Line and Bufferline
+    use 'glepnir/galaxyline.nvim'
+    use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+    use {"romgrk/barbar.nvim", opt = true}
 
-  -- Telescope
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'nvim-telescope/telescope-media-files.nvim'
+    -- Colorschemes
+    use 'aktersnurra/githubsy.vim'
+    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
+    use 'norcalli/nvim-colorizer.lua'
+    use 'RRethy/nvim-base16'
 
-  -- Explorer
-  use 'kyazdani42/nvim-tree.lua'
+    -- Git
+    use {"lewis6991/gitsigns.nvim", opt = true}
+    use 'TimUntersberger/neogit'
+    use 'f-person/git-blame.nvim'
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
 
-  -- Colorschemes
-  use 'aktersnurra/githubsy.vim'
-  use 'christianchiarulli/nvcode-color-schemes.vim'
-  use 'norcalli/nvim-colorizer.lua'
-  use 'RRethy/nvim-base16'
+    -- Registers
+    use 'gennaro-tedesco/nvim-peekup'
 
-  -- Git
-  use 'TimUntersberger/neogit'
-  use {'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use 'f-person/git-blame.nvim'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
+    -- General Plugins
+    use 'turbio/bracey.vim'
+    use 'unblevable/quick-scope'
+    use 'airblade/vim-rooter'
+    use 'moll/vim-bbye'
+    use 'alvan/vim-closetag'
+    use 'voldikss/vim-floaterm'
+    use 'AndrewRadev/tagalong.vim'
+    use 'bfredl/nvim-miniyank'
+    use 'andymass/vim-matchup'
+    use 'phaazon/hop.nvim'
+    use 'junegunn/goyo.vim'
+    use 'vimwiki/vimwiki'
+    use {'heavenshell/vim-pydocstring', run = 'make install'}
 
-  -- Easily Create Gists
-  use 'mattn/vim-gist'
-  use 'mattn/webapi-vim'
-  
-  -- Registers
-  use 'gennaro-tedesco/nvim-peekup'
-
-  -- General Plugins
-  use 'turbio/bracey.vim'
-  use 'metakirby5/codi.vim'
-  use 'windwp/nvim-autopairs'
-  use 'kevinhwang91/nvim-bqf'
-  use 'unblevable/quick-scope'
-  use 'airblade/vim-rooter'
-  use 'kevinhwang91/rnvimr'
-  use 'moll/vim-bbye'
-  use 'alvan/vim-closetag'
-  use 'voldikss/vim-floaterm'
-  use 'tpope/vim-sleuth'
-  use 'psliwka/vim-smoothie'
-  use 'mhinz/vim-startify'
-  use 'liuchengxu/vim-which-key'
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview'}
-  use 'AndrewRadev/tagalong.vim'
-  use 'liuchengxu/vista.vim'
-  use 'terrortylor/nvim-comment'
-  use 'bfredl/nvim-miniyank'
-  use 'andymass/vim-matchup'
-  use 'phaazon/hop.nvim'
-  use 'junegunn/goyo.vim'
-  use 'junegunn/limelight.vim'
-  use 'vimwiki/vimwiki'
-  use {'heavenshell/vim-pydocstring', run = 'make install'}
-
-end)
+    require_plugin("nvim-lspconfig")
+    require_plugin("lspsaga.nvim")
+    require_plugin("nvim-lspinstall")
+    require_plugin("popup.nvim")
+    require_plugin("plenary.nvim")
+    require_plugin("telescope.nvim")
+    require_plugin("nvim-dap")
+    require_plugin("nvim-compe")
+    require_plugin("vim-vsnip")
+    require_plugin("nvim-treesitter")
+    require_plugin("nvim-ts-autotag")
+    require_plugin("nvim-tree.lua")
+    require_plugin("gitsigns.nvim")
+    require_plugin("vim-which-key")
+    require_plugin("dashboard-nvim")
+    require_plugin("nvim-autopairs")
+    require_plugin("nvim-comment")
+    require_plugin("nvim-bqf")
+    require_plugin("nvcode-color-schemes.vim")
+    require_plugin("nvim-web-devicons")
+    require_plugin("galaxyline.nvim")
+    require_plugin("barbar.nvim")
+  end
+)
