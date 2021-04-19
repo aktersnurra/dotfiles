@@ -1,0 +1,42 @@
+command! LspCodeAction lua require '_utils'.code_action()
+command! LspDeclaration lua require '_utils'.declaration()
+command! LspDefinition lua require '_utils'.definition()
+command! LspDocumentSymbol lua require '_utils'.document_symbol()
+command! LspFormatting lua require '_utils'.formatting()
+command! LspFormattingSync lua require '_utils'.formatting_sync()
+command! LspHover lua require '_utils'.hover()
+command! LspImplementation lua require '_utils'.implementation()
+command! LspRangeCodeAction lua require '_utils'.range_code_action()
+command! LspRangeFormatting lua require '_utils'.range_formatting()
+command! LspReferences lua require '_utils'.references()
+command! LspRename lua require '_utils'.rename()
+command! LspTypeDefinition lua require '_utils'.type_definition()
+command! LspWorkspaceSymbol lua require '_utils'.workspace_symbol()
+command! LspGotoNext lua require '_utils'.goto_next()
+command! LspGotoPrev lua require '_utils'.goto_prev()
+command! LspShowLineDianostics lua require '_utils'.show_line_diagnostics()
+command! NextHunk lua require '_utils'.next_hunk()
+command! PrevHunk lua require '_utils'.prev_hunk()
+command! StageHunk lua require '_utils'.stage_hunk()
+command! UndoStageHunk lua require '_utils'.undo_stage_hunk()
+command! ResetHunk lua require '_utils'.reset_hunk()
+command! ResetBuffer lua require '_utils'.reset_buffer()
+command! PreviewHunk lua require '_utils'.preview_hunk()
+command! BlameLine lua require '_utils'.blame_line()
+command! W noa w
+
+" Debugging
+command! DebugToggleBreakpoint lua require'dap'.toggle_breakpoint()
+command! DebugStart lua require'dap'.continue()
+command! DebugContinue lua require'dap'.continue()
+command! DebugStepOver lua require'dap'.step_over()
+command! DebugStepOut lua require'dap'.step_out()
+command! DebugStepInto lua require'dap'.step_into()
+command! DebugToggleRepl lua require'dap'.repl.toggle()
+command! DebugGetSession lua require'dap'.session()
+
+autocmd! User GoyoEnter lua require('gitsigns').toggle_signs()
+autocmd! User GoyoLeave lua require('gitsigns').toggle_signs()
+
+autocmd User GoyoEnter set laststatus=0 
+autocmd User GoyoLeave set laststatus=2
