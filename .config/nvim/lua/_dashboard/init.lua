@@ -30,3 +30,4 @@ vim.g.dashboard_custom_section = {
     e = {description = {'  Settings           '}, command = ':e ~/.config/nvim/language-settings.lua'}
 }
 
+vim.g.dashboard_custom_footer = {''}
