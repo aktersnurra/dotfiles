@@ -1,5 +1,7 @@
 # Neovim
 
+Most of my config is stolen from https://github.com/ChristianChiarulli/LunarVim
+
 ## Requirements
 Must have neovim >= 0.5
 
@@ -11,21 +13,10 @@ macOS:
 brew install lazygit
 ```
 
-Ubuntu:
-```
-sudo add-apt-repository ppa:lazygit-team/release
-sudo apt-get update
-sudo apt-get install lazygit
-```
-
 Arch:
 ```
 https://aur.archlinux.org/packages/lazygit/
 ```
-
-### Coc-explorer
-
-`:CocInstall coc-explorer`
 
 ### Ranger
 ```
@@ -45,3 +36,40 @@ macOS:
 ### Treesitter
 
 `:TSInstall {language}`
+
+### LSP
+
+```
+  :LspInstall <your_language_server>
+```
+
+### Programs
+
+```
+ranger
+ueberzug
+ripgrep
+pynvim
+neovim-remote
+```
+
+### EFM server
+Need to install `efm-langserver` for linters and formatters to work.
+
+```
+:LspInstall efm
+
+```
+
+### Formatters and Linters
+*Python*
+```
+black
+flake8
+```
+
+*Lua*
+`luarocks install --server=https://luarocks.org/dev luaformatter`
+
+*Yaml, json, js, html, css*
+`npm install -g prettier`
