@@ -91,19 +91,19 @@ return require("packer").startup(
     use 'gennaro-tedesco/nvim-peekup'
 
     -- General Plugins
-    use 'turbio/bracey.vim'
-    use 'unblevable/quick-scope'
-    use 'airblade/vim-rooter'
-    use 'moll/vim-bbye'
-    use 'alvan/vim-closetag'
-    use 'voldikss/vim-floaterm'
-    use 'AndrewRadev/tagalong.vim'
-    use 'bfredl/nvim-miniyank'
-    use 'andymass/vim-matchup'
-    use 'phaazon/hop.nvim'
-    use 'junegunn/goyo.vim'
-    use 'vimwiki/vimwiki'
-    use {'heavenshell/vim-pydocstring', run = 'make install'}
+    -- use 'turbio/bracey.vim'
+    -- use 'unblevable/quick-scope'
+    -- use 'airblade/vim-rooter'
+    -- use 'moll/vim-bbye'
+    -- use 'alvan/vim-closetag'
+    -- use 'voldikss/vim-floaterm'
+    -- use 'AndrewRadev/tagalong.vim'
+    -- use 'bfredl/nvim-miniyank'
+    -- use 'andymass/vim-matchup'
+    -- use 'phaazon/hop.nvim'
+    -- use 'junegunn/goyo.vim'
+    -- use 'vimwiki/vimwiki'
+    -- use {'heavenshell/vim-pydocstring', run = 'make install'}
 
     require_plugin("nvim-lspconfig")
     require_plugin("lspsaga.nvim")
