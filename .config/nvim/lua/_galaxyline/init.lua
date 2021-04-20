@@ -1,8 +1,5 @@
 local gl = require('galaxyline')
--- get my theme in galaxyline repo
--- local colors = require('galaxyline.theme').default
 local colors = {
-    -- bg = '#2E2E2E',
     bg = '#232731',
     yellow = '#DCDCAA',
     dark_yellow = '#D7BA7D',
@@ -52,7 +49,7 @@ gls.left[1] = {
                 t = colors.blue
             }
             vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-            return '▊ '
+            return ' '
         end,
         highlight = {colors.red, colors.bg}
     }
