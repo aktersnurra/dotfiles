@@ -17,11 +17,10 @@ require('_nvimtree')
 require('_treesitter')
 require('_autopairs')
 require('_rnvimr')
-require('_vim-bbye')
 require('_vim-rooter')
+require('_quickscope')
 require('_neogit')
 
--- Which Key (Hope to replace with Lua plugin someday)
 vim.cmd('source ~/.config/nvim/vim-script/_whichkey/init.vim')
 vim.cmd('source ~/.config/nvim/vim-script/functions.vim')
 
