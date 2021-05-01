@@ -74,6 +74,9 @@ return require("packer").startup(
     use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
     use {"romgrk/barbar.nvim", opt = true}
 
+    -- Which key 
+    use {"folke/which-key.nvim", opt = true}
+
     -- Colorschemes
     use 'aktersnurra/githubsy.vim'
     use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
@@ -87,10 +90,10 @@ return require("packer").startup(
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
 
-    -- General Plugins
+    -- General Plugins [my own additions]
     use 'airblade/vim-rooter'
     use 'unblevable/quick-scope'
-    -- use 'junegunn/goyo.vim'
+    use 'kdav5758/TrueZen.nvim'
     -- use 'vimwiki/vimwiki'
 
     require_plugin("nvim-lspconfig")
@@ -115,8 +118,10 @@ return require("packer").startup(
     require_plugin("nvim-web-devicons")
     require_plugin("galaxyline.nvim")
     require_plugin("barbar.nvim")
+    require_plugin("which-key.nvim")
 
     require_plugin("vim-rooter")
     require_plugin("quick-scope")
+    require_plugin("TrueZen")
   end
 )

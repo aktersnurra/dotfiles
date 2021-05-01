@@ -20,8 +20,9 @@ require('_rnvimr')
 require('_vim-rooter')
 require('_quickscope')
 require('_neogit')
+require('_which-key')
+require('_true-zen')
 
-vim.cmd('source ~/.config/nvim/vim-script/_whichkey/init.vim')
 vim.cmd('source ~/.config/nvim/vim-script/functions.vim')
 
 -- LSP

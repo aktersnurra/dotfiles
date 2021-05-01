@@ -28,3 +28,8 @@ O.tsserver.autoformat = true
 
 -- json
 O.json.autoformat = true
+O.json.formatter = 'prettier'
+
+-- sh
+O.sh.linter = 'shellcheck'
+O.sh.formatter = 'shfmt'
