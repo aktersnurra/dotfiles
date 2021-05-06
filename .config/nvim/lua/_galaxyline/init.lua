@@ -49,7 +49,7 @@ gls.left[1] = {
                 t = colors.blue
             }
             vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-            return ' '
+            return '⏽ '
         end,
         highlight = {colors.red, colors.bg}
     }

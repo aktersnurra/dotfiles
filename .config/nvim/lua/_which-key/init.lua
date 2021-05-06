@@ -70,8 +70,8 @@ vim.api.nvim_set_keymap("n", "<leader>z", ':TZAtaraxis<CR>', {noremap = true, si
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, silent = true})
 
 -- split window
-vim.api.nvim_set_keymap("n", "<leader>h", ":vsplit<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>v", ":split<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", {noremap = true, silent = true})
 
 -- TODO create entire treesitter section
 
@@ -101,7 +101,11 @@ local mappings = {
         r = {"<cmd>ResetHunk<cr>", "Reset Hunk"},
         R = {"<cmd>ResetBuffer<cr>", "Reset Buffer"},
         s = {"<cmd>StageHunk<cr>", "Stage Hunk"},
-        u = {"<cmd>UndoStageHunk<cr>", "Undo Stage Hunk"}
+        u = {"<cmd>UndoStageHunk<cr>", "Undo Stage Hunk"},
+        o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
+        b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+        c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
+        C = {"<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)"},
     },
     l = {
         name = "+LSP",
