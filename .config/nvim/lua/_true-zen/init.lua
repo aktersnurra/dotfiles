@@ -28,7 +28,7 @@ true_zen.setup({
 		hidden_signcolumn = "no",
 
 		shown_number = true,
-		shown_relativenumber = false,
+		shown_relativenumber = true,
 		shown_signcolumn = "no"
 	},
 	ataraxis = {

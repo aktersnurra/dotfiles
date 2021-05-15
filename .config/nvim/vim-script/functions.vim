@@ -34,9 +34,3 @@ command! DebugStepOut lua require'dap'.step_out()
 command! DebugStepInto lua require'dap'.step_into()
 command! DebugToggleRepl lua require'dap'.repl.toggle()
 command! DebugGetSession lua require'dap'.session()
-
-autocmd! User GoyoEnter lua require('gitsigns').toggle_signs()
-autocmd! User GoyoLeave lua require('gitsigns').toggle_signs()
-
-autocmd User GoyoEnter set laststatus=0 
-autocmd User GoyoLeave set laststatus=2
