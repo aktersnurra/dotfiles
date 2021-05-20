@@ -1,3 +1,6 @@
 [submodule "dwm"]
 	path = dwm
 	url = https://gitlab.com/aktersnurra/dwm.git
+[submodule "dwmblocks"]
+	path = dwmblocks
+	url = https://gitlab.com/aktersnurra/dwmblocks.git
