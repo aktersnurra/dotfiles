@@ -4,3 +4,6 @@
 [submodule "dwmblocks"]
 	path = dwmblocks
 	url = https://gitlab.com/aktersnurra/dwmblocks.git
+[submodule "dmenu"]
+	path = dmenu
+	url = https://gitlab.com/aktersnurra/dmenu.git
