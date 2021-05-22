@@ -1,3 +1,6 @@
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
