@@ -6,44 +6,24 @@ A living document...
 
 Write detailed installation instruction here...
 
-## Arch
-
-TBC
-
-## macOS
-
-TBC
-
-## Common
-
-TBC
-
-## Alacritty
-
-https://github.com/alacritty/alacritty
-
-
-## Nerd Fonts
+Install Artix, just follow Luke's tutorial on artix...
 
 ```
-git clone https://github.com/ryanoasis/nerd-fonts
+Install bluez and other good to have software, e.g. browser, fonts,nvim etc
+dont forget to link runit
+```
 
-./nerd-fonts/install.sh
-
-# If they don't show up
-fc-cache -r
-
-# Try finding Space Mono
-
-fc-match "Space Mono Nerd Font"
-
-# If installed correctly should return a match.
-
-
-# When everything seems to be working, remove nerd-fonts/ directory as it is no longer needed.
-rm -rf nerd-fonts/
+Fetch the config with:
 
 ```
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+echo "dotfiles" >> .gitignore
+git clone --bare https://gitlab.com/aktersnurra/dotfiles $HOME/dotfiles
+```
+
+Now what?
+
+
 
 ## Python
 
