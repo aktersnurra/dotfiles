@@ -5,7 +5,7 @@ compinit
 fpath+=~/.zfunc
 
 # kubectl autocompletion
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+# [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 # FZF
 source /usr/share/fzf/key-bindings.zsh
