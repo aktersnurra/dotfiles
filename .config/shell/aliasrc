@@ -7,35 +7,36 @@
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
 # sudo not required for some system commands.
-for x in mount unmount sv pacman updatedb su ; do
+for x in mount unmount sv pacman updatedb su reboot ; do
 	alias $x="sudo $x"
 done
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	bc="bc -ql" \
-	mkd="mkdir -pv" \
-	ffmpeg="ffmpeg -hide_banner"
+        cp="cp -iv" \
+        mv="mv -iv" \
+        rm="rm -vI" \
+        bc="bc -ql" \
+        mkd="mkdir -pv" \
+        ffmpeg="ffmpeg -hide_banner"
 
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi"
+        ls="ls -hN --color=auto --group-directories-first" \
+        grep="grep --color=auto" \
+        diff="diff --color=auto" 
+#   ccat="highlight --out-format=ansi"
 
 # My aliases for different programs
-alias \ 
-	lg='lazygit' \
-	gpu-watch="watch -n -1 nvidia-smi" \
-	zshconfig="nvim ~/.zshrc" \
-	gp='git add . && git commit -m "auto push" && git push' \
-	zrc='nvim ~/.zshrc' \
-	zsource='source ~/.zshrc' \
-	v='nvim' \
-	vi='nvim' \
-	vim='nvim' \
-	config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' \
-	tmux='tmux -f $HOME/.config/tmux/.tmux.conf'
+alias \
+        lg="lazygit" \
+        gpuwatch="watch -n1 nvidia-smi" \
+        zshconfig="nvim ~/.zshrc" \
+        zrc="nvim ~/.zshrc" \
+        zsource="source ~/.zshrc" \
+        sdn="sudo shutdown -h now" \
+        e="$EDITOR" \
+        v="$EDITOR" \
+        p="sudo pacman" \
+        config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
+        tmux="tmux -f $HOME/.config/tmux/.tmux.conf" \
+        z="zathura" 

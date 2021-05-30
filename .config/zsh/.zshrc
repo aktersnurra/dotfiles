@@ -1,7 +1,9 @@
 # ZSH config
+
 # Load plugins first
-[ -f $HOME/.config/zsh/plugins.zsh ] && source $HOME/.config/zsh/plugins.zsh
-[ -f $HOME/.config/zsh/functions.zsh ] && source $HOME/.config/zsh/functions.zsh
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/plugins.zsh" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/plugins.zsh"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/functions.zsh" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/functions.zsh"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
