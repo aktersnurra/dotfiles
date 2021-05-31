@@ -1,9 +1,11 @@
-local true_zen = require("true-zen")
-
 -- setup for TrueZen.nvim
-true_zen.setup({
+require("true-zen").setup({
     true_false_commands = false,
 	cursor_by_mode = false,
+	before_minimalist_mode_shown = false,
+	before_minimalist_mode_hidden = false,
+	after_minimalist_mode_shown = false,
+	after_minimalist_mode_hidden = false,
 	bottom = {
 		hidden_laststatus = 0,
 		hidden_ruler = false,
@@ -33,35 +35,19 @@ true_zen.setup({
 	},
 	ataraxis = {
 		just_do_it_for_me = false,
-		left_padding = 40,
-		right_padding = 40,
-		top_padding = 0,
-		bottom_padding = 0,
-		custome_bg = "",
-		disable_bg_configuration = false,
-		disable_fillchars_configuration = false,
-		force_when_plus_one_window = false,
-		force_hide_statusline = false
-	},
-	focus = {
-		margin_of_error = 5,
-		focus_method = "experimental"
-	},
-	events = {
-		before_minimalist_mode_shown = false,
-		before_minimalist_mode_hidden = false,
-		after_minimalist_mode_shown = false,
-		after_minimalist_mode_hidden = false
+		left_padding = 5,
+		right_padding = 5,
+		top_padding = 1,
+		bottom_padding = 1
 	},
 	integrations = {
 		integration_galaxyline = true,
 		integration_vim_airline = false,
 		integration_vim_powerline = false,
-		integration_tmux = false,
+		integration_tmux = true,
 		integration_express_line = false,
 		integration_gitgutter = false,
 		integration_vim_signify = false,
-		integration_limelight = false,
-		integration_tzfocus_tzataraxis = false
+		integration_limelight = false
 	}
 })

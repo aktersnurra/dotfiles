@@ -22,16 +22,25 @@ if O.lua.autoformat then table.insert(auto_formatters, lua_format) end
 local json_format = {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
 if O.json.autoformat then table.insert(auto_formatters, json_format) end
 
+local go_format = {'BufWritePre', '*.go', 'lua vim.lsp.buf.formatting_sync(nil,1000)'}
+if O.go.autoformat then table.insert(auto_formatters, go_format) end
+
 utils.define_augroups({
     _general_settings = {
         {'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'},
         {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'VimLeavePre', '*', 'set title set titleold='}
+        {'VimLeavePre', '*', 'set title set titleold='},
+        {'FileType', 'qf', 'set nobuflisted'},
 
-        -- {'User', 'GoyoLeave', 'lua require(\'galaxyline\').disable_galaxyline()'},
-        -- {'User', 'GoyoEnter', 'lua require(\'galaxyline\').galaxyline_augroup()'},
+    },
+    _go = {
+        -- Go generally requires Tabs instead of spaces.
+        {'FileType', 'go', 'setlocal tabstop=4'},
+        {'FileType', 'go', 'setlocal shiftwidth=4'},
+        {'FileType', 'go', 'setlocal softtabstop=4'},
+        {'FileType', 'go', 'setlocal noexpandtab'},
     },
     _dashboard = {
         -- seems to be nobuflisted that makes my stuff disapear will do more testing

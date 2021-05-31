@@ -21,10 +21,10 @@ alias \
         ffmpeg="ffmpeg -hide_banner"
 
 alias \
-        ls="ls -hN --color=auto --group-directories-first" \
+        ls="ls -ahlN --color=auto --group-directories-first" \
         grep="grep --color=auto" \
         diff="diff --color=auto" 
-#   ccat="highlight --out-format=ansi"
+        # ccat="highlight --out-format=ansi"
 
 # My aliases for different programs
 alias \
@@ -38,5 +38,5 @@ alias \
         v="$EDITOR" \
         p="sudo pacman" \
         config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
-        tmux="tmux -f $HOME/.config/tmux/.tmux.conf" \
+        tmux="tmux -f $XDG_CONFIG_HOME/tmux/.tmux.conf" \
         z="zathura" 

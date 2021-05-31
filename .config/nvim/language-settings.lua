@@ -17,6 +17,9 @@ O.python.diagnostics.virtual_text = true
 O.python.diagnostics.signs = true
 O.python.diagnostics.underline = true
 
+-- go
+O.go.autoformat = true
+
 -- lua
 O.lua.formatter = 'lua-format'
 O.lua.autoformat = false

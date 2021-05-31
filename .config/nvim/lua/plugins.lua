@@ -22,9 +22,7 @@ local function require_plugin(plugin)
         end
     end
     --	print(ok, err, code)
-    if ok then
-        vim.cmd("packadd " .. plugin)
-    end
+    if ok then vim.cmd("packadd " .. plugin) end
     return ok, err, code
 end
 
@@ -39,12 +37,14 @@ return require("packer").startup(
     use {"neovim/nvim-lspconfig", opt = true}
     use {"glepnir/lspsaga.nvim", opt = true}
     use {"kabouzeid/nvim-lspinstall", opt = true}
+    use {"folke/trouble.nvim", opt = true}
 
     -- Telescope
     use {"nvim-lua/popup.nvim", opt = true}
     use {"nvim-lua/plenary.nvim", opt = true}
     use {"nvim-telescope/telescope.nvim", opt = true}
-	use {"nvim-telescope/telescope-media-files.nvim", opt = true}
+    use {"nvim-telescope/telescope-fzy-native.nvim", opt = true}
+    use {"nvim-telescope/telescope-project.nvim", opt = true}
 
     -- Autocomplete
     use {"hrsh7th/nvim-compe", opt = true}
@@ -54,17 +54,25 @@ return require("packer").startup(
     -- Treesitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use {"windwp/nvim-ts-autotag", opt = true}
+    use {'andymass/vim-matchup', opt = true}
 
     -- Explorer
-    use "kyazdani42/nvim-tree.lua"
+    use {"kyazdani42/nvim-tree.lua", opt = true}
+    use {"ahmedkhalf/lsp-rooter.nvim", opt = true} -- with this nvim-tree will follow you
+
     -- TODO remove when open on dir is supported by nvimtree
     use "kevinhwang91/rnvimr"
+    
+    -- git
+    use {"lewis6991/gitsigns.nvim", opt = true}
+    use {'f-person/git-blame.nvim', opt = true}
 
-    use {"liuchengxu/vim-which-key", opt = true}
     use {"ChristianChiarulli/dashboard-nvim", opt = true}
     use {"windwp/nvim-autopairs", opt = true}
-    use {"terrortylor/nvim-comment", opt = true}
     use {"kevinhwang91/nvim-bqf", opt = true}
+
+    -- Comments
+    use {"terrortylor/nvim-comment", opt = true}
 
     -- Icons
     use {"kyazdani42/nvim-web-devicons", opt = true}
@@ -79,36 +87,34 @@ return require("packer").startup(
 
     -- Colorschemes
     use 'aktersnurra/githubsy.vim'
-    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
-    use 'norcalli/nvim-colorizer.lua'
+    use {"aktersnurra/nvcode-color-schemes.vim", opt = true}
     use 'RRethy/nvim-base16'
 
-    -- Git
-    use {"lewis6991/gitsigns.nvim", opt = true}
-    use 'TimUntersberger/neogit'
-    use 'f-person/git-blame.nvim'
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb'
-
     -- General Plugins [my own additions]
-    use 'airblade/vim-rooter'
     use 'unblevable/quick-scope'
-    use 'kdav5758/TrueZen.nvim'
-    -- use 'vimwiki/vimwiki'
+    use {"Pocco81/TrueZen.nvim", opt = true}
+
+    -- Extras
+    use {'nacro90/numb.nvim', opt = true}
+    use {'phaazon/hop.nvim', opt = true}
+    use {'norcalli/nvim-colorizer.lua', opt = true}
 
     require_plugin("nvim-lspconfig")
     require_plugin("lspsaga.nvim")
     require_plugin("nvim-lspinstall")
+    require_plugin('trouble.nvim')
+    require_plugin("friendly-snippets")
     require_plugin("popup.nvim")
     require_plugin("plenary.nvim")
     require_plugin("telescope.nvim")
-    require_plugin("nvim-dap")
+    require_plugin('telescope-project.nvim')
     require_plugin("nvim-compe")
     require_plugin("vim-vsnip")
     require_plugin("nvim-treesitter")
-    require_plugin("nvim-ts-autotag")
+    require_plugin('vim-matchup')
     require_plugin("nvim-tree.lua")
     require_plugin("gitsigns.nvim")
+    require_plugin("git-blame.nvim")
     require_plugin("vim-which-key")
     require_plugin("dashboard-nvim")
     require_plugin("nvim-autopairs")
@@ -118,10 +124,15 @@ return require("packer").startup(
     require_plugin("nvim-web-devicons")
     require_plugin("galaxyline.nvim")
     require_plugin("barbar.nvim")
+    require_plugin('lsp-rooter.nvim')
     require_plugin("which-key.nvim")
 
     require_plugin("vim-rooter")
+    require_plugin('numb.nvim')
+    require_plugin('hop.nvim')
+    require_plugin('nvim-colorizer.lua')
+
     require_plugin("quick-scope")
-    require_plugin("TrueZen")
+    require_plugin("TrueZen.nvim")
   end
 )

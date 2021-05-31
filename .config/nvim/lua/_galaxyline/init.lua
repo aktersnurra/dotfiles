@@ -1,6 +1,7 @@
 local gl = require('galaxyline')
+-- get my theme in galaxyline repo
 local colors = {
-    bg = '#232731',
+    bg = '#080808',
     yellow = '#DCDCAA',
     dark_yellow = '#D7BA7D',
     cyan = '#4EC9B0',
@@ -22,7 +23,7 @@ local condition = require('galaxyline.condition')
 local gls = gl.section
 gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
 
-gls.left[1] = {
+table.insert(gls.left, {
     ViMode = {
         provider = function()
             -- auto change color according the vim mode
@@ -53,7 +54,8 @@ gls.left[1] = {
         end,
         highlight = {colors.red, colors.bg}
     }
-}
+})
+
 print(vim.fn.getbufvar(0, 'ts'))
 vim.fn.getbufvar(0, 'ts')
 

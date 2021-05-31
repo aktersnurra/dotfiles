@@ -5,9 +5,9 @@ require("which-key").setup {
         -- the presets plugin, adds help for a bunch of default keybindings in Neovim
         -- No actual key bindings are created
         presets = {
-            operators = true, -- adds help for operators like d, y, ...
-            motions = true, -- adds help for motions
-            text_objects = true, -- help for text objects triggered after entering an operator
+            operators = false, -- adds help for operators like d, y, ...
+            motions = false, -- adds help for motions
+            text_objects = false, -- help for text objects triggered after entering an operator
             windows = true, -- default bindings on <c-w>
             nav = true, -- misc bindings to work with windows
             z = true, -- bindings for folds, spelling and others prefixed with z
@@ -48,7 +48,7 @@ vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true}
 vim.g.mapleader = ' '
 
 -- no hl
-vim.api.nvim_set_keymap('n', '<Leader>n', ':set hlsearch!<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
 -- explorer
 vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
@@ -63,9 +63,6 @@ vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, sil
 vim.api.nvim_set_keymap("n", "<leader>k", ":CommentToggle<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", "<leader>k", ":CommentToggle<CR>", {noremap = true, silent = true})
 
--- Zen mode
-vim.api.nvim_set_keymap("n", "<leader>z", ':TZAtaraxis<CR>', {noremap = true, silent = true})
-
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, silent = true})
 
@@ -73,18 +70,30 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, s
 vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", {noremap = true, silent = true})
 
+-- open projects
+vim.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>",
+                        {noremap = true, silent = true})
 -- TODO create entire treesitter section
 
 local mappings = {
     ["k"] = "Comment",
     ["c"] = "Close Buffer",
-    ["z"] = "Zen Mode",
     ["e"] = "Explorer",
     ["f"] = "Find File",
+    ["p"] = "Projects",
     ["n"] = "No Highlight",
     ["v"] = "Vertical Split",
     ["h"] = "Horizontal Split",
     d = {
+        name = "+Diagnostics",
+        t = {"<cmd>TroubleToggle<cr>", "trouble"},
+        w = {"<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace"},
+        d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document"},
+        q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
+        l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
+        r = {"<cmd>TroubleToggle lsp_references<cr>", "references"},
+    },
+    D = {
         name = "+Debug",
         b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
         c = {"<cmd>DebugContinue<cr>", "Continue"},
@@ -125,10 +134,9 @@ local mappings = {
         s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
         S = {"<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols"}
     },
-
     s = {
         name = "+Search",
-        b = {"<cmd>Telescope git_branches<cr>", "File"},
+        b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
         d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
         D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
@@ -139,7 +147,15 @@ local mappings = {
         R = {"<cmd>Telescope registers<cr>", "Registers"},
         t = {"<cmd>Telescope live_grep<cr>", "Text"}
     },
-    S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}}
+    S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}},
+
+    -- extras
+    z = {
+        name = "+Zen",
+        s = {"<cmd>TZBottom<cr>", "toggle status line"},
+        t = {"<cmd>TZTop<cr>", "toggle tab bar"},
+        z = {"<cmd>TZAtaraxis<cr>", "toggle zen"},
+    }
 }
 
 local wk = require("which-key")

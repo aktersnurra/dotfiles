@@ -1,26 +1,39 @@
-require('plugins')
 require('globals')
-require('_utils')
-vim.cmd('luafile ~/.config/nvim/language-settings.lua')
-require('_autocommands')
+require('plugins')
+vim.cmd('luafile '..CONFIG_PATH..'/language-settings.lua')
 require('settings')
+require('_utils')
 require('mappings')
-require('colorscheme')
-require('_galaxyline')
-require('_comment')
-require('_compe')
-require('_barbar')
-require('_dashboard')
-require('_telescope')
-require('_gitsigns')
-require('_nvimtree')
-require('_treesitter')
+
 require('_autopairs')
+require('_autocommands')
+
+require('_gitblame')
+require('_gitsigns')
+
+require('_nvimtree')
+require('colorscheme')
+
+require('_galaxyline')
+
+require('_hop')
+
+require('_comment')
+require('_colorizer')
+require('_compe')
+
+require('_barbar')
+
+require('_dashboard')
+
+require('_telescope')
+require('_treesitter')
+
 require('_rnvimr')
-require('_vim-rooter')
 require('_quickscope')
-require('_neogit')
 require('_which-key')
+
+require('_lsp-rooter')
 require('_true-zen')
 
 vim.cmd('source ~/.config/nvim/vim-script/functions.vim')
@@ -30,6 +43,7 @@ require('lsp')
 require('lsp.clangd')
 require('lsp.lua-ls')
 require('lsp.bash-ls')
+require('lsp.go-ls')
 require('lsp.python-ls')
 require('lsp.rust-ls')
 require('lsp.json-ls')

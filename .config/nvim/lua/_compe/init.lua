@@ -20,18 +20,39 @@ require'compe'.setup {
         calc = {kind = "   (Calc)"},
         vsnip = {kind = "   (Snippet)"},
         nvim_lsp = {kind = "   (LSP)"},
-        -- nvim_lua = {kind = "  "},
 		nvim_lua = false,
         spell = {kind = "   (Spell)"},
         tags = false,
         vim_dadbod_completion = true,
-        -- snippets_nvim = {kind = "  "},
-        -- ultisnips = {kind = "  "},
-        -- treesitter = {kind = "  "},
         emoji = {kind = " ﲃ  (Emoji)", filetypes={"markdown", "text"}}
-        -- for emoji press : (idk if that in compe tho)
     }
 }
+
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- ﬘
+-- 
+-- 
+-- 
+-- m
+-- 
+-- 
+-- 
+-- 
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
