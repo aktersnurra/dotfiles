@@ -21,7 +21,6 @@ require("true-zen").setup({
 	},
 	top = {
 		hidden_showtabline = 0,
-
 		shown_showtabline = 2
 	},
 	left = {
@@ -35,10 +34,10 @@ require("true-zen").setup({
 	},
 	ataraxis = {
 		just_do_it_for_me = false,
-		left_padding = 5,
-		right_padding = 5,
-		top_padding = 1,
-		bottom_padding = 1
+		left_padding = 64,
+		right_padding = 64,
+		top_padding = 0,
+		bottom_padding = 0
 	},
 	integrations = {
 		integration_galaxyline = true,

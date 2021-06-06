@@ -70,7 +70,7 @@ env:
 window:
   padding:
     x: 16
-    y: 16
+    y: 0
   # scrolling:
   #   # Maximum number of lines in the scrollback buffer.
   #   # Specifying '0' will disable scrolling.
