@@ -32,6 +32,7 @@ require('_treesitter')
 require('_rnvimr')
 require('_quickscope')
 require('_which-key')
+require('_vim-rooter')
 
 require('_lsp-rooter')
 require('_true-zen')

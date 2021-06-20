@@ -98,6 +98,7 @@ return require("packer").startup(
     use {'nacro90/numb.nvim', opt = true}
     use {'phaazon/hop.nvim', opt = true}
     use {'norcalli/nvim-colorizer.lua', opt = true}
+    use 'airblade/vim-rooter'
 
     require_plugin("nvim-lspconfig")
     require_plugin("lspsaga.nvim")
