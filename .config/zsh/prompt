@@ -29,13 +29,13 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
 zstyle ':vcs_info:*' check-for-changes true
 # zstyle ':vcs_info:git:*' formats " %r/%S %b %m%u%c "
-zstyle ':vcs_info:git:*' formats " %{$fg[red]%}%m%u%c%{$fg[yellow]%}  %{$fg[orange]%} %b"
+zstyle ':vcs_info:git:*' formats " %{$fg[red]%}%m%u%c%{$fg[orange]%}%{$fg[yellow]%} %b%f"
 
 function set-prompt() {
   emulate -L zsh
   local top_left='%(5~|%-1~/…/%3~|%4~)'
   local top_right="\$vcs_info_msg_0_ "
-  local bottom_left='%B%F{%(?.green.red)}%#%f%b %{$reset_color%}'
+  local bottom_left='%B%F{%(?.white.red)}%#%f%b %{$reset_color%}'
   PROMPT=$top_left$top_right$'\n'$bottom_left
 }
 
