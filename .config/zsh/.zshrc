@@ -34,6 +34,9 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
 
+# Init pyenv
+eval "$(pyenv init -)"
+
 # History in cache directory:
 HISTSIZE=100000
 SAVEHIST=100000
