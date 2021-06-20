@@ -15,7 +15,7 @@ done
 alias \
         cp="cp -iv" \
         mv="mv -iv" \
-        rm="rm -vI" \
+        rm="rm -viI" \
         bc="bc -ql" \
         mkd="mkdir -pv" \
         ffmpeg="ffmpeg -hide_banner"
@@ -32,11 +32,10 @@ alias \
         gpuwatch="watch -n1 nvidia-smi" \
         zshconfig="nvim ~/.zshrc" \
         zrc="nvim ~/.zshrc" \
-        zsource="source ~/.zshrc" \
+        zsource="source $HOME/.config/zsh/.zshrc" \
         sdn="sudo shutdown -h now" \
         e="$EDITOR" \
         v="$EDITOR" \
         p="sudo pacman" \
         config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
-        tmux="tmux -f $XDG_CONFIG_HOME/tmux/.tmux.conf" \
         z="zathura" 
