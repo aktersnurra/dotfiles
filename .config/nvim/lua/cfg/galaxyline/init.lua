@@ -51,7 +51,7 @@ table.insert(gls.left, {
         t = colors.blue,
       }
       vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-      return "▊"
+      return "▎"
     end,
     highlight = "StatusLineNC",
   },
@@ -173,7 +173,7 @@ local get_lsp_client = function(msg)
         lsps = client.name
       else
         lsps = lsps .. ", " .. client.name
-        -- print("more", lsps)
+       -- print("more", lsps)
       end
     end
   end

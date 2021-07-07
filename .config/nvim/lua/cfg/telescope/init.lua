@@ -1,3 +1,7 @@
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
 local actions = require "telescope.actions"
 -- if O.plugin.trouble.active then
 --     local trouble = require("trouble.providers.telescope")
@@ -5,7 +9,7 @@ local actions = require "telescope.actions"
 -- Global remapping
 ------------------------------
 -- '--color=never',
-require("telescope").setup {
+telescope.setup {
   defaults = {
     find_command = {
       "rg",
@@ -20,11 +24,11 @@ require("telescope").setup {
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",
-    sorting_strategy = "descending",
+    sorting_strategy = "ascending",
     layout_strategy = "horizontal",
     layout_config = {
       width = 0.75,
-      prompt_position = "bottom",
+      prompt_position = "top",
       preview_cutoff = 120,
       horizontal = { mirror = false },
       vertical = { mirror = false },
@@ -83,4 +87,3 @@ require("telescope").setup {
   },
 }
 
--- require'telescope'.load_extension('project')

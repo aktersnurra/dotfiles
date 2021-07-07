@@ -61,7 +61,9 @@ return require("packer").startup(function(use)
 
   use {
     "kyazdani42/nvim-tree.lua",
+    -- event = "BufEnter",
     -- cmd = "NvimTreeToggle",
+    commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
     config = function()
       require("cfg.nvimtree").config()
     end,
@@ -92,9 +94,14 @@ return require("packer").startup(function(use)
   -- Comments
   use {
     "terrortylor/nvim-comment",
-    cmd = "CommentToggle",
+    event = "BufRead",
+    -- cmd = "CommentToggle",
     config = function()
-      require("nvim_comment").setup()
+      local status_ok, nvim_comment = pcall(require, "nvim_comment")
+      if not status_ok then
+        return
+      end
+      nvim_comment.setup()
     end,
   }
 
@@ -123,13 +130,9 @@ return require("packer").startup(function(use)
   use {
     "ChristianChiarulli/dashboard-nvim",
     event = "BufWinEnter",
-    cmd = { "Dashboard", "DashboardNewFile", "DashboardJumpMarks" },
-    config = function()
-      require("cfg.dashboard").config()
-    end,
     disable = not O.plugin.dashboard.active,
-    opt = true,
   }
+
   -- Zen Mode
   use {
     "folke/zen-mode.nvim",
@@ -145,10 +148,29 @@ return require("packer").startup(function(use)
     "norcalli/nvim-colorizer.lua",
     event = "BufRead",
     config = function()
-      require("colorizer").setup()
-      vim.cmd "ColorizerReloadAllBuffers"
+      require "cfg.colorizer"
     end,
     disable = not O.plugin.colorizer.active,
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
+    setup = function()
+      vim.g.indentLine_enabled = 1
+      vim.g.indent_blankline_char = "▏"
+
+      vim.g.indent_blankline_filetype_exclude = {
+        "help",
+        "terminal",
+        "dashboard",
+      }
+      vim.g.indent_blankline_buftype_exclude = { "terminal" }
+
+      vim.g.indent_blankline_show_trailing_blankline_indent = false
+      vim.g.indent_blankline_show_first_indent_level = true
+    end,
+    disable = not O.plugin.indent_line.active,
   }
 
   -- comments in context
@@ -164,6 +186,7 @@ return require("packer").startup(function(use)
     cmd = "SymbolsOutline",
     disable = not O.plugin.symbol_outline.active,
   }
+
   -- diagnostics
   use {
     "folke/trouble.nvim",
@@ -182,7 +205,9 @@ return require("packer").startup(function(use)
   use {
     "nvim-telescope/telescope-project.nvim",
     event = "BufRead",
-    setup = function () vim.cmd[[packadd telescope.nvim]] end,
+    setup = function()
+      vim.cmd [[packadd telescope.nvim]]
+    end,
     disable = not O.plugin.telescope_project.active,
   }
 
@@ -249,7 +274,7 @@ return require("packer").startup(function(use)
   -- Custom semantic text objects
   use {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    disable = not O.plugin.ts_textobjects.active,
+    disable= not O.plugin.ts_textobjects.active,
   }
 
   -- Smart text objects
@@ -264,7 +289,6 @@ return require("packer").startup(function(use)
     event = "BufRead",
     disable = not O.plugin.ts_hintobjects.active,
   }
-
   -- vim rooter for projects
   use {
    "airblade/vim-rooter",
@@ -274,11 +298,16 @@ return require("packer").startup(function(use)
 
   -- hop
   use {
-    "phaazon/hop.nvim",
-    disable = not O.plugin.hop.active,
+   "phaazon/hop.nvim",
+   event = "BufRead",
+    config = function()
+      require("cfg.hop").config()
+    end,
+   disable = not O.plugin.hop.active,
   }
 
-  for _, plugin in pairs(O.custom_plugins) do
+  for _, plugin in pairs(O.user_plugins) do
     packer.use(plugin)
   end
+
 end)

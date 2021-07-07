@@ -1,8 +1,12 @@
 -- if not package.loaded['which-key'] then
 --  return
 -- end
+local status_ok, which_key = pcall(require, "which-key")
+if not status_ok then
+  return
+end
 
-require("which-key").setup {
+which_key.setup {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -61,16 +65,12 @@ vim.api.nvim_set_keymap("n", "<Leader>n", ':let @/=""<CR>', { noremap = true, si
 
 -- explorer
 
--- TODO this introduces some bugs unfortunately
 vim.api.nvim_set_keymap(
   "n",
   "<Leader>e",
   ":lua require'cfg.nvimtree'.toggle_tree()<CR>",
   { noremap = true, silent = true }
 )
--- vim.api.nvim_set_keymap('n', '<Leader>e',
---                         ":NvimTreeToggle<CR>",
---                         {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })
 
@@ -81,23 +81,31 @@ vim.api.nvim_set_keymap("n", "<Leader>;", ":Dashboard<CR>", { noremap = true, si
 vim.api.nvim_set_keymap("n", "<leader>k", ":CommentToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<leader>k", ":CommentToggle<CR>", { noremap = true, silent = true })
 
-
 -- split window
 vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", {noremap = true, silent = true})
 
+
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", { noremap = true, silent = true })
 
--- TODO create entire treesitter section
+-- open config
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>.",
+  ":e " .. CONFIG_PATH .. "/config.lua<CR>",
+  { noremap = true, silent = true }
+)
 
 local mappings = {
 
+  ["."] = "LunarConfig",
   ["k"] = "Comment",
   ["c"] = "Close Buffer",
   ["e"] = "Explorer",
   ["f"] = "Find File",
   ["n"] = "No Highlight",
+  [";"] = "Dashboard",
   ["v"] = "Vertical Split",
   ["h"] = "Horizontal Split",
   b = {
@@ -127,53 +135,9 @@ local mappings = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
     i = { "<cmd>PackerInstall<cr>", "Install" },
-    r = { ":luafile %<cr>", "Reload" },
+    r = { "<cmd>lua require('cfg.utils').reload_config()<cr>", "Reload" },
     s = { "<cmd>PackerSync<cr>", "Sync" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-  -- diagnostics vanilla nvim
-  -- -- diagnostic
-  -- function lv_utils.get_all()
-  --     vim.lsp.diagnostic.get_all()
-  -- end
-  -- function lv_utils.get_next()
-  --     vim.lsp.diagnostic.get_next()
-  -- end
-  -- function lv_utils.get_prev()
-  --     vim.lsp.diagnostic.get_prev()
-  -- end
-  -- function lv_utils.goto_next()
-  --     vim.lsp.diagnostic.goto_next()
-  -- end
-  -- function lv_utils.goto_prev()
-  --     vim.lsp.diagnostic.goto_prev()
-  -- end
-  -- function lv_utils.show_line_diagnostics()
-  --     vim.lsp.diagnostic.show_line_diagnostics()
-  -- end
-
-  -- " Available Debug Adapters:
-  -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
-  -- " Adapter configuration and installation instructions:
-  -- "   https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
-  -- " Debug Adapter protocol:
-  -- "   https://microsoft.github.io/debug-adapter-protocol/
-  -- " Debugging
-  d = {
-    name = "Debug",
-    t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-    b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-    C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
-    d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-    g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-    i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-    o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-    u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-    p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-    s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-    q = { "<cmd>lua require'dap'.stop()<cr>", "Quit" },
   },
   g = {
     name = "Git",
@@ -207,7 +171,7 @@ local mappings = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
     },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    f = { "<cmd>Neoformat<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     j = { "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<cr>", "Next Diagnostic" },
     k = { "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<cr>", "Prev Diagnostic" },
@@ -244,18 +208,6 @@ local mappings = {
   },
 }
 
--- if O.plugin.trouble.active then
---   mappings["d"] = {
---     name = "Diagnostics",
---     t = { "<cmd>TroubleToggle<cr>", "trouble" },
---     w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
---     d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
---     q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
---     l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
---     r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
---   }
--- end
-
 if O.plugin.symbol_outline.active then
   vim.api.nvim_set_keymap("n", "<leader>o", ":SymbolsOutline<CR>", { noremap = true, silent = true })
   mappings["o"] = "Symbols outline"
@@ -270,10 +222,7 @@ if O.plugin.zen.active then
   vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>", { noremap = true, silent = true })
   mappings["z"] = "Zen"
 end
-if O.plugin.lazygit.active then
-  vim.api.nvim_set_keymap("n", "<leader>gg", ":LazyGit<CR>", { noremap = true, silent = true })
-  mappings["gg"] = "LazyGit"
-end
+
 if O.plugin.telescope_project.active then
   -- open projects
   vim.api.nvim_set_keymap(
@@ -284,8 +233,6 @@ if O.plugin.telescope_project.active then
   )
   mappings["P"] = "Projects"
 end
-
--- [";"] = "Dashboard",
 
 if O.lang.latex.active then
   mappings["L"] = {
@@ -307,6 +254,15 @@ if O.lushmode then
     t = { ":LushRunTutorial<cr>", "Lush Tutorial" },
     q = { ":LushRunQuickstart<cr>", "Lush Quickstart" },
   }
+end
+
+-- for _, v in pairs(O.user_which_key) do
+-- end
+for k, v in pairs(O.user_which_key) do
+  mappings[k] = v
+  -- table.insert(mappings, O.user_which_key[1])
+  -- print(k)
+  --   print(v)
 end
 
 local wk = require "which-key"

@@ -20,6 +20,7 @@ O = {
   smart_case = true,
   lushmode = false,
   hl_search = false,
+  document_highlight = false,
   transparent_window = false,
   leader_key = "space",
   vnsip_dir = vim.fn.stdpath "config" .. "/snippets",
@@ -65,8 +66,6 @@ O = {
     dashboard = { active = false },
     colorizer = { active = false },
     zen = { active = false },
-    hop = { active = false },
-    vim_rooter = { active = false },
     ts_context_commentstring = { active = false },
     ts_hintobjects = { active = false },
     ts_autotag = { active = false },
@@ -84,9 +83,13 @@ O = {
     floatterm = { active = false },
     trouble = { active = false },
     sanegx = { active = false },
+    vim_rooter = { active = false },
+    hop = { active = false },
   },
 
-  custom_plugins = {
+  user_which_key = {},
+
+  user_plugins = {
     -- use config.lua for this not put here
   },
 
@@ -203,7 +206,7 @@ O = {
      '     ##########..........##########     ',
      '     ##########........##########       ',
      '     ##########.......##########        ',
-     '    ##########.....##########..        ',
+     '     ##########.....##########..        ',
      '     ##########....##########.....      ',
      '   ..##########..##########.........    ',
      ' ....##########.#########.............  ',
@@ -217,6 +220,5 @@ O = {
      '                 .....                  ',
      '                   .   ',
     },
-    footer = { "chrisatmachine.com" },
   },
 }

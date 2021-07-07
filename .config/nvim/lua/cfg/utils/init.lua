@@ -1,5 +1,13 @@
 local utils = {}
 
+function utils.reload_config()
+  vim.cmd "source ~/.config/nvim/config.lua"
+  vim.cmd "source ~/.config/nvim/lua/plugins.lua"
+  vim.cmd "source ~/.config/nvim/lua/neoformat/init.lua"
+  vim.cmd ":PackerCompile"
+  vim.cmd ":PackerInstall"
+end
+
 function utils.define_augroups(definitions) -- {{{1
   -- Create autocommand groups based on the passed definitions
   --
@@ -24,7 +32,7 @@ end
 
 utils.define_augroups {
 
-    _user_autocommands = O.user_autocommands,
+  _user_autocommands = O.user_autocommands,
   _general_settings = {
     {
       "TextYankPost",
@@ -46,6 +54,7 @@ utils.define_augroups {
       "*",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
+    { "BufWritePost", "config.lua", "lua require('utils').reload_config()" },
     { "VimLeavePre", "*", "set title set titleold=" },
   },
   -- _solidity = {
@@ -65,7 +74,7 @@ utils.define_augroups {
   },
   _auto_resize = {
     -- will cause split windows to be resized evenly if main window is resized
-    {'VimResized ', '*', 'wincmd ='},
+    { "VimResized ", "*", "wincmd =" },
   },
   -- _mode_switching = {
   --   -- will switch between absolute and relative line numbers depending on mode
@@ -77,5 +86,3 @@ utils.define_augroups {
 }
 
 return utils
-
--- TODO find a new home for these autocommands

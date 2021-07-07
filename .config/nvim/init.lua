@@ -7,23 +7,7 @@ require "cfg.utils"
 require "cfg.galaxyline"
 require "cfg.treesitter"
 require "cfg.which-key"
-require "cfg.lsp"
-if O.lang.emmet.active then
-  require "cfg.lsp.emmet-ls"
-end
-if O.lang.tailwindcss.active then
-  require "cfg.lsp.tailwindcss-ls"
-end
-
--- autoformat
-if O.format_on_save then
-  require("cfg.utils").define_augroups {
-    autoformat = {
-      {
-        "BufWritePre",
-        "*",
-        [[try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry]],
-      },
-    },
-  }
+require "cfg.neoformat"
+if O.plugin.dashboard.active then
+  require("cfg.dashboard").config()
 end

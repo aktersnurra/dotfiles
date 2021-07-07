@@ -36,6 +36,7 @@ O.lang.python.diagnostics.signs = true
 O.lang.python.diagnostics.underline = true
 
 -- rust
+O.lang.rust.rust_tools.active = true
 
 -- go
 O.lang.go.autoformat = true

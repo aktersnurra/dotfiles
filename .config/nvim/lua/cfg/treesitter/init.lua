@@ -80,8 +80,12 @@ if status then
   wk.register(textobj_move_keymaps["goto_previous_start"], normal)
   wk.register(textobj_move_keymaps["goto_previous_end"], normal)
 end
+local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  return
+end
 
-require("nvim-treesitter.configs").setup {
+treesitter_configs.setup {
   ensure_installed = O.treesitter.ensure_installed, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = O.treesitter.ignore_install,
   matchup = {
@@ -97,7 +101,7 @@ require("nvim-treesitter.configs").setup {
     enable = O.plugin.ts_context_commentstring.active,
     config = { css = "// %s" },
   },
-  -- indent = {enable = true, disable = {"python", "html", "javascript"}},
+  -- indent = {enable = true, disable = {"python", "html, "javascript"}},
   -- TODO seems to be broken
   indent = { enable = { "javascriptreact" } },
   autotag = { enable = O.plugin.ts_autotag.active },
@@ -115,23 +119,5 @@ require("nvim-treesitter.configs").setup {
   textsubjects = {
     enable = O.plugin.ts_textsubjects,
     keymaps = { ["."] = "textsubjects-smart", [";"] = "textsubjects-big" },
-  },
-  playground = {
-    enable = O.plugin.ts_playground.active,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = "o",
-      toggle_hl_groups = "i",
-      toggle_injected_languages = "t",
-      toggle_anonymous_nodes = "a",
-      toggle_language_display = "I",
-      focus_language = "f",
-      unfocus_language = "F",
-      update = "R",
-      goto_node = "<cr>",
-      show_help = "?",
-    },
   },
 }
