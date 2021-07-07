@@ -13,7 +13,7 @@ O = {
   number = true,
   relative_number = true,
   cursorline = true,
-  shell = "bash",
+  shell = "zsh",
   timeoutlen = 100,
   nvim_tree_disable_netrw = 0,
   ignore_case = true,
@@ -72,7 +72,6 @@ O = {
     ts_autotag = { active = false },
     ts_textobjects = { active = false },
     ts_playground = { active = false },
-    ts_rainbow = { active = false },
     ts_textsubjects = { active = false },
     telescope_fzy = { active = false },
     telescope_project = { active = false },
@@ -166,14 +165,6 @@ O = {
       cross_file_rename = true,
       header_insertion = "never",
     },
-    ruby = {
-      diagnostics = {
-        virtualtext = { spacing = 0, prefix = "" },
-        signs = true,
-        underline = true,
-      },
-      filetypes = { "rb", "erb", "rakefile", "ruby" },
-    },
     go = {},
     elixir = {},
     vim = {},
@@ -190,18 +181,6 @@ O = {
         underline = true,
       },
     },
-    svelte = {},
-    php = {
-      environment = {
-        php_version = "7.4",
-      },
-      diagnostics = {
-        virtual_text = { spacing = 0, prefix = "" },
-        signs = true,
-        underline = true,
-      },
-      filetypes = { "php", "phtml" },
-    },
     latex = {},
     kotlin = {},
     html = {},
@@ -211,7 +190,6 @@ O = {
     efm = {},
     docker = {},
     cmake = {},
-    java = {},
     css = {
       virtual_text = true,
     },

@@ -50,7 +50,7 @@ M.config = function()
   -- vim.g.dashboard_custom_footer = O.dashboard.footer
 end
 
-require("_utils").define_augroups {
+require("cfg.utils").define_augroups {
   _dashboard = {
     -- seems to be nobuflisted that makes my stuff disapear will do more testing
     {
