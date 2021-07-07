@@ -149,6 +149,7 @@ return require("packer").startup(function(use)
     event = "BufRead",
     config = function()
       require "cfg.colorizer"
+      vim.cmd "ColorizerReloadAllBuffers"
     end,
     disable = not O.plugin.colorizer.active,
   }
