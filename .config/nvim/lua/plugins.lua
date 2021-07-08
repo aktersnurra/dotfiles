@@ -22,8 +22,6 @@ packer.init {
   },
 }
 
-vim.cmd "autocmd BufWritePost plugins.lua PackerCompile"
-
 return require("packer").startup(function(use)
   -- Packer can manage itself as an optional plugin
   use "wbthomason/packer.nvim"
@@ -38,7 +36,7 @@ return require("packer").startup(function(use)
   use {
     "nvim-telescope/telescope.nvim",
     config = [[require('cfg.telescope')]],
-    event = "BufEnter",
+    -- event = "BufEnter",
   }
 
   -- Autocomplete
@@ -57,7 +55,13 @@ return require("packer").startup(function(use)
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
   -- Neoformat
-  use { "sbdchd/neoformat" }
+  use {
+    "sbdchd/neoformat",
+    config = function()
+      require "cfg.neoformat"
+    end,
+    event = "BufRead",
+  }
 
   use {
     "kyazdani42/nvim-tree.lua",
@@ -71,7 +75,6 @@ return require("packer").startup(function(use)
 
   use {
     "lewis6991/gitsigns.nvim",
-
     config = function()
       require("cfg.gitsigns").config()
     end,
@@ -79,7 +82,13 @@ return require("packer").startup(function(use)
   }
 
   -- whichkey
-  use { "folke/which-key.nvim" }
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require "cfg.which-key"
+    end,
+    event = "BufWinEnter",
+  }
 
   -- Autopairs
   use {
@@ -94,8 +103,7 @@ return require("packer").startup(function(use)
   -- Comments
   use {
     "terrortylor/nvim-comment",
-    event = "BufRead",
-    -- cmd = "CommentToggle",
+    event = "BufWinEnter",
     config = function()
       local status_ok, nvim_comment = pcall(require, "nvim_comment")
       if not status_ok then
@@ -112,16 +120,20 @@ return require("packer").startup(function(use)
   use { "kyazdani42/nvim-web-devicons" }
 
   -- Status Line and Bufferline
-  use { "glepnir/galaxyline.nvim" }
+  use {
+    "glepnir/galaxyline.nvim",
+    config = function()
+      require "cfg.galaxyline"
+    end,
+    -- event = "VimEnter",
+  }
 
   use {
     "romgrk/barbar.nvim",
     config = function()
-      vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>", { noremap = true, silent = true })
-      vim.api.nvim_set_keymap("n", "<S-x>", ":BufferClose<CR>", { noremap = true, silent = true })
+      require "cfg.barbar"
     end,
-    -- event = "BufRead",
+    event = "BufWinEnter",
   }
 
   -- Builtins, these do not load by default
@@ -146,10 +158,9 @@ return require("packer").startup(function(use)
 
   use {
     "norcalli/nvim-colorizer.lua",
-    event = "BufRead",
+    event = "BufWinEnter",
     config = function()
       require "cfg.colorizer"
-      vim.cmd "ColorizerReloadAllBuffers"
     end,
     disable = not O.plugin.colorizer.active,
   }

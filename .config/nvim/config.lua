@@ -3,19 +3,24 @@
 -- general
 O.auto_complete = true
 O.relative_number = true
-O.colorscheme = 'spacegray'
+O.colorscheme = 'dark'
 O.timeoutlen = 100
 O.leader_key = ' '
 
 -- After changing plugin config it is recommended to run :PackerCompile
-O.plugin.dashboard.active = true
-O.plugin.hop.active = true
 O.plugin.colorizer.active = true
+O.plugin.dashboard.active = true
+O.plugin.diffview.active = true
+O.plugin.hop.active = true
+O.plugin.indent_line.active = true
+O.plugin.lush.active = true
+O.plugin.sanegx.active = false
+O.plugin.symbol_outline.active = false
+O.plugin.telescope_fzy.active = true
 O.plugin.trouble.active = true
-O.plugin.lazygit.active = true
+O.plugin.ts_autotag.active = true
 O.plugin.zen.active = true
-O.plugin.vim_rooter.active = true
--- O.plugin.markdown_preview.active = true
+O.plugin.vim_rooter.active = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "all"

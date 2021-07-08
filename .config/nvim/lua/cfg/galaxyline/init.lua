@@ -1,23 +1,30 @@
-local gl = require('galaxyline')
+-- if not package.loaded['galaxyline'] then
+--   return
+-- end
+local status_ok, gl = pcall(require, "galaxyline")
+if not status_ok then
+  return
+end
 -- get my theme in galaxyline repo
+-- local colors = require('galaxyline.theme').default
 local colors = {
-    bg = '#080808',
-    yellow = '#DCDCAA',
-    dark_yellow = '#D7BA7D',
-    cyan = '#4EC9B0',
-    green = '#608B4E',
-    light_green = '#B5CEA8',
-    string_orange = '#CE9178',
-    orange = '#FF8800',
-    purple = '#C586C0',
-    magenta = '#D16D9E',
-    grey = '#858585',
-    blue = '#569CD6',
-    vivid_blue = '#4FC1FF',
-    light_blue = '#9CDCFE',
-    red = '#D16969',
-    error_red = '#F44747',
-    info_yellow = '#FFCC66'
+  bg = "#0A0A0A",
+  yellow = "#DCDCAA",
+  dark_yellow = "#D7BA7D",
+  cyan = "#4EC9B0",
+  green = "#608B4E",
+  light_green = "#B5CEA8",
+  string_orange = "#CE9178",
+  orange = "#FF8800",
+  purple = "#C586C0",
+  magenta = "#D16D9E",
+  grey = "#858585",
+  blue = "#569CD6",
+  vivid_blue = "#4FC1FF",
+  light_blue = "#9CDCFE",
+  red = "#D16969",
+  error_red = "#F44747",
+  info_yellow = "#FFCC66",
 }
 
 local condition = require "galaxyline.condition"
@@ -51,8 +58,9 @@ table.insert(gls.left, {
         t = colors.blue,
       }
       vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-      return "▎"
+      return "▊"
     end,
+    separator_highlight = "StatusLineSeparator",
     highlight = "StatusLineNC",
   },
 })
@@ -108,6 +116,60 @@ table.insert(gls.left, {
   },
 })
 
+table.insert(gls.left, {
+  Filler = {
+    provider = function()
+      return " "
+    end,
+    highlight = "StatusLineGitDelete",
+  },
+})
+-- get output from shell command
+function os.capture(cmd, raw)
+  local f = assert(io.popen(cmd, "r"))
+  local s = assert(f:read "*a")
+  f:close()
+  if raw then
+    return s
+  end
+  s = string.gsub(s, "^%s+", "")
+  s = string.gsub(s, "%s+$", "")
+  s = string.gsub(s, "[\n\r]+", " ")
+  return s
+end
+-- cleanup virtual env
+local function env_cleanup(venv)
+  if string.find(venv, "/") then
+    local final_venv = venv
+    for w in venv:gmatch "([^/]+)" do
+      final_venv = w
+    end
+    venv = final_venv
+  end
+  return venv
+end
+local PythonEnv = function()
+  if vim.bo.filetype == "python" then
+    local venv = os.getenv "CONDA_DEFAULT_ENV"
+    if venv ~= nil then
+      return "🅒 (" .. env_cleanup(venv) .. ")"
+    end
+    venv = os.getenv "VIRTUAL_ENV"
+    if venv ~= nil then
+      return "  (" .. env_cleanup(venv) .. ")"
+    end
+    return ""
+  end
+  return ""
+end
+table.insert(gls.left, {
+  VirtualEnv = {
+    provider = PythonEnv,
+    highlight = "StatusLineTreeSitter",
+    event = "BufEnter",
+  },
+})
+
 table.insert(gls.right, {
   DiagnosticError = {
     provider = "DiagnosticError",
@@ -157,7 +219,7 @@ table.insert(gls.right, {
 })
 
 local get_lsp_client = function(msg)
-  msg = msg or "No Active LSP Client"
+  msg = msg or "LSP Inactive"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
   local clients = vim.lsp.get_active_clients()
   if next(clients) == nil then
@@ -173,7 +235,7 @@ local get_lsp_client = function(msg)
         lsps = client.name
       else
         lsps = lsps .. ", " .. client.name
-       -- print("more", lsps)
+        -- print("more", lsps)
       end
     end
   end
@@ -277,3 +339,5 @@ table.insert(gls.short_line_left, {
     highlight = "StatusLineNC",
   },
 })
+
+--table.insert(gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}})

@@ -3,7 +3,7 @@ local utils = {}
 function utils.reload_config()
   vim.cmd "source ~/.config/nvim/config.lua"
   vim.cmd "source ~/.config/nvim/lua/plugins.lua"
-  vim.cmd "source ~/.config/nvim/lua/neoformat/init.lua"
+  vim.cmd "source ~/.config/nvim/lua/cfg/neoformat/init.lua"
   vim.cmd ":PackerCompile"
   vim.cmd ":PackerInstall"
 end
@@ -54,7 +54,7 @@ utils.define_augroups {
       "*",
       "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
     },
-    { "BufWritePost", "config.lua", "lua require('utils').reload_config()" },
+    { "BufWritePost", "config.lua", "lua require('cfg.utils').reload_config()" },
     { "VimLeavePre", "*", "set title set titleold=" },
   },
   -- _solidity = {
@@ -74,7 +74,11 @@ utils.define_augroups {
   },
   _auto_resize = {
     -- will cause split windows to be resized evenly if main window is resized
-    { "VimResized ", "*", "wincmd =" },
+    { "VimResized", "*", "wincmd =" },
+  },
+  _packer_compile = {
+    -- will cause split windows to be resized evenly if main window is resized
+    { "BufWritePost", "plugins.lua", "PackerCompile" },
   },
   -- _mode_switching = {
   --   -- will switch between absolute and relative line numbers depending on mode
@@ -84,5 +88,15 @@ utils.define_augroups {
   --   {'InsertLeave', '*', 'if exists("g:ms_cursorlineoff") | setlocal cursorline | endif'},
   -- },
 }
+
+vim.cmd [[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+endfunction
+]]
 
 return utils

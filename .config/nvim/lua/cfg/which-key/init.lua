@@ -99,7 +99,7 @@ vim.api.nvim_set_keymap(
 
 local mappings = {
 
-  ["."] = "LunarConfig",
+  ["."] = "Config",
   ["k"] = "Comment",
   ["c"] = "Close Buffer",
   ["e"] = "Explorer",
@@ -108,29 +108,6 @@ local mappings = {
   [";"] = "Dashboard",
   ["v"] = "Vertical Split",
   ["h"] = "Horizontal Split",
-  b = {
-    name = "Buffers",
-    j = { "<cmd>BufferPick<cr>", "jump to buffer" },
-    f = { "<cmd>Telescope buffers<cr>", "Find buffer" },
-    w = { "<cmd>BufferWipeout<cr>", "wipeout buffer" },
-    e = {
-      "<cmd>BufferCloseAllButCurrent<cr>",
-      "close all but current buffer",
-    },
-    h = { "<cmd>BufferCloseBuffersLeft<cr>", "close all buffers to the left" },
-    l = {
-      "<cmd>BufferCloseBuffersRight<cr>",
-      "close all BufferLines to the right",
-    },
-    D = {
-      "<cmd>BufferOrderByDirectory<cr>",
-      "sort BufferLines automatically by directory",
-    },
-    L = {
-      "<cmd>BufferOrderByLanguage<cr>",
-      "sort BufferLines automatically by language",
-    },
-  },
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -198,11 +175,6 @@ local mappings = {
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     t = { "<cmd>Telescope live_grep<cr>", "Text" },
   },
-  S = {
-    name = "Session",
-    s = { "<cmd>SessionSave<cr>", "Save Session" },
-    l = { "<cmd>SessionLoad<cr>", "Load Session" },
-  },
   T = {
     name = "Treesitter",
     i = { ":TSConfigInfo<cr>", "Info" },
@@ -235,18 +207,6 @@ if O.plugin.telescope_project.active then
   mappings["P"] = "Projects"
 end
 
-if O.lang.latex.active then
-  mappings["L"] = {
-    name = "+Latex",
-    c = { "<cmd>VimtexCompile<cr>", "Toggle Compilation Mode" },
-    f = { "<cmd>call vimtex#fzf#run()<cr>", "Fzf Find" },
-    i = { "<cmd>VimtexInfo<cr>", "Project Information" },
-    s = { "<cmd>VimtexStop<cr>", "Stop Project Compilation" },
-    t = { "<cmd>VimtexTocToggle<cr>", "Toggle Table Of Content" },
-    v = { "<cmd>VimtexView<cr>", "View PDF" },
-  }
-end
-
 if O.lushmode then
   mappings["L"] = {
     name = "+Lush",
@@ -257,13 +217,8 @@ if O.lushmode then
   }
 end
 
--- for _, v in pairs(O.user_which_key) do
--- end
 for k, v in pairs(O.user_which_key) do
   mappings[k] = v
-  -- table.insert(mappings, O.user_which_key[1])
-  -- print(k)
-  --   print(v)
 end
 
 local wk = require "which-key"

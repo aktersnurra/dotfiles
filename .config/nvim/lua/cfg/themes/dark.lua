@@ -3,46 +3,40 @@ local hsl = lush.hsl
 
 local theme = lush(function()
   local c = {
-    bg = hsl "#212121",
-    bg1 = hsl "#2a2a2a",
-    -- bg2 = hsl("#3a3a3a"),
-    bg2 = hsl "#383d45",
+    bg = hsl "#0A0A0A",
+    bg1 = hsl "#0D0D0D",
+    bg2 = hsl "#202020",
 
-    white = hsl "#c8c9d1",
+    white = hsl "#f5f5f5",
 
-    gray = hsl "#858585",
-    light_gray = hsl "#c8c9c1",
+    gray = hsl "#505050",
+    light_gray = hsl "#D0D0D0",
 
-    error_red = hsl "#F44747",
-    warning_orange = hsl "#ff8800",
-    info_yellow = hsl "#ffcc66",
-    hint_blue = hsl "#4fc1ff",
+    error_red = hsl "#AC4142",
+    warning_orange = hsl "#F4BF75",
+    info_yellow = hsl "#F4BF75",
+    hint_blue = hsl "#A5D6FF",
 
-    red = hsl "#b04b57",
+    red = hsl "#AC4142",
 
-    blue = hsl "#5486c0",
-    gray_blue = hsl "#66899d",
+    blue = hsl "#A5D6FF",
+    gray_blue = hsl "#A5D6FF",
 
-    -- yellow = hsl("#ffcb6b"),
-    yellow = hsl "#eeba5a",
+    yellow = hsl "#F4BF75",
 
-    -- orange = hsl("#c98a75"),
-    orange = hsl "#c6735a",
+    orange = hsl "#FFA657",
 
-    green = hsl "#87b379",
-    light_green = hsl "#b2d77c",
+    green = hsl "#A1B56C",
+    light_green = hsl "#A1B56C",
 
-    -- aqua = hsl("#46b1d0"),
-    aqua = hsl "#65a7c5",
+    aqua = hsl "#A5D6FF",
 
-    purple = hsl "#bf83c1",
-    pale_purple = hsl "#7199ee",
+    purple = hsl "#AA759F",
+    pale_purple = hsl "#A5D6FF",
 
-    sign_add = hsl "#587C0C",
-    sign_change = hsl "#0C7D9D",
-    sign_delete = hsl "#94151B",
-
-    test = hsl "#ff00ff",
+    sign_add = hsl "#A1B56C",
+    sign_change = hsl "#A5D6FF",
+    sign_delete = hsl "#AC4142",
   }
   return {
     Normal { bg = c.bg, fg = c.white, gui = "NONE" }, -- used for the columns set with 'colorcolumn'
@@ -99,7 +93,7 @@ local theme = lush(function()
     EndOfBuffer { bg = "NONE", fg = c.bg, gui = "NONE" },
     NonText { EndOfBuffer },
 
-    String { fg = c.green },
+    String { fg = c.blue },
     Character { fg = c.light_green },
     Constant { fg = c.orange },
     Number { fg = c.red },
@@ -107,10 +101,10 @@ local theme = lush(function()
     Float { fg = c.red },
 
     Identifier { fg = c.white },
-    Function { fg = c.yellow },
-    Operator { fg = c.gray_blue },
+    Function { fg = c.orange },
+    Operator { fg = c.orange },
 
-    Type { fg = c.purple },
+    Type { fg = c.blue },
     StorageClass { Type },
     Structure { Type },
     Typedef { Type },
@@ -271,8 +265,8 @@ local theme = lush(function()
 
     -- BarBar
     TabLine { bg = c.bg1, fg = c.white, gui = "NONE" },
-    TabLineFill { bg = c.bg1, fg = c.white, gui = "NONE" },
-    TabLineSel { bg = c.blue, fg = c.bg1, gui = "NONE" },
+    TabLineFill { bg = c.bg1, fg = c.gray, gui = "NONE" },
+    TabLineSel { bg = c.white, fg = c.bg1, gui = "NONE" },
 
     BufferCurrent { fg = c.fg, bg = c.bg },
     BufferCurrentIndex { fg = c.aqua, bg = c.bg },
@@ -340,8 +334,8 @@ local theme = lush(function()
     TabLineHint { LspDiagnosticsSignHint },
     TabLineInformation { LspDiagnosticsSignInformation }, -- which-key.nvim
 
-    WhichKey { fg = c.purple }, -- nvim-compe
-    WhichKeySeperator { fg = c.green }, -- nvim-compe
+    WhichKey { fg = c.white }, -- nvim-compe
+    WhichKeySeperator { fg = c.gray }, -- nvim-compe
     WhichKeyGroup { fg = c.blue }, -- nvim-compe
     WhichKeyDesc { fg = c.aqua }, -- nvim-compe
     WhichKeyFloat { bg = c.bg1 }, -- nvim-compe

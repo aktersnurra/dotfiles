@@ -4,19 +4,16 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { silent = true })
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { silent = true })
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { silent = true })
 
--- TODO fix this
 -- Terminal window navigation
-vim.cmd [[
-  tnoremap <C-h> <C-\><C-N><C-w>h
-  tnoremap <C-j> <C-\><C-N><C-w>j
-  tnoremap <C-k> <C-\><C-N><C-w>k
-  tnoremap <C-l> <C-\><C-N><C-w>l
-  inoremap <C-h> <C-\><C-N><C-w>h
-  inoremap <C-j> <C-\><C-N><C-w>j
-  inoremap <C-k> <C-\><C-N><C-w>k
-  inoremap <C-l> <C-\><C-N><C-w>l
-  tnoremap <Esc> <C-\><C-n>
-]]
+vim.api.nvim_set_keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("i", "<C-h>", "<C-\\><C-N><C-w>h", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("i", "<C-j>", "<C-\\><C-N><C-w>j", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("i", "<C-k>", "<C-\\><C-N><C-w>k", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("i", "<C-l>", "<C-\\><C-N><C-w>l", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {silent = true, noremap = true})
 
 -- TODO fix this
 -- resize with arrows
@@ -70,9 +67,3 @@ vim.cmd 'vnoremap P "0P'
 
 -- Toggle the QuickFix window
 vim.api.nvim_set_keymap("", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
-
--- Telescope stuff
--- vim.api.nvim_set_keymap("n", "<Leader>fb", "<cmd>lua require'telescope.builtin'.buffers{}<CR>", { noremap = true, silent = true })                   -- search open buffers
--- vim.api.nvim_set_keymap("n", "<Leader>fl", "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find{}<CR>", { noremap = true, silent = true }) -- search lines in current buffer
--- vim.api.nvim_set_keymap("n", "<Leader>gg", "<cmd>lua require'telescope.builtin'.live_grep{}<CR>", { noremap = true, silent = true })                 -- search all lines in project
--- vim.api.nvim_set_keymap("n", "<Leader>fr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", { noremap = true, silent = true })            -- search references to symbol under cursor
