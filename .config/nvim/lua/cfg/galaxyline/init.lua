@@ -9,6 +9,7 @@ end
 -- local colors = require('galaxyline.theme').default
 local colors = {
   bg = "#0A0A0A",
+  fg = "#D0D0D0",
   yellow = "#DCDCAA",
   dark_yellow = "#D7BA7D",
   cyan = "#4EC9B0",
@@ -34,37 +35,26 @@ gl.short_line_list = { "NvimTree", "vista", "dbui", "packer" }
 table.insert(gls.left, {
   ViMode = {
     provider = function()
-      -- auto change color according the vim mode
-      local mode_color = {
-        n = colors.blue,
-        i = colors.green,
-        v = colors.purple,
-        [""] = colors.purple,
-        V = colors.purple,
-        c = colors.magenta,
-        no = colors.blue,
-        s = colors.orange,
-        S = colors.orange,
-        [""] = colors.orange,
-        ic = colors.yellow,
-        R = colors.red,
-        Rv = colors.red,
-        cv = colors.blue,
-        ce = colors.blue,
-        r = colors.cyan,
-        rm = colors.cyan,
-        ["r?"] = colors.cyan,
-        ["!"] = colors.blue,
-        t = colors.blue,
+      local alias = {
+        n = 'NORMAL',
+        i = 'INSERT',
+        c = 'COMMAND',
+        V = 'VISUAL',
+        [''] = 'VISUAL',
+        v = 'VISUAL',
+        R = 'REPLACE',
       }
-      vim.api.nvim_command("hi GalaxyViMode guifg=" .. mode_color[vim.fn.mode()])
-      return "▊"
+      local alias_mode = alias[vim.fn.mode()]
+      if alias_mode == nil then
+        alias_mode = vim.fn.mode()
+      end
+      return alias_mode..' '
     end,
     separator_highlight = "StatusLineSeparator",
     highlight = "StatusLineNC",
   },
 })
--- print(vim.fn.getbufvar(0, 'ts'))
+
 vim.fn.getbufvar(0, "ts")
 
 table.insert(gls.left, {
