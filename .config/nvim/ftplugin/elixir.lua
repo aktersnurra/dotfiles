@@ -1,3 +1,7 @@
+if require("cfg.utils").check_lsp_client_active "elixirls" then
+  return
+end
+
 require("lspconfig").elixirls.setup {
   cmd = { DATA_PATH .. "/lspinstall/elixir/elixir-ls/language_server.sh" },
 }

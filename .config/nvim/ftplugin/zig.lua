@@ -1,14 +1,35 @@
--- Because lspinstall don't support zig yet,
--- So we need zls preset in global lib
--- Further custom install zls in
--- https://github.com/zigtools/zls/wiki/Downloading-and-Building-ZLS
-require("lspconfig").zls.setup {
-  root_dir = require("lspconfig").util.root_pattern(".git", "build.zig", "zls.json"),
-  on_attach = require("cfg.lsp").common_on_attach,
+if not require("cfg.utils").check_lsp_client_active "bashls" then
+  -- npm i -g bash-language-server
+  require("lspconfig").bashls.setup {
+    cmd = { DATA_PATH .. "/lspinstall/bash/node_modules/.bin/bash-language-server", "start" },
+    on_attach = require("cfg.lsp").common_on_attach,
+    filetypes = { "sh", "zsh" },
+  }
+end
+
+-- sh
+local sh_arguments = {}
+
+local shellcheck = {
+  LintCommand = "shellcheck -f gcc -x",
+  lintFormats = { "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m" },
 }
-require("cfg.utils").define_augroups {
-  _zig_autoformat = {
-    { "BufEnter", "*.zig", ':lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s")' },
-  },
-}
-vim.cmd "setl expandtab tabstop=8 softtabstop=4 shiftwidth=4"
+
+if O.lang.sh.linter == "shellcheck" then
+  table.insert(sh_arguments, shellcheck)
+end
+
+if not require("cfg.utils").check_lsp_client_active "efm" then
+  require("lspconfig").efm.setup {
+    -- init_options = {initializationOptions},
+    cmd = { DATA_PATH .. "/lspinstall/efm/efm-langserver" },
+    init_options = { documentFormatting = true, codeAction = false },
+    filetypes = { "zsh" },
+    settings = {
+      rootMarkers = { ".git/" },
+      languages = {
+        sh = sh_arguments,
+      },
+    },
+  }
+end

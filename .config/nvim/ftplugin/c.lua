@@ -1,3 +1,7 @@
+if require("cfg.utils").check_lsp_client_active "clangd" then
+  return
+end
+
 local clangd_flags = { "--background-index" }
 
 if O.lang.clang.cross_file_rename then

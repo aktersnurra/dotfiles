@@ -101,6 +101,63 @@ O = {
   },
 
   lang = {
+    cmake = {},
+    clang = {
+      diagnostics = {
+        virtual_text = { spacing = 0, prefix = "" },
+        signs = true,
+        underline = true,
+      },
+      cross_file_rename = true,
+      header_insertion = "never",
+    },
+    css = {
+      virtual_text = true,
+    },
+    dart = {
+      sdk_path = "/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot",
+    },
+    docker = {},
+    efm = {},
+    elm = {},
+    emmet = { active = true },
+    elixir = {},
+    graphql = {},
+    go = {},
+    html = {},
+    java = {},
+    json = {
+      diagnostics = {
+        virtual_text = { spacing = 0, prefix = "" },
+        signs = true,
+        underline = true,
+      },
+    },
+    kotlin = {},
+    latex = {},
+    lua = {
+      diagnostics = {
+        virtual_text = { spacing = 0, prefix = "" },
+        signs = true,
+        underline = true,
+      },
+    },
+    php = {
+      format = {
+        format = {
+          default = "psr12",
+        },
+      },
+      environment = {
+        php_version = "7.4",
+      },
+      diagnostics = {
+        virtual_text = { spacing = 0, prefix = "" },
+        signs = true,
+        underline = true,
+      },
+      filetypes = { "php", "phtml" },
+    },
     python = {
       linter = "",
       isort = false,
@@ -115,10 +172,13 @@ O = {
         use_library_code_types = true,
       },
     },
-    dart = {
-      sdk_path = "/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot",
-    },
-    lua = {
+    rust = {
+      rust_tools = {
+        active = false,
+        parameter_hints_prefix = "<-",
+        other_hints_prefix = "=>", -- prefix for all the other hints (type, chaining)
+      },
+      linter = "",
       diagnostics = {
         virtual_text = { spacing = 0, prefix = "" },
         signs = true,
@@ -135,23 +195,9 @@ O = {
         underline = true,
       },
     },
-    tsserver = {
-      -- @usage can be 'eslint'
-      linter = "",
-      diagnostics = {
-        virtual_text = { spacing = 0, prefix = "" },
-        signs = true,
-        underline = true,
-      },
-    },
-    json = {
-      diagnostics = {
-        virtual_text = { spacing = 0, prefix = "" },
-        signs = true,
-        underline = true,
-      },
-    },
+    svelte = {},
     tailwindcss = {
+      active = false,
       filetypes = {
         "html",
         "css",
@@ -162,24 +208,9 @@ O = {
         "typescriptreact",
       },
     },
-    clang = {
-      diagnostics = {
-        virtual_text = { spacing = 0, prefix = "" },
-        signs = true,
-        underline = true,
-      },
-      cross_file_rename = true,
-      header_insertion = "never",
-    },
-    go = {},
-    elixir = {},
-    vim = {},
-    yaml = {},
     terraform = {},
-    rust = {
-      rust_tools = {
-        active = false,
-      },
+    tsserver = {
+      -- @usage can be 'eslint'
       linter = "",
       diagnostics = {
         virtual_text = { spacing = 0, prefix = "" },
@@ -187,24 +218,14 @@ O = {
         underline = true,
       },
     },
-    latex = {},
-    kotlin = {},
-    html = {},
-    elm = {},
-    emmet = { active = true },
-    graphql = {},
-    efm = {},
-    docker = {},
-    cmake = {},
-    css = {
-      virtual_text = true,
-    },
+    vim = {},
+    yaml = {},
   },
 
   dashboard = {
 
     custom_header = {
-     '    ##############..... ############## ',  
+     '     ##############..... ############## ',
      '   ##############......##############   ',
      '     ##########..........##########     ',
      '     ##########........##########       ',
@@ -219,9 +240,9 @@ O = {
      '     ############...JJ...JJ..JJ  JJ     ',
      '     ##########....JJ...JJ..JJ  JJ      ',
      '     ########......JJJ..JJJ JJJ JJJ     ',
-     '    ######    .........                ',
+     '    ######    .........                 ',
      '                 .....                  ',
-     '                   .   ',
+     '                   .                    ',
     },
   },
 }

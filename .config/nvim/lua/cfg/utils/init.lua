@@ -8,6 +8,16 @@ function utils.reload_config()
   vim.cmd ":PackerInstall"
 end
 
+function utils.check_lsp_client_active(name)
+  local clients = vim.lsp.get_active_clients()
+  for _, client in pairs(clients) do
+    if client.name == name then
+      return true
+    end
+  end
+  return false
+end
+
 function utils.define_augroups(definitions) -- {{{1
   -- Create autocommand groups based on the passed definitions
   --

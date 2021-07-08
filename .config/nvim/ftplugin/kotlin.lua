@@ -1,3 +1,7 @@
+if require("cfg.utils").check_lsp_client_active "kotlin_language_server" then
+  return
+end
+
 --- default config for gradle-projects of the
 --- kotlin-language-server: https://github.com/fwcd/kotlin-language-server
 ---
@@ -27,7 +31,7 @@ local fallback_root_files = {
 
 require("lspconfig").kotlin_language_server.setup {
   cmd = { bin_name },
-  on_attach = require("lsp").common_on_attach,
+  on_attach = require("cfg.lsp").common_on_attach,
   root_dir = function(fname)
     return util.root_pattern(unpack(root_files))(fname) or util.root_pattern(unpack(fallback_root_files))(fname)
   end,
