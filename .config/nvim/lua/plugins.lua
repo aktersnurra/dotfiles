@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
     config = function()
       require "cfg.neoformat"
     end,
-    event = "BufRead",
+    event = "BufWinEnter",
   }
 
   use {
