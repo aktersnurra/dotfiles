@@ -304,7 +304,7 @@ return require("packer").startup(function(use)
   -- vim rooter for projects
   use {
    "airblade/vim-rooter",
-   event = "BufRead",
+   event = "BufWinEnter",
    disable = not O.plugin.vim_rooter.active,
   }
 

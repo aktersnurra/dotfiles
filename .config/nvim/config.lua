@@ -20,7 +20,7 @@ O.plugin.telescope_fzy.active = true
 O.plugin.trouble.active = true
 O.plugin.ts_autotag.active = true
 O.plugin.zen.active = true
-O.plugin.vim_rooter.active = false
+O.plugin.vim_rooter.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "all"
