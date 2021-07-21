@@ -1,31 +1,30 @@
 -- O is the global options object
 
 -- general
+O.format_on_save = true
+O.lint_on_save = true
+O.completion.autocomplete = true
 O.auto_complete = true
-O.relative_number = true
 O.colorscheme = 'dark'
-O.timeoutlen = 100
-O.leader_key = ' '
+O.default_options.wrap = false
+O.default_options.timeoutlen = 100
+O.default_options.relativenumber = true
 
 -- After changing plugin config it is recommended to run :PackerCompile
 O.plugin.colorizer.active = true
 O.plugin.dashboard.active = true
-O.plugin.diffview.active = true
 O.plugin.hop.active = true
-O.plugin.indent_line.active = true
-O.plugin.lush.active = true
-O.plugin.sanegx.active = false
-O.plugin.symbol_outline.active = false
-O.plugin.telescope_fzy.active = true
-O.plugin.trouble.active = true
-O.plugin.ts_autotag.active = true
 O.plugin.zen.active = true
-O.plugin.vim_rooter.active = true
+O.plugin.terminal.active = true
+O.plugin.rooter.active = true
 
 -- if you don't want all the parsers change this to a table of the ones you want
 O.treesitter.ensure_installed = "all"
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
+
+-- LSP
+O.lsp.diagnostics.virtual_text = false
 
 -- lua
 O.lang.lua.autoformat = true

@@ -1,270 +1,295 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
+return {
+  -- Packer can manage itself as an optional plugin
+  { "wbthomason/packer.nvim" },
 
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-  execute "packadd packer.nvim"
-end
-
-local packer_ok, packer = pcall(require, "packer")
-if not packer_ok then
-  return
-end
-
-packer.init {
-  git = { clone_timeout = 300 },
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "single" }
+  -- TODO: refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
+  { "neovim/nvim-lspconfig" },
+  {
+    "kabouzeid/nvim-lspinstall",
+    event = "VimEnter",
+    config = function()
+      local lspinstall = require "lspinstall"
+      lspinstall.setup()
+      if O.plugin.lspinstall.on_config_done then
+        O.plugin.lspinstall.on_config_done(lspinstall)
+      end
     end,
   },
-}
 
-return require("packer").startup(function(use)
-  -- Packer can manage itself as an optional plugin
-  use "wbthomason/packer.nvim"
+  { "nvim-lua/popup.nvim" },
+  { "nvim-lua/plenary.nvim" },
+  { "tjdevries/astronauta.nvim" },
 
-  -- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
-  use { "neovim/nvim-lspconfig" }
-  use { "kabouzeid/nvim-lspinstall", event = "BufRead" }
   -- Telescope
-  use { "nvim-lua/popup.nvim" }
-  use { "nvim-lua/plenary.nvim" }
-  use { "tjdevries/astronauta.nvim" }
-  use {
+  {
     "nvim-telescope/telescope.nvim",
-    config = [[require('cfg.telescope')]],
-    -- event = "BufEnter",
-  }
+    config = function()
+      require("core.telescope").setup()
+      if O.plugin.telescope.on_config_done then
+        O.plugin.telescope.on_config_done(require "telescope")
+      end
+    end,
+  },
 
   -- Autocomplete
-  use {
+  {
     "hrsh7th/nvim-compe",
-    event = "InsertEnter",
+    -- event = "InsertEnter",
     config = function()
-      require("cfg.compe").config()
+      require("core.compe").setup()
+      if O.plugin.compe.on_config_done then
+        O.plugin.compe.on_config_done(require "compe")
+      end
     end,
-  }
-
-  use { "hrsh7th/vim-vsnip", event = "InsertEnter" }
-  use { "rafamadriz/friendly-snippets", event = "InsertEnter" }
-
-  -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-
-  -- Neoformat
-  use {
-    "sbdchd/neoformat",
-    config = function()
-      require "cfg.neoformat"
-    end,
-    event = "BufWinEnter",
-  }
-
-  use {
-    "kyazdani42/nvim-tree.lua",
-    -- event = "BufEnter",
-    -- cmd = "NvimTreeToggle",
-    commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
-    config = function()
-      require("cfg.nvimtree").config()
-    end,
-  }
-
-  use {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("cfg.gitsigns").config()
-    end,
-    event = "BufRead",
-  }
-
-  -- whichkey
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require "cfg.which-key"
-    end,
-    event = "BufWinEnter",
-  }
+  },
 
   -- Autopairs
-  use {
+  {
     "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    after = { "telescope.nvim" },
+    -- event = "InsertEnter",
     config = function()
-      require "cfg.autopairs"
+      require "core.autopairs"
+      if O.plugin.autopairs.on_config_done then
+        O.plugin.autopairs.on_config_done(require "nvim-autopairs")
+      end
     end,
-  }
+  },
+
+  -- Snippets
+
+  { "hrsh7th/vim-vsnip", event = "InsertEnter" },
+  { "rafamadriz/friendly-snippets", event = "InsertEnter" },
+
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("core.treesitter").setup()
+      if O.plugin.treesitter.on_config_done then
+        O.plugin.treesitter.on_config_done(require "nvim-treesitter.configs")
+      end
+    end,
+  },
+
+  -- Formatter.nvim
+  {
+    "mhartington/formatter.nvim",
+    config = function()
+      require "core.formatter"
+      if O.plugin.formatter.on_config_done then
+        O.plugin.formatter.on_config_done(require "formatter")
+      end
+    end,
+  },
+
+  -- Linter
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require("core.linter").setup()
+      if O.plugin.lint.on_config_done then
+        O.plugin.lint.on_config_done(require "lint")
+      end
+    end,
+  },
+
+  -- NvimTree
+  {
+    "kyazdani42/nvim-tree.lua",
+    -- event = "BufWinOpen",
+    -- cmd = "NvimTreeToggle",
+    -- commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
+    config = function()
+      require("core.nvimtree").setup()
+      if O.plugin.nvimtree.on_config_done then
+        O.plugin.nvimtree.on_config_done(require "nvim-tree.config")
+      end
+    end,
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+
+    config = function()
+      require("core.gitsigns").setup()
+      if O.plugin.gitsigns.on_config_done then
+        O.plugin.gitsigns.on_config_done(require "gitsigns")
+      end
+    end,
+    event = "BufRead",
+  },
+
+  -- whichkey
+  {
+    "folke/which-key.nvim",
+    config = function()
+      require("core.which-key").setup()
+      if O.plugin.which_key.on_config_done then
+        O.plugin.which_key.on_config_done(require "which-key")
+      end
+    end,
+    event = "BufWinEnter",
+  },
 
   -- Comments
-  use {
+  {
     "terrortylor/nvim-comment",
-    event = "BufWinEnter",
+    event = "BufRead",
     config = function()
       local status_ok, nvim_comment = pcall(require, "nvim_comment")
       if not status_ok then
         return
       end
       nvim_comment.setup()
+      if O.plugin.comment.on_config_done then
+        O.plugin.comment.on_config_done(nvim_comment)
+      end
     end,
-  }
+  },
 
-  -- Color
-  use { "christianchiarulli/nvcode-color-schemes.vim", opt = true }
+  {
+    "ahmedkhalf/lsp-rooter.nvim",
+    config = function()
+      if O.plugin.rooter.on_config_done then
+        O.plugin.rooter.on_config_done()
+      end
+    end,
+  },
 
   -- Icons
-  use { "kyazdani42/nvim-web-devicons" }
+  { "kyazdani42/nvim-web-devicons" },
 
   -- Status Line and Bufferline
-  use {
+  {
     "glepnir/galaxyline.nvim",
     config = function()
-      require "cfg.galaxyline"
-    end,
-    -- event = "VimEnter",
-  }
-
-  use {
-    "romgrk/barbar.nvim",
-    config = function()
-      require "cfg.barbar"
+      require "core.galaxyline"
+      if O.plugin.galaxyline.on_config_done then
+        O.plugin.galaxyline.on_config_done(require "galaxyline")
+      end
     end,
     event = "BufWinEnter",
-  }
+    disable = not O.plugin.galaxyline.active,
+  },
+
+  {
+    "romgrk/barbar.nvim",
+    config = function()
+      require "core.bufferline"
+      if O.plugin.bufferline.on_config_done then
+        O.plugin.bufferline.on_config_done()
+      end
+    end,
+    event = "BufWinEnter",
+  },
+
+  -- Debugging
+  {
+    "mfussenegger/nvim-dap",
+    -- event = "BufWinEnter",
+    config = function()
+      require("core.dap").setup()
+      if O.plugin.dap.on_config_done then
+        O.plugin.dap.on_config_done(require "dap")
+      end
+    end,
+    disable = not O.plugin.dap.active,
+  },
+
+  -- Debugger management
+  {
+    "Pocco81/DAPInstall.nvim",
+    -- event = "BufWinEnter",
+    -- event = "BufRead",
+    disable = not O.plugin.dap.active,
+  },
 
   -- Builtins, these do not load by default
 
   -- Dashboard
-  use {
+  {
     "ChristianChiarulli/dashboard-nvim",
     event = "BufWinEnter",
+    config = function()
+      require("core.dashboard").setup()
+      if O.plugin.dashboard.on_config_done then
+        O.plugin.dashboard.on_config_done(require "dashboard")
+      end
+    end,
     disable = not O.plugin.dashboard.active,
-  }
+  },
+
+  {
+    "akinsho/nvim-toggleterm.lua",
+    event = "BufWinEnter",
+    config = function()
+      require("core.terminal").setup()
+      if O.plugin.terminal.on_config_done then
+        O.plugin.terminal.on_config_done(require "toggleterm")
+      end
+    end,
+    disable = not O.plugin.terminal.active,
+  },
 
   -- Zen Mode
-  use {
+  {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-    -- event = "BufRead",
+    event = "BufRead",
     config = function()
-      require("cfg.zen").config()
+      require("core.zen").setup()
+      if O.plugin.zen.on_config_done then
+        O.plugin.zen.on_config_done(require "zen-mode")
+      end
     end,
     disable = not O.plugin.zen.active,
-  }
+  },
 
-  use {
+  -- Hop
+  {
+    "phaazon/hop.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require("core.hop").config()
+      if O.plugin.hop.on_config_done then
+        O.plugin.hop.on_config_done(require "hop")
+      end
+    end,
+    disable = not O.plugin.hop.active,
+  },
+
+  {
     "norcalli/nvim-colorizer.lua",
     event = "BufWinEnter",
     config = function()
-      require "cfg.colorizer"
+      require("core.colorizer").config()
+      if O.plugin.colorizer.on_config_done then
+        O.plugin.colorizer.on_config_done(require "nvim-colorizer")
+      end
     end,
     disable = not O.plugin.colorizer.active,
-  }
+  },
 
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    setup = function()
-      vim.g.indentLine_enabled = 1
-      vim.g.indent_blankline_char = "▏"
-
-      vim.g.indent_blankline_filetype_exclude = {
-        "help",
-        "terminal",
-        "dashboard",
-      }
-      vim.g.indent_blankline_buftype_exclude = { "terminal" }
-
-      vim.g.indent_blankline_show_trailing_blankline_indent = false
-      vim.g.indent_blankline_show_first_indent_level = true
-    end,
-    disable = not O.plugin.indent_line.active,
-  }
-
-  -- comments in context
-  use {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufRead",
-    disable = not O.plugin.ts_context_commentstring.active,
-  }
-
-  -- Symbol Outline
-  use {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
-    disable = not O.plugin.symbol_outline.active,
-  }
-
-  -- diagnostics
-  use {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-    disable = not O.plugin.trouble.active,
-  }
-
-  -- Use fzy for telescope
-  use {
-    "nvim-telescope/telescope-fzy-native.nvim",
-    event = "BufRead",
-    disable = not O.plugin.telescope_fzy.active,
-  }
-
-  -- Use project for telescope
-  use {
-    "nvim-telescope/telescope-project.nvim",
-    event = "BufRead",
-    setup = function()
-      vim.cmd [[packadd telescope.nvim]]
-    end,
-    disable = not O.plugin.telescope_project.active,
-  }
-
-  -- Sane gx for netrw_gx bug
-  use {
-    "felipec/vim-sanegx",
-    event = "BufRead",
-    disable = not O.plugin.sanegx.active,
-  }
-
-  -- Diffview
-  use {
-    "sindrets/diffview.nvim",
-    event = "BufRead",
-    disable = not O.plugin.diffview.active,
-  }
-
-  -- Lush Create Color Schemes
-  use {
-    "rktjmp/lush.nvim",
-    -- cmd = {"LushRunQuickstart", "LushRunTutorial", "Lushify"},
-    disable = not O.plugin.lush.active,
-  }
+  ---------------------------------------------------------------------------------
 
   -- LANGUAGE SPECIFIC GOES HERE
-  use {
+  {
     "lervag/vimtex",
     ft = "tex",
-    config = function()
-      require "cfg.vimtex"
-    end,
-  }
+  },
 
   -- Rust tools
   -- TODO: use lazy loading maybe?
-  use {
+  {
     "simrat39/rust-tools.nvim",
     disable = not O.lang.rust.rust_tools.active,
-  }
+  },
 
   -- Elixir
-  use { "elixir-editors/vim-elixir", ft = { "elixir", "eelixir", "euphoria3" } }
+  { "elixir-editors/vim-elixir", ft = { "elixir", "eelixir", "euphoria3" } },
 
   -- Javascript / Typescript
-  use {
+  {
     "jose-elias-alvarez/nvim-lsp-ts-utils",
     ft = {
       "javascript",
@@ -274,52 +299,6 @@ return require("packer").startup(function(use)
       "typescriptreact",
       "typescript.tsx",
     },
-  }
+  },
 
-  -- Autotags <div>|</div>
-  use {
-    "windwp/nvim-ts-autotag",
-    event = "InsertEnter",
-    disable = not O.plugin.ts_autotag.active,
-  }
-
-  -- Custom semantic text objects
-  use {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    disable= not O.plugin.ts_textobjects.active,
-  }
-
-  -- Smart text objects
-  use {
-    "RRethy/nvim-treesitter-textsubjects",
-    disable = not O.plugin.ts_textsubjects.active,
-  }
-
-  -- Text objects using hint labels
-  use {
-    "mfussenegger/nvim-ts-hint-textobject",
-    event = "BufRead",
-    disable = not O.plugin.ts_hintobjects.active,
-  }
-  -- vim rooter for projects
-  use {
-   "airblade/vim-rooter",
-   event = "BufWinEnter",
-   disable = not O.plugin.vim_rooter.active,
-  }
-
-  -- hop
-  use {
-   "phaazon/hop.nvim",
-   event = "BufRead",
-    config = function()
-      require("cfg.hop").config()
-    end,
-   disable = not O.plugin.hop.active,
-  }
-
-  for _, plugin in pairs(O.user_plugins) do
-    packer.use(plugin)
-  end
-
-end)
+}
