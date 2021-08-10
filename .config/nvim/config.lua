@@ -1,54 +1,138 @@
--- O is the global options object
-
 -- general
-O.format_on_save = true
-O.lint_on_save = true
-O.completion.autocomplete = true
-O.auto_complete = true
-O.colorscheme = 'dark'
-O.default_options.wrap = false
-O.default_options.timeoutlen = 100
-O.default_options.relativenumber = true
+options.format_on_save = true
+options.colorscheme = 'dark'
+vim.opt.wrap = false
 
--- After changing plugin config it is recommended to run :PackerCompile
-O.plugin.colorizer.active = true
-O.plugin.dashboard.active = true
-O.plugin.hop.active = true
-O.plugin.zen.active = true
-O.plugin.terminal.active = true
-O.plugin.rooter.active = true
+-- Keymappings
+options.leader = "space"
 
--- if you don't want all the parsers change this to a table of the ones you want
-O.treesitter.ensure_installed = "all"
-O.treesitter.ignore_install = {"haskell"}
-O.treesitter.highlight.enabled = true
+options.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
 
 -- LSP
-O.lsp.diagnostics.virtual_text = false
+options.lsp.diagnostics.virtual_text = false
+require("extra.json_schemas").setup()
 
--- lua
-O.lang.lua.autoformat = true
-O.lang.lua.formatter = 'lua-format'
+-- After changing plugin config it is recommended to run :PackerCompile
+options.builtin.dashboard.active = true
+options.builtin.terminal.active = true
+options.builtin.rooter.active = true
+options.builtin.bufferline.active = true
+options.builtin.nvimtree.active = true
 
--- python
-O.lang.python.formatter = 'black'
-O.lang.python.linter = 'flake8'
-O.lang.python.isort = true
-O.lang.python.autoformat = true
-O.lang.python.diagnostics.virtual_text = true
-O.lang.python.diagnostics.signs = true
-O.lang.python.diagnostics.underline = true
+-- Whichkey
+options.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
+options.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
+options.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }
+options.builtin.which_key.mappings.T.h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" }
+options.builtin.which_key.mappings.T.p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
+options.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<cr>", "Zen" }
+options.builtin.which_key.mappings["r"] = {
+  name = "Replace",
+  r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+}
+options.builtin.which_key.mappings.f = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
 
--- rust
-O.lang.rust.rust_tools.active = true
+options.builtin.nvimtree.auto_open = 0
 
--- go
-O.lang.go.autoformat = true
+-- Treesitter
+options.builtin.treesitter.ensure_installed = "maintained"
+options.builtin.treesitter.autotag.enable = true
+options.builtin.treesitter.playground.enable = true
 
--- json
-O.lang.json.autoformat = true
-O.lang.json.formatter = 'prettier'
+options.plugins = {
+  {
+    "folke/twilight.nvim",
+    config = function()
+      require("extra.twilight").config()
+    end,
+    -- cmd = "ZenMode",
+  },
 
--- sh
-O.lang.sh.linter = 'shellcheck'
-O.lang.sh.formatter = 'shfmt'
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("extra.numb").config()
+    end,
+  },
+
+  {
+    "pwntester/octo.nvim",
+    event = "BufRead",
+    config = function()
+      require("extra.octo").config()
+    end,
+  },
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("extra.lsp_signature").config()
+    end,
+  },
+
+  {
+    "unblevable/quick-scope",
+    config = function()
+      require "extra.quickscope"
+    end,
+  },
+
+  {
+    "phaazon/hop.nvim",
+    event = "BufRead",
+    config = function()
+      require("extra.hop").config()
+    end,
+  },
+
+  {
+    "tamago324/lir.nvim",
+    config = function()
+      require "extra.lir"
+    end,
+  },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("extra.colorizer").config()
+    end,
+  },
+
+  {
+    "windwp/nvim-spectre",
+    event = "BufRead",
+    config = function()
+      require("extra.spectre").config()
+    end,
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("extra.zen").config()
+    end,
+  },
+
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require("extra.neoscroll").config()
+    end,
+  },
+
+  {
+    "kevinhwang91/nvim-bqf",
+    event = "BufRead",
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    event = "BufRead",
+  },
+
+}

@@ -1,11 +1,12 @@
 local M = {}
+local Log = require "core.log"
 M.config = function()
   local status_ok, actions = pcall(require, "telescope.actions")
   if not status_ok then
     return
   end
 
-  O.plugin.telescope = {
+  options.builtin.telescope = {
     active = false,
     defaults = {
       find_command = {
@@ -39,7 +40,7 @@ M.config = function()
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       color_devicons = true,
       use_less = true,
-      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+      set_env = { ["CoptionsLoptionsRTERM"] = "truecolor" }, -- default = nil,
       file_previewer = require("telescope.previewers").vim_buffer_cat.new,
       grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -61,7 +62,7 @@ M.config = function()
           -- ["<c-t>"] = trouble.open_with_trouble,
           -- ["<c-x>"] = false,
           -- ["<esc>"] = actions.close,
-          -- Otherwise, just set the mapping to the function that you want it to be.
+          -- optionstherwise, just set the mapping to the function that you want it to be.
           -- ["<C-i>"] = actions.select_horizontal,
           -- Add up multiple actions
           -- You can perform as many actions in a row as you like
@@ -88,10 +89,10 @@ end
 M.setup = function()
   local status_ok, telescope = pcall(require, "telescope")
   if not status_ok then
+    Log:get_default().error "Failed to load telescope"
     return
   end
-  telescope.setup(O.plugin.telescope)
-  vim.api.nvim_set_keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })
+  telescope.setup(options.builtin.telescope)
 end
 
 return M

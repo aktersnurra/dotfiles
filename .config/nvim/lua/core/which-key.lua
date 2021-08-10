@@ -1,6 +1,7 @@
 local M = {}
+local Log = require "core.log"
 M.config = function()
-  O.plugin.which_key = {
+  options.builtin.which_key = {
     active = false,
     setup = {
       plugins = {
@@ -58,7 +59,7 @@ M.config = function()
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     vmappings = {
-      ["/"] = { ":CommentToggle<CR>", "Comment" },
+      ["k"] = { ":CommentToggle<CR>", "Comment" },
     },
     mappings = {
       ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -68,14 +69,36 @@ M.config = function()
       ["e"] = { "<cmd>lua require'core.nvimtree'.toggle_tree()<CR>", "Explorer" },
       ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
       ["n"] = { '<cmd>let @/=""<CR>', "No Highlight" },
-      ["h"] = { "<cmd>vsplit<CR>", "Vertical Split" },
-      ["v"] = { '<cmd>split<CR>', "Horizontal Split" },
+      b = {
+        name = "Buffers",
+        j = { "<cmd>BufferPick<cr>", "jump to buffer" },
+        f = { "<cmd>Telescope buffers<cr>", "Find buffer" },
+        w = { "<cmd>BufferWipeout<cr>", "wipeout buffer" },
+        e = {
+          "<cmd>BufferCloseAllButCurrent<cr>",
+          "close all but current buffer",
+        },
+        h = { "<cmd>BufferCloseBuffersLeft<cr>", "close all buffers to the left" },
+        l = {
+          "<cmd>BufferCloseBuffersRight<cr>",
+          "close all BufferLines to the right",
+        },
+        D = {
+          "<cmd>BufferOrderByDirectory<cr>",
+          "sort BufferLines automatically by directory",
+        },
+        L = {
+          "<cmd>BufferOrderByLanguage<cr>",
+          "sort BufferLines automatically by language",
+        },
+      },
       p = {
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },
         i = { "<cmd>PackerInstall<cr>", "Install" },
-        r = { "<cmd>lua require('utils').reload_config()<cr>", "Reload" },
+        r = { "<cmd>lua require('utils').reload_lv_config()<cr>", "Reload" },
         s = { "<cmd>PackerSync<cr>", "Sync" },
+        S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
       },
 
@@ -119,23 +142,37 @@ M.config = function()
           "<cmd>Telescope lsp_workspace_diagnostics<cr>",
           "Workspace Diagnostics",
         },
-        f = { "<cmd>silent FormatWrite<cr>", "Format" },
+        -- f = { "<cmd>silent FormatWrite<cr>", "Format" },
+        f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         j = {
-          "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = O.lsp.popup_border}})<cr>",
+          "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = options.lsp.popup_border}})<cr>",
           "Next Diagnostic",
         },
         k = {
-          "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = O.lsp.popup_border}})<cr>",
+          "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = options.lsp.popup_border}})<cr>",
           "Prev Diagnostic",
         },
-        l = { "<cmd>silent lua require('lint').try_lint()<cr>", "Lint" },
-        q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
+        p = {
+          name = "Peek",
+          d = { "<cmd>lua require('lsp.peek').Peek('definition')<cr>", "Definition" },
+          t = { "<cmd>lua require('lsp.peek').Peek('typeDefinition')<cr>", "Type Definition" },
+          i = { "<cmd>lua require('lsp.peek').Peek('implementation')<cr>", "Implementation" },
+        },
+        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
           "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
           "Workspace Symbols",
+        },
+      },
+      I = {
+        name = "+nvim",
+        k = { "<cmd>lua require('keymappings').print()<cr>", "View nvim's default keymappings" },
+        i = {
+          "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>",
+          "Toggle nvim Info",
         },
       },
 
@@ -170,32 +207,22 @@ M.setup = function()
   -- end
   local status_ok, which_key = pcall(require, "which-key")
   if not status_ok then
+    Log:get_default "Failed to load whichkey"
     return
   end
 
-  which_key.setup(O.plugin.which_key.setup)
+  which_key.setup(options.builtin.which_key.setup)
 
-  local opts = O.plugin.which_key.opts
-  local vopts = O.plugin.which_key.vopts
+  local opts = options.builtin.which_key.opts
+  local vopts = options.builtin.which_key.vopts
 
-  local mappings = O.plugin.which_key.mappings
-  local vmappings = O.plugin.which_key.vmappings
-
-  -- if O.plugin.ts_playground.active then
-  --   vim.api.nvim_set_keymap("n", "<leader>Th", ":TSHighlightCapturesUnderCursor<CR>", { noremap = true, silent = true })
-  --   mappings[""] = "Highlight Capture"
-  -- end
-
-  if O.plugin.zen.active then
-    vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>", { noremap = true, silent = true })
-    mappings["z"] = "Zen"
-  end
+  local mappings = options.builtin.which_key.mappings
+  local vmappings = options.builtin.which_key.vmappings
 
   local wk = require "which-key"
 
   wk.register(mappings, opts)
   wk.register(vmappings, vopts)
-  wk.register(O.user_which_key, opts)
 end
 
 return M

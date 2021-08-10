@@ -1,4 +1,4 @@
-O.plugin.galaxyline = {
+options.builtin.galaxyline = {
   active = true,
   colors = {
     alt_bg = "#0A0A0A",

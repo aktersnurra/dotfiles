@@ -30,3 +30,13 @@ flake8
 
 *Lua*
 `luarocks install --server=https://luarocks.org/dev luaformatter`
+
+
+
+TODO:
+
+- [] FIX ftplugin
+- [x] fix numb log
+- [x] update with new logger
+- [x] add/mv user plugins
+- [x] add lsp-install

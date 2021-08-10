@@ -1,17 +1,57 @@
--- vim.opt.rtp:append() instead of vim.cmd ?
-require "default-config"
-local status_ok, error = pcall(vim.cmd, "luafile ~/.config/nvim/config.lua")
-if not status_ok then
-  print "something is wrong with your config"
-  print(error)
+local function file_exists(name)
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
 end
 
-require "keymappings"
+local nvim_path = os.getenv "HOME" .. "/.config/nvim/"
+USER_CONFIG_PATH = nvim_path .. "config.lua"
+local config_exist = file_exists(USER_CONFIG_PATH)
+if not config_exist then
+  USER_CONFIG_PATH = nvim_path .. "config.lua"
+  print "Rename ~/.config/nvim/config.lua to config.lua"
+end
+
+require "default-config"
+local autocmds = require "core.autocmds"
+require("settings").load_options()
+
+local status_ok, error = pcall(vim.cmd, "luafile " .. USER_CONFIG_PATH)
+if not status_ok then
+  print("something is wrong with your " .. USER_CONFIG_PATH)
+  print(error)
+end
+require("settings").load_commands()
+autocmds.define_augroups(options.autocommands)
 
 local plugins = require "plugins"
 local plugin_loader = require("plugin-loader").init()
-plugin_loader:load { plugins, O.user_plugins }
-vim.g.colors_name = O.colorscheme -- Colorscheme must get called after plugins are loaded or it will break new installs.
+plugin_loader:load { plugins, options.plugins }
+vim.g.colors_name = options.colorscheme -- Colorscheme must get called after plugins are loaded or it will break new installs.
+vim.cmd("colorscheme " .. options.colorscheme)
 
-require "settings"
-require "utils"
+local utils = require "utils"
+utils.toggle_autoformat()
+local commands = require "core.commands"
+commands.load(commands.defaults)
+
+require("lsp").config()
+
+local null_status_ok, null_ls = pcall(require, "null-ls")
+if null_status_ok then
+  null_ls.config {}
+  require("lspconfig")["null-ls"].setup {}
+end
+
+local lsp_settings_status_ok, lsp_settings = pcall(require, "nlspsettings")
+if lsp_settings_status_ok then
+  lsp_settings.setup {
+    config_home = os.getenv "HOME" .. "/.config/nvim/lsp-settings",
+  }
+end
+
+require("keymappings").setup()
