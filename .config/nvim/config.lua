@@ -41,6 +41,39 @@ options.builtin.treesitter.ensure_installed = "maintained"
 options.builtin.treesitter.autotag.enable = true
 options.builtin.treesitter.playground.enable = true
 
+-- Formatters
+-- python
+options.lang.python.formatters = {
+  {
+    exe = "black",
+    args = {},
+  },
+}
+
+options.lang.python.linters = {
+  {
+    exe = "flake8",
+    args = {},
+  },
+}
+
+-- lua
+options.lang.lua.formatters = {
+  {
+    exe = "stylua",
+    args = {},
+  },
+}
+
+--json
+options.lang.json.formatters = {
+  {
+    exe = "prettier",
+    args = {},
+  },
+}
+
+
 options.plugins = {
   {
     "folke/twilight.nvim",

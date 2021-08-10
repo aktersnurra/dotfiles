@@ -36,7 +36,4 @@ flake8
 TODO:
 
 - [] FIX ftplugin
-- [x] fix numb log
-- [x] update with new logger
-- [x] add/mv user plugins
-- [x] add lsp-install
+  - [ ] fix formatters and linters!
