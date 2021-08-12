@@ -3,3 +3,49 @@
 /*  */
 /* !! Set a default font and font size as below: */
 /* *.font: monospace:size=10 */
+
+/* xterm*selectToClipboard: true */
+/* xterm*disallowedWindowOps: 20,21,SetXProp */
+/* *.font:	Monospace:pixelsize=25:antialias=true:autohint=true; */
+/* *.fontalt0:Braille:pixelsize=24:antialias=true:autohint=true; */
+/* *.fontalt1:JoyPixels:pixelsize=24:antialias=true:autohint=true; */
+
+! colors
+
+! special
+*.foreground:   #F5F5F5
+*.background:   #0A0A0A
+/* *.cursorColor:  #D0D0D0 */
+*.revCursorColor:  #151515
+
+! black
+*.color0:       #0A0A0A
+*.color8:       #0A0A0A
+
+! red
+*.color1:       #AC4142
+*.color9:       #AC4142
+
+! green
+*.color2:       #A1B56C
+*.color10:      #A1B56C
+
+! yellow
+*.color3:       #F4BF75
+*.color11:      #F4BF75
+
+! blue
+*.color4:       #A5D6FF
+*.color12:      #A5D6FF
+
+! magenta
+*.color5:       #AA759F
+*.color13:      #AA759F
+
+! cyan
+*.color6:       #75B5AA
+*.color14:      #75B5AA
+
+! white
+*.color7:       #D0D0D0
+*.color15:      #F5F5F5

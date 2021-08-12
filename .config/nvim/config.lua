@@ -76,6 +76,19 @@ options.lang.json.formatters = {
 
 options.plugins = {
   {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+
+  {
+    "nvim-telescope/telescope-project.nvim",
+    event = "BufWinEnter",
+    setup = function()
+      vim.cmd [[packadd telescope.nvim]]
+    end,
+  },
+
+  {
     "folke/twilight.nvim",
     config = function()
       require("extra.twilight").config()
