@@ -1,11 +1,5 @@
-/* !! Transparency (0-1): */
-/* *.alpha: 1.0 */
-/*  */
-/* !! Set a default font and font size as below: */
-/* *.font: monospace:size=10 */
-
-/* xterm*selectToClipboard: true */
-/* xterm*disallowedWindowOps: 20,21,SetXProp */
+xterm*selectToClipboard: true
+xterm*disallowedWindowOps: 20,21,SetXProp
 /* *.font:	Monospace:pixelsize=25:antialias=true:autohint=true; */
 /* *.fontalt0:Braille:pixelsize=24:antialias=true:autohint=true; */
 /* *.fontalt1:JoyPixels:pixelsize=24:antialias=true:autohint=true; */
@@ -14,13 +8,14 @@
 
 ! special
 *.foreground:   #F5F5F5
-*.background:   #0A0A0A
+/* background set the cursor apperently */
+*.background:   #D0D0D0   
 /* *.cursorColor:  #D0D0D0 */
 *.revCursorColor:  #151515
 
 ! black
 *.color0:       #0A0A0A
-*.color8:       #0A0A0A
+*.color8:       #353535
 
 ! red
 *.color1:       #AC4142
