@@ -52,31 +52,31 @@ M.setup = function()
       name = "Helm Chart.yaml",
       description = "The Chart.lock file locks dependencies from Chart.yaml",
       fileMatch = { "Chart.lock" },
-      url = "https://json.schemastore.org/chart-lock.json"
+      url = "https://json.schemastore.org/chart-lock.json",
     },
     {
       name = "CircleCI config.yml",
       description = "Schema for CircleCI 2.0 config files",
       fileMatch = { ".circleci/config.yml" },
-      url = "https://json.schemastore.org/circleciconfig.json"
+      url = "https://json.schemastore.org/circleciconfig.json",
     },
     {
       name = "yamllint",
       description = "yamllint uses a set of rules to check source files for problems",
       fileMatch = { "**/.yamllint", "**/.yamllint.yaml", "**/.yamllint.yml" },
-      url = "https://json.schemastore.org/yamllint.json"
+      url = "https://json.schemastore.org/yamllint.json",
     },
     {
       name = "Hadolint",
       description = "A smarter Dockerfile linter that helps you build best practice Docker images.",
       fileMatch = { ".hadolint.yaml", "hadolint.yaml", ".hadolint.yml", "hadolint.yml" },
-      url = "https://raw.githubusercontent.com/hadolint/hadolint/master/contrib/hadolint.json"
+      url = "https://raw.githubusercontent.com/hadolint/hadolint/master/contrib/hadolint.json",
     },
     {
       name = "kustomization.yaml",
       description = "Kubernetes native configuration management",
       fileMatch = { "kustomization.yaml", "kustomization.yml" },
-      url = "https://json.schemastore.org/kustomization.json"
+      url = "https://json.schemastore.org/kustomization.json",
     },
   }
 
@@ -87,7 +87,10 @@ M.setup = function()
     return tab1
   end
 
-  local extended_schemas = extend(schemas, require("nlspsettings.jsonls").get_default_schemas())
+  local extended_schemas = extend(
+    schemas,
+    require("nlspsettings.jsonls").get_default_schemas()
+  )
 
   options.lang.json.lsp.setup.settings = {
     json = {

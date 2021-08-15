@@ -22,19 +22,19 @@ table.insert(gls.left, {
   ViMode = {
     provider = function()
       local alias = {
-        n = 'NORMAL',
-        i = 'INSERT',
-        c = 'COMMAND',
-        V = 'VISUAL',
-        [''] = 'VISUAL',
-        v = 'VISUAL',
-        R = 'REPLACE',
+        n = "NORMAL",
+        i = "INSERT",
+        c = "COMMAND",
+        V = "VISUAL",
+        [""] = "VISUAL",
+        v = "VISUAL",
+        R = "REPLACE",
       }
       local alias_mode = alias[vim.fn.mode()]
       if alias_mode == nil then
         alias_mode = vim.fn.mode()
       end
-      return alias_mode..' '
+      return alias_mode .. " "
     end,
     separator_highlight = { "NONE", colors.alt_bg },
     highlight = { colors.grey, colors.alt_bg },
@@ -193,19 +193,23 @@ table.insert(gls.right, {
 
 local function get_attached_provider_name(msg)
   msg = msg or "LSP Inactive"
+
   local buf_clients = vim.lsp.buf_get_clients()
   if next(buf_clients) == nil then
     return msg
   end
-  local buf_ft = vim.bo.filetype
+
   local buf_client_names = {}
-  local null_ls_providers = require("lsp.null-ls").get_registered_providers_by_filetype(buf_ft)
   for _, client in pairs(buf_clients) do
     if client.name ~= "null-ls" then
       table.insert(buf_client_names, client.name)
     end
   end
+
+  local null_ls = require "lsp.null-ls"
+  local null_ls_providers = null_ls.list_supported_provider_names(vim.bo.filetype)
   vim.list_extend(buf_client_names, null_ls_providers)
+
   return table.concat(buf_client_names, ", ")
 end
 

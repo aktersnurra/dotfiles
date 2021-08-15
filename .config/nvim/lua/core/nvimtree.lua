@@ -66,6 +66,8 @@ M.setup = function()
       { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
       { key = "h", cb = tree_cb "close_node" },
       { key = "v", cb = tree_cb "vsplit" },
+
+      { key = "q", cb = ":lua require('core.nvimtree').toggle_tree()<cr>" },
     }
   end
 end
@@ -93,7 +95,9 @@ M.focus_or_close = function()
     end
   else
     view.open()
-    if package.loaded["bufferline.state"] and options.builtin.nvimtree.side == "left" then
+    if
+      package.loaded["bufferline.state"] and options.builtin.nvimtree.side == "left"
+    then
       require("bufferline.state").set_offset(options.builtin.nvimtree.width + 1, "")
     end
   end
@@ -110,7 +114,9 @@ M.toggle_tree = function()
       require("bufferline.state").set_offset(0)
     end
   else
-    if package.loaded["bufferline.state"] and options.builtin.nvimtree.side == "left" then
+    if
+      package.loaded["bufferline.state"] and options.builtin.nvimtree.side == "left"
+    then
       require("bufferline.state").set_offset(options.builtin.nvimtree.width + 1, "")
     end
     require("nvim-tree").toggle()

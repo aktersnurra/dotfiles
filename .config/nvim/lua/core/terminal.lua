@@ -86,7 +86,11 @@ end
 M._exec_toggle = function(exec)
   local binary = M._split(exec)[1]
   if is_installed(binary) ~= true then
-    print("Please install executable " .. binary .. ". Check documentation for more information")
+    print(
+      "Please install executable "
+        .. binary
+        .. ". Check documentation for more information"
+    )
     return
   end
   local Terminal = require("toggleterm.terminal").Terminal

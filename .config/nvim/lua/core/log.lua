@@ -10,7 +10,11 @@ function Log:new(opts)
   end
 
   local obj = require("plenary.log").new(opts)
-  local path = string.format("%s/%s.log", vim.api.nvim_call_function("stdpath", { "cache" }), opts.plugin)
+  local path = string.format(
+    "%s/%s.log",
+    vim.api.nvim_call_function("stdpath", { "cache" }),
+    opts.plugin
+  )
 
   obj.get_path = function()
     return path

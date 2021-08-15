@@ -34,6 +34,4 @@ flake8
 
 
 TODO:
-
-- [] FIX ftplugin
-  - [ ] fix formatters and linters!
+- Fix null-ls an all that jazz

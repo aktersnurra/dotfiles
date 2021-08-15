@@ -45,10 +45,22 @@ M.config = function()
         insert_mode = {
           -- ["<Tab>"] = { 'pumvisible() ? "<C-n>" : "<Tab>"', { silent = true, noremap = true, expr = true } },
           -- ["<S-Tab>"] = { 'pumvisible() ? "<C-p>" : "<S-Tab>"', { silent = true, noremap = true, expr = true } },
-          ["<C-Space>"] = { "compe#complete()", { silent = true, noremap = true, expr = true } },
-          ["<C-e>"] = { "compe#close('<C-e>')", { silent = true, noremap = true, expr = true } },
-          ["<C-f>"] = { "compe#scroll({ 'delta': +4 })", { silent = true, noremap = true, expr = true } },
-          ["<C-d>"] = { "compe#scroll({ 'delta': -4 })", { silent = true, noremap = true, expr = true } },
+          ["<C-Space>"] = {
+            "compe#complete()",
+            { silent = true, noremap = true, expr = true },
+          },
+          ["<C-e>"] = {
+            "compe#close('<C-e>')",
+            { silent = true, noremap = true, expr = true },
+          },
+          ["<C-f>"] = {
+            "compe#scroll({ 'delta': +4 })",
+            { silent = true, noremap = true, expr = true },
+          },
+          ["<C-d>"] = {
+            "compe#scroll({ 'delta': -4 })",
+            { silent = true, noremap = true, expr = true },
+          },
         },
       },
       opts = {

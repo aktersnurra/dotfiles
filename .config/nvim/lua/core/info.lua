@@ -136,10 +136,20 @@ function M.toggle_popup(ft)
 
   local lsp_info = {
     "Associated language-server: " .. client.name,
-    indent .. "* Active: " .. tostring(is_client_active) .. ", id: " .. tostring(client.id),
-    indent .. "* Formatting support: " .. tostring(client.resolved_capabilities.document_formatting),
-    indent .. "* Capabilities list: " .. table.concat(vim.list_slice(client_enabled_caps, 1, num_caps / 2), ", "),
-    indent .. indent .. indent .. table.concat(vim.list_slice(client_enabled_caps, ((num_caps / 2) + 1)), ", "),
+    indent .. "* Active: " .. tostring(is_client_active) .. ", id: " .. tostring(
+      client.id
+    ),
+    indent .. "* Formatting support: " .. tostring(
+      client.resolved_capabilities.document_formatting
+    ),
+    indent .. "* Capabilities list: " .. table.concat(
+      vim.list_slice(client_enabled_caps, 1, num_caps / 2),
+      ", "
+    ),
+    indent .. indent .. indent .. table.concat(
+      vim.list_slice(client_enabled_caps, ((num_caps / 2) + 1)),
+      ", "
+    ),
     "",
   }
   vim.list_extend(buf_lines, lsp_info)
@@ -152,13 +162,19 @@ function M.toggle_popup(ft)
 
   local missing_formatters_status
   if vim.tbl_count(missing_formatters) > 0 then
-    missing_formatters_status = { "Missing formatters: " .. table.concat(missing_formatters, "  , ") .. "  ", "" }
+    missing_formatters_status = {
+      "Missing formatters: " .. table.concat(missing_formatters, "  , ") .. "  ",
+      "",
+    }
     vim.list_extend(buf_lines, missing_formatters_status)
   end
 
   local missing_linters_status
   if vim.tbl_count(missing_linters) > 0 then
-    missing_linters_status = { "Missing linters: " .. table.concat(missing_linters, "  , ") .. "  ", "" }
+    missing_linters_status = {
+      "Missing linters: " .. table.concat(missing_linters, "  , ") .. "  ",
+      "",
+    }
     vim.list_extend(buf_lines, missing_linters_status)
   end
 
@@ -170,9 +186,21 @@ function M.toggle_popup(ft)
     --TODO: highlighting is either inconsistent or not working :\
     vim.cmd("syntax match Identifier /filetype is: .*\\zs\\<" .. ft .. "\\>/")
     vim.cmd("syntax match Identifier /server: .*\\zs\\<" .. client.name .. "\\>/")
-    vim.cmd("syntax match Identifier /providers: .*\\zs\\<" .. table.concat(null_ls_providers, ", ") .. "\\>/")
-    vim.cmd("syntax match Identifier /formatters: .*\\zs\\<" .. table.concat(missing_formatters, ", ") .. "\\>/")
-    vim.cmd("syntax match Identifier /linters: .*\\zs\\<" .. table.concat(missing_linters, ", ") .. "\\>/")
+    vim.cmd(
+      "syntax match Identifier /providers: .*\\zs\\<"
+        .. table.concat(null_ls_providers, ", ")
+        .. "\\>/"
+    )
+    vim.cmd(
+      "syntax match Identifier /formatters: .*\\zs\\<"
+        .. table.concat(missing_formatters, ", ")
+        .. "\\>/"
+    )
+    vim.cmd(
+      "syntax match Identifier /linters: .*\\zs\\<"
+        .. table.concat(missing_linters, ", ")
+        .. "\\>/"
+    )
   end
 
   return M.create_simple_popup(buf_lines, set_syntax_hl)

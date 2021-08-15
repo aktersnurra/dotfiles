@@ -127,11 +127,10 @@ end
 options.lang = {
   asm = {
     formatters = {
-      {
-        -- @usage can be asmfmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "asmfmt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -141,11 +140,10 @@ options.lang = {
   },
   beancount = {
     formatters = {
-      {
-        -- @usage can be bean_format
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "bean_format",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -160,12 +158,14 @@ options.lang = {
   },
   c = {
     formatters = {
-      {
-        -- @usage can be clang_format or uncrustify
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "clang_format",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "uncrustify",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -187,12 +187,14 @@ options.lang = {
   },
   cpp = {
     formatters = {
-      {
-        -- @usage can be clang_format or uncrustify
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "clang_format",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "uncrustify",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -214,11 +216,10 @@ options.lang = {
   },
   crystal = {
     formatters = {
-      {
-        -- @usage can be crystal_format
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "crystal_format",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -233,11 +234,14 @@ options.lang = {
   },
   cs = {
     formatters = {
-      {
-        -- @usage can be clang_format or uncrustify
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "clang_format ",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "uncrustify",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -257,11 +261,10 @@ options.lang = {
   },
   cmake = {
     formatters = {
-      {
-        -- @usage can be cmake_format
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "cmake_format",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -269,7 +272,6 @@ options.lang = {
       setup = {
         cmd = {
           DATA_PATH .. "/lspinstall/cmake/venv/bin/cmake-language-server",
-          "--stdio",
         },
         on_attach = common_on_attach,
         on_init = common_on_init,
@@ -278,10 +280,7 @@ options.lang = {
     },
   },
   clojure = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "clojure_lsp",
@@ -298,11 +297,14 @@ options.lang = {
   },
   css = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -310,7 +312,8 @@ options.lang = {
       setup = {
         cmd = {
           "node",
-          DATA_PATH .. "/lspinstall/css/vscode-css/css-language-features/server/dist/node/cssServerMain.js",
+          DATA_PATH
+            .. "/lspinstall/css/vscode-css/css-language-features/server/dist/node/cssServerMain.js",
           "--stdio",
         },
         on_attach = common_on_attach,
@@ -321,11 +324,14 @@ options.lang = {
   },
   less = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -333,7 +339,8 @@ options.lang = {
       setup = {
         cmd = {
           "node",
-          DATA_PATH .. "/lspinstall/css/vscode-css/css-language-features/server/dist/node/cssServerMain.js",
+          DATA_PATH
+            .. "/lspinstall/css/vscode-css/css-language-features/server/dist/node/cssServerMain.js",
           "--stdio",
         },
         on_attach = common_on_attach,
@@ -344,11 +351,10 @@ options.lang = {
   },
   d = {
     formatters = {
-      {
-        -- @usage can be dfmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "dfmt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -363,12 +369,10 @@ options.lang = {
   },
   dart = {
     formatters = {
-      {
-        -- @usage can be dart_format
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "dart_format",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -386,13 +390,7 @@ options.lang = {
     },
   },
   docker = {
-    formatters = {
-      {
-        exe = "",
-        args = {},
-      },
-      -- @usage can be {"hadolint"}
-    },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "dockerls",
@@ -409,12 +407,10 @@ options.lang = {
   },
   elixir = {
     formatters = {
-      {
-        -- @usage can be mix
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "mix",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -431,12 +427,10 @@ options.lang = {
   },
   elm = {
     formatters = {
-      {
-        -- @usage can be elm_format
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "elm_format",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -458,11 +452,10 @@ options.lang = {
   },
   erlang = {
     formatters = {
-      {
-        -- @usage can be erlfmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "erlfmt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -480,11 +473,10 @@ options.lang = {
   emmet = { active = false },
   fish = {
     formatters = {
-      {
-        -- @usage can be fish_indent
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "fish_indent",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -498,12 +490,18 @@ options.lang = {
   },
   go = {
     formatters = {
-      {
-        -- @usage can be gofmt or goimports or gofumpt
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "gofmt",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "goimports",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "gofumpt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -519,10 +517,7 @@ options.lang = {
     },
   },
   graphql = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "graphql",
@@ -540,10 +535,7 @@ options.lang = {
     },
   },
   haskell = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "hls",
@@ -557,11 +549,14 @@ options.lang = {
   },
   html = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -569,7 +564,8 @@ options.lang = {
       setup = {
         cmd = {
           "node",
-          DATA_PATH .. "/lspinstall/html/vscode-html/html-language-features/server/dist/node/htmlServerMain.js",
+          DATA_PATH
+            .. "/lspinstall/html/vscode-html/html-language-features/server/dist/node/htmlServerMain.js",
           "--stdio",
         },
         on_attach = common_on_attach,
@@ -580,11 +576,14 @@ options.lang = {
   },
   java = {
     formatters = {
-      {
-        -- @usage can be clang_format or uncrustify
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "clang_format",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "uncrustify",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -599,12 +598,18 @@ options.lang = {
   },
   json = {
     formatters = {
-      {
-        -- @usage can be json_tool or prettier or prettierd
-        exe = "",
-        args = {},
-        stdin = true,
-      },
+      -- {
+      --   exe = "json_tool",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -612,7 +617,8 @@ options.lang = {
       setup = {
         cmd = {
           "node",
-          DATA_PATH .. "/lspinstall/json/vscode-json/json-language-features/server/dist/node/jsonServerMain.js",
+          DATA_PATH
+            .. "/lspinstall/json/vscode-json/json-language-features/server/dist/node/jsonServerMain.js",
           "--stdio",
         },
         on_attach = common_on_attach,
@@ -640,10 +646,7 @@ options.lang = {
     },
   },
   julia = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "julials",
@@ -662,10 +665,7 @@ options.lang = {
     },
   },
   kotlin = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "kotlin_language_server",
@@ -689,18 +689,22 @@ options.lang = {
             "build.gradle", -- Gradle
             "build.gradle.kts", -- Gradle
           }
-          return util.root_pattern(unpack(root_files))(fname) or util.root_pattern(unpack(fallback_root_files))(fname)
+          return util.root_pattern(unpack(root_files))(fname)
+            or util.root_pattern(unpack(fallback_root_files))(fname)
         end,
       },
     },
   },
   lua = {
     formatters = {
-      {
-        -- @usage can be stylua or lua_format
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "stylua",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "lua_format",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -728,11 +732,11 @@ options.lang = {
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
-              library = {
-                [vim.fn.expand "~/.config/nvim/lua"] = true,
-                [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-              },
+              -- library = {
+              --  [vim.fn.expand "~/.local/share/lunarvim/options/lua"] = true,
+              --  [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+              --  [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+              --},
               maxPreload = 100000,
               preloadFileSize = 1000,
             },
@@ -743,25 +747,23 @@ options.lang = {
   },
   nginx = {
     formatters = {
-      {
-        -- @usage can be nginx_beautifier
-        exe = "",
-        args = {
-          provider = "",
-          setup = {},
-        },
-      },
+      -- {
+      --   exe = "nginx_beautifier",
+      --   args = {
+      --     provider = "",
+      --     setup = {},
+      --   },
+      -- },
     },
     linters = {},
     lsp = {},
   },
   perl = {
     formatters = {
-      {
-        -- @usage can be perltidy
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "perltidy",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -771,11 +773,10 @@ options.lang = {
   },
   sql = {
     formatters = {
-      {
-        -- @usage can be sqlformat
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "sqlformat",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -787,11 +788,10 @@ options.lang = {
   },
   php = {
     formatters = {
-      {
-        -- @usage can be phpcbf
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "phpcbf",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -815,14 +815,15 @@ options.lang = {
     },
   },
   puppet = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "puppet",
       setup = {
+        cmd = {
+          DATA_PATH .. "/lspinstall/puppet/puppet-editor-services/puppet-languageserver",
+          "--stdio",
+        },
         on_attach = common_on_attach,
         on_init = common_on_init,
         capabilities = common_capabilities,
@@ -830,12 +831,19 @@ options.lang = {
     },
   },
   javascript = {
-    -- @usage can be prettier or prettier_d_slim or prettierd
     formatters = {
-      {
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettier_d_slim",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
     -- @usage can be {"eslint"} or {"eslint_d"}
     linters = {},
@@ -855,13 +863,19 @@ options.lang = {
   },
   javascriptreact = {
     formatters = {
-      {
-        -- @usage can be prettier or prettier_d_slim or prettierd
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettier_d_slim",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
-    -- @usage can be {"eslint"} or {"eslint_d"}
     linters = {},
     lsp = {
       provider = "tsserver",
@@ -879,11 +893,14 @@ options.lang = {
   },
   python = {
     formatters = {
-      {
-        -- @usage can be black or yapf or isort
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "yapf",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "isort",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -903,11 +920,10 @@ options.lang = {
   -- R -e 'install.packages("readr",repos = "http://cran.us.r-project.org")'
   r = {
     formatters = {
-      {
-        -- @usage can be format_r
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "format_r",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -927,11 +943,10 @@ options.lang = {
   },
   ruby = {
     formatters = {
-      {
-        -- @usage can be rufo
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "rufo",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -962,11 +977,10 @@ options.lang = {
   },
   rust = {
     formatters = {
-      {
-        -- @usage can be rustfmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "rustfmt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -983,11 +997,10 @@ options.lang = {
   },
   scala = {
     formatters = {
-      {
-        -- @usage can be scalafmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "scalafmt",
+      --   args = {},
+      -- },
     },
     linters = { "" },
     lsp = {
@@ -1001,11 +1014,10 @@ options.lang = {
   },
   sh = {
     formatters = {
-      {
-        -- @usage can be shfmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "shfmt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -1022,10 +1034,7 @@ options.lang = {
     },
   },
   svelte = {
-    formatters = { {
-      exe = "",
-      args = {},
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "svelte",
@@ -1042,11 +1051,10 @@ options.lang = {
   },
   swift = {
     formatters = {
-      {
-        -- @usage can be swiftformat
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "swiftformat",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -1076,11 +1084,10 @@ options.lang = {
   },
   terraform = {
     formatters = {
-      {
-        -- @usage can be terraform_fmt
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "terraform_fmt",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -1097,14 +1104,7 @@ options.lang = {
     },
   },
   tex = {
-    formatters = {
-      {
-        exe = "",
-        args = {},
-        stdin = false,
-      },
-      -- @usage can be chktex or vale
-    },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "texlab",
@@ -1118,12 +1118,18 @@ options.lang = {
   },
   typescript = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd or prettier_d_slim
-        exe = "",
-        args = {},
-      },
-      -- @usage can be {"eslint"} or {"eslint_d"}
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettier_d_slim",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -1142,11 +1148,18 @@ options.lang = {
   },
   typescriptreact = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd or prettier_d_slim
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettier_d_slim",
+      --   args = {},
+      -- },
     },
     -- @usage can be {"eslint"} or {"eslint_d"}
     linters = {},
@@ -1165,13 +1178,7 @@ options.lang = {
     },
   },
   vim = {
-    formatters = {
-      {
-        exe = "",
-        args = {},
-      },
-    },
-    -- @usage can be {"vint"}
+    formatters = {},
     linters = { "" },
     lsp = {
       provider = "vimls",
@@ -1188,13 +1195,19 @@ options.lang = {
   },
   vue = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd or prettier_d_slim
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettier_d_slim",
+      --   args = {},
+      -- },
     },
-    -- @usage can be {"eslint"} or {"eslint_d"}
     linters = {},
     lsp = {
       provider = "vuels",
@@ -1210,11 +1223,14 @@ options.lang = {
   },
   yaml = {
     formatters = {
-      {
-        -- @usage can be prettier or prettierd
-        exe = "",
-        args = {},
-      },
+      -- {
+      --   exe = "prettier",
+      --   args = {},
+      -- },
+      -- {
+      --   exe = "prettierd",
+      --   args = {},
+      -- },
     },
     linters = {},
     lsp = {
@@ -1231,11 +1247,7 @@ options.lang = {
     },
   },
   zig = {
-    formatters = { {
-      exe = "",
-      args = {},
-      stdin = false,
-    } },
+    formatters = {},
     linters = {},
     lsp = {
       provider = "zls",

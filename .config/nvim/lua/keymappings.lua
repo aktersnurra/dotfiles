@@ -16,6 +16,7 @@ local mode_adapters = {
   term_mode = "t",
   visual_mode = "v",
   visual_block_mode = "x",
+  command_mode = "c",
 }
 
 -- Append key mappings to lunarvim's defaults for a given mode
@@ -80,8 +81,14 @@ function M.config()
       ["<A-Right>"] = "<C-\\><C-N><C-w>l",
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
-      ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
-      ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+      ["<C-j>"] = {
+        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
+        { expr = true, noremap = true },
+      },
+      ["<C-k>"] = {
+        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
+        { expr = true, noremap = true },
+      },
     },
 
     ---@usage change or add keymappings for normal mode
@@ -141,13 +148,26 @@ function M.config()
       ["<A-j>"] = ":m '>+1<CR>gv-gv",
       ["<A-k>"] = ":m '<-2<CR>gv-gv",
     },
+    ---@usage change or add keymappings for command mode
+    command_mode = {
+      -- navigate tab completion with <c-j> and <c-k>
+      -- runs conditionally
+      ["<C-j>"] = {
+        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
+        { expr = true, noremap = true },
+      },
+      ["<C-k>"] = {
+        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
+        { expr = true, noremap = true },
+      },
+    },
   }
 
   if vim.fn.has "mac" == 1 then
-    lvim.keys.normal_mode["<A-Up>"] = lvim.keys.normal_mode["<C-Up>"]
-    lvim.keys.normal_mode["<A-Down>"] = lvim.keys.normal_mode["<C-Down>"]
-    lvim.keys.normal_mode["<A-Left>"] = lvim.keys.normal_mode["<C-Left>"]
-    lvim.keys.normal_mode["<A-Right>"] = lvim.keys.normal_mode["<C-Right>"]
+    options.keys.normal_mode["<A-Up>"] = options.keys.normal_mode["<C-Up>"]
+    options.keys.normal_mode["<A-Down>"] = options.keys.normal_mode["<C-Down>"]
+    options.keys.normal_mode["<A-Left>"] = options.keys.normal_mode["<C-Left>"]
+    options.keys.normal_mode["<A-Right>"] = options.keys.normal_mode["<C-Right>"]
     if Log:get_default() then
       Log:get_default().info "Activated mac keymappings"
     end

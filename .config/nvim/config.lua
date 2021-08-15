@@ -1,6 +1,6 @@
 -- general
 options.format_on_save = true
-options.colorscheme = 'dark'
+options.colorscheme = "dark"
 vim.opt.wrap = false
 
 -- Keymappings
@@ -16,30 +16,42 @@ require("extra.json_schemas").setup()
 options.builtin.dashboard.active = true
 options.builtin.terminal.active = true
 options.builtin.rooter.active = true
-options.builtin.bufferline.active = true
+options.builtin.bufferline.active = false
 options.builtin.nvimtree.active = true
 
 -- Whichkey
 options.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
-options.builtin.which_key.mappings.l.R = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
+options.builtin.which_key.mappings.l.R = {
+  "<cmd>TroubleToggle lsp_references<cr>",
+  "References",
+}
 options.builtin.which_key.mappings.l.o = { "<cmd>SymbolsOutline<cr>", "Outline" }
-options.builtin.which_key.mappings.T.h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" }
+options.builtin.which_key.mappings.T.h = {
+  "<cmd>TSHighlightCapturesUnderCursor<cr>",
+  "Highlight",
+}
 options.builtin.which_key.mappings.T.p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
 options.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<cr>", "Zen" }
 options.builtin.which_key.mappings["r"] = {
   name = "Replace",
   r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-  w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  w = {
+    "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+    "Replace Word",
+  },
   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
 }
-options.builtin.which_key.mappings.f = { "<cmd>lua require('lir.float').toggle()<cr>", "Files" }
+options.builtin.which_key.mappings.f = {
+  "<cmd>lua require('lir.float').toggle()<cr>",
+  "Files",
+}
 
 options.builtin.nvimtree.auto_open = 0
 
 -- Treesitter
 options.builtin.treesitter.ensure_installed = "maintained"
-options.builtin.treesitter.autotag.enable = true
-options.builtin.treesitter.playground.enable = true
+options.builtin.treesitter.autotag.enable = false
+options.builtin.treesitter.playground.enable = false
 
 -- Formatters
 -- python
@@ -57,11 +69,12 @@ options.lang.python.linters = {
   },
 }
 
+options.lang.python.lsp.on_attach = nil
+
 -- lua
 options.lang.lua.formatters = {
   {
     exe = "stylua",
-    args = {},
   },
 }
 
@@ -72,7 +85,6 @@ options.lang.json.formatters = {
     args = {},
   },
 }
-
 
 options.plugins = {
   {
@@ -180,5 +192,4 @@ options.plugins = {
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
-
 }

@@ -156,8 +156,14 @@ M.config = function()
         p = {
           name = "Peek",
           d = { "<cmd>lua require('lsp.peek').Peek('definition')<cr>", "Definition" },
-          t = { "<cmd>lua require('lsp.peek').Peek('typeDefinition')<cr>", "Type Definition" },
-          i = { "<cmd>lua require('lsp.peek').Peek('implementation')<cr>", "Implementation" },
+          t = {
+            "<cmd>lua require('lsp.peek').Peek('typeDefinition')<cr>",
+            "Type Definition",
+          },
+          i = {
+            "<cmd>lua require('lsp.peek').Peek('implementation')<cr>",
+            "Implementation",
+          },
         },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
@@ -169,7 +175,10 @@ M.config = function()
       },
       I = {
         name = "+nvim",
-        k = { "<cmd>lua require('keymappings').print()<cr>", "View nvim's default keymappings" },
+        k = {
+          "<cmd>lua require('keymappings').print()<cr>",
+          "View nvim's default keymappings",
+        },
         i = {
           "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>",
           "Toggle nvim Info",

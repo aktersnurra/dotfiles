@@ -1,10 +1,14 @@
 local M = {}
 local Log = require "core.log"
+
 function M.config()
   vim.lsp.protocol.CompletionItemKind = options.lsp.completion.item_kind
 
   for _, sign in ipairs(options.lsp.diagnostics.signs.values) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+    vim.fn.sign_define(
+      sign.name,
+      { texthl = sign.name, text = sign.text, numhl = sign.name }
+    )
   end
 
   require("lsp.handlers").setup()
@@ -107,10 +111,18 @@ function M.common_on_init(client, bufnr)
   end
 
   local formatters = options.lang[vim.bo.filetype].formatters
-  if not vim.tbl_isempty(formatters) and formatters[1]["exe"] ~= nil and formatters[1].exe ~= "" then
+  if
+    not vim.tbl_isempty(formatters)
+    and formatters[1]["exe"] ~= nil
+    and formatters[1].exe ~= ""
+  then
     client.resolved_capabilities.document_formatting = false
     Log:get_default().info(
-      string.format("Overriding language server [%s] with format provider [%s]", client.name, formatters[1].exe)
+      string.format(
+        "Overriding language server [%s] with format provider [%s]",
+        client.name,
+        formatters[1].exe
+      )
     )
   end
 end
@@ -127,21 +139,23 @@ function M.common_on_attach(client, bufnr)
 end
 
 function M.setup(lang)
+  local lsp_utils = require "lsp.utils"
   local lsp = options.lang[lang].lsp
-  if require("utils").check_lsp_client_active(lsp.provider) then
+  if lsp_utils.is_client_active(lsp.provider) then
     return
   end
 
   local overrides = options.lsp.override
-
   if type(overrides) == "table" then
     if vim.tbl_contains(overrides, lang) then
       return
     end
   end
 
-  local lspconfig = require "lspconfig"
-  lspconfig[lsp.provider].setup(lsp.setup)
+  if lsp.provider ~= nil and lsp.provider ~= "" then
+    local lspconfig = require "lspconfig"
+    lspconfig[lsp.provider].setup(lsp.setup)
+  end
 end
 
 return M
