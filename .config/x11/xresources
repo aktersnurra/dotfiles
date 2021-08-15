@@ -3,15 +3,15 @@ xterm*disallowedWindowOps: 20,21,SetXProp
 /* *.font:	Monospace:pixelsize=25:antialias=true:autohint=true; */
 /* *.fontalt0:Braille:pixelsize=24:antialias=true:autohint=true; */
 /* *.fontalt1:JoyPixels:pixelsize=24:antialias=true:autohint=true; */
+! *.termname: st-256color
 
 ! colors
 
 ! special
-*.foreground:   #F5F5F5
-/* background set the cursor apperently */
-*.background:   #D0D0D0   
-/* *.cursorColor:  #D0D0D0 */
-*.revCursorColor:  #151515
+
+*.background: #0A0A0A
+*.foreground: white
+*.cursorColor: white
 
 ! black
 *.color0:       #0A0A0A
