@@ -101,14 +101,6 @@ options.plugins = {
   },
 
   {
-    "folke/twilight.nvim",
-    config = function()
-      require("extra.twilight").config()
-    end,
-    -- cmd = "ZenMode",
-  },
-
-  {
     "nacro90/numb.nvim",
     event = "BufRead",
     config = function()
