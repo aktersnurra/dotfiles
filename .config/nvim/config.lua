@@ -13,11 +13,15 @@ options.lsp.diagnostics.virtual_text = false
 require("extra.json_schemas").setup()
 
 -- After changing plugin config it is recommended to run :PackerCompile
+options.builtin.compe.active = true
+options.builtin.autopairs.active = false
 options.builtin.dashboard.active = true
 options.builtin.terminal.active = true
-options.builtin.rooter.active = true
-options.builtin.bufferline.active = false
+options.builtin.telescope.active = true
+options.builtin.bufferline.active = true
 options.builtin.nvimtree.active = true
+options.builtin.lualine.active = true
+options.builtin.lualine.style = "clean"
 
 -- Whichkey
 options.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }

@@ -1,13 +1,19 @@
 local M = {}
-local Log = require "core.log"
-M.config = function()
+
+function M.config()
+  -- Define this minimal config so that it's available if telescope is not yet available.
+  options.builtin.telescope = {
+    ---@usage disable telescope completely [not recommeded]
+    active = true,
+    on_config_done = nil,
+  }
+
   local status_ok, actions = pcall(require, "telescope.actions")
   if not status_ok then
     return
   end
 
-  options.builtin.telescope = {
-    active = false,
+  options.builtin.telescope = vim.tbl_extend("force", options.builtin.telescope, {
     defaults = {
       find_command = {
         "rg",
@@ -82,16 +88,20 @@ M.config = function()
         override_file_sorter = true,
       },
     },
-  }
+  })
 end
 
-M.setup = function()
-  local status_ok, telescope = pcall(require, "telescope")
-  if not status_ok then
-    Log:get_default().error "Failed to load telescope"
-    return
-  end
+function M.setup()
+  local telescope = require "telescope"
+
   telescope.setup(options.builtin.telescope)
+  if options.builtin.project.active then
+    telescope.load_extension "projects"
+  end
+
+  if options.builtin.telescope.on_config_done then
+    options.builtin.telescope.on_config_done(telescope)
+  end
 end
 
 return M

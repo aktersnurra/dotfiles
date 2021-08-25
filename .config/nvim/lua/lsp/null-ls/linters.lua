@@ -66,7 +66,7 @@ function M.list_configured(linter_configs)
 end
 
 function M.setup(filetype, option)
-  if linters_by_ft[filetype] and not option.force_reload then
+  if not options.lang[filetype] or (linters_by_ft[filetype] and not option.force_reload) then
     return
   end
 

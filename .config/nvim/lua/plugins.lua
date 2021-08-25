@@ -8,13 +8,11 @@ return {
     "kabouzeid/nvim-lspinstall",
     event = "VimEnter",
     config = function()
-      local lspinstall = require "lspinstall"
+      local lspinstall = require "core.lspinstall"
       lspinstall.setup()
-      if options.builtin.lspinstall.on_config_done then
-        options.builtin.lspinstall.on_config_done(lspinstall)
-      end
     end,
   },
+
 
   { "nvim-lua/popup.nvim" },
   { "nvim-lua/plenary.nvim" },
@@ -24,49 +22,40 @@ return {
     "nvim-telescope/telescope.nvim",
     config = function()
       require("core.telescope").setup()
-      if options.builtin.telescope.on_config_done then
-        options.builtin.telescope.on_config_done(require "telescope")
-      end
     end,
+    disable = not options.builtin.telescope.active,
   },
 
-  -- Autocomplete
   {
-    "hrsh7th/nvim-compe",
-    -- event = "InsertEnter",
-    config = function()
-      require("core.compe").setup()
-      if options.builtin.compe.on_config_done then
-        options.builtin.compe.on_config_done(require "compe")
-      end
-    end,
+    "hrsh7th/vim-vsnip",
+    -- wants = "friendly-snippets",
+    event = "InsertEnter",
+    disable = not options.builtin.compe.active,
+  },
+  {
+    "rafamadriz/friendly-snippets",
+    event = "InsertCharPre",
+    disable = not options.builtin.compe.active,
   },
 
   -- Autopairs
   {
     "windwp/nvim-autopairs",
     -- event = "InsertEnter",
+    after = "nvim-compe",
     config = function()
-      require "core.autopairs"
-      if options.builtin.autopairs.on_config_done then
-        options.builtin.autopairs.on_config_done(require "nvim-autopairs")
-      end
+      require("core.autopairs").setup()
     end,
+    disable = not options.builtin.autopairs.active or not options.builtin.compe.active,
   },
-
-  -- Snippets
-
-  { "hrsh7th/vim-vsnip", event = "InsertEnter" },
-  { "rafamadriz/friendly-snippets", event = "InsertEnter" },
 
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "0.5-compat",
+    -- run = ":TSUpdate",
     config = function()
       require("core.treesitter").setup()
-      if options.builtin.treesitter.on_config_done then
-        options.builtin.treesitter.on_config_done(require "nvim-treesitter.configs")
-      end
     end,
   },
 
@@ -78,33 +67,27 @@ return {
     -- commit = "fd7f60e242205ea9efc9649101c81a07d5f458bb",
     config = function()
       require("core.nvimtree").setup()
-      if options.builtin.nvimtree.on_config_done then
-        options.builtin.nvimtree.on_config_done(require "nvim-tree.config")
-      end
     end,
+    disable = not options.builtin.nvimtree.active,
   },
-
   {
     "lewis6991/gitsigns.nvim",
+
     config = function()
       require("core.gitsigns").setup()
-      if options.builtin.gitsigns.on_config_done then
-        options.builtin.gitsigns.on_config_done(require "gitsigns")
-      end
     end,
     event = "BufRead",
+    disable = not options.builtin.gitsigns.active,
   },
 
-  -- whichkey
+  -- Whichkey
   {
     "folke/which-key.nvim",
     config = function()
       require("core.which-key").setup()
-      if options.builtin.which_key.on_config_done then
-        options.builtin.which_key.on_config_done(require "which-key")
-      end
     end,
     event = "BufWinEnter",
+    disable = not options.builtin.which_key.active,
   },
 
   -- Comments
@@ -112,26 +95,18 @@ return {
     "terrortylor/nvim-comment",
     event = "BufRead",
     config = function()
-      local status_ok, nvim_comment = pcall(require, "nvim_comment")
-      if not status_ok then
-        local Log = require "core.log"
-        Log:get_default().error "Failed to load nvim-comment"
-        return
-      end
-      nvim_comment.setup()
-      if options.builtin.comment.on_config_done then
-        options.builtin.comment.on_config_done(nvim_comment)
-      end
+      require("nvim_comment").setup()
     end,
+    disable = not options.builtin.comment.active,
   },
 
+  -- project.nvim
   {
-    "ahmedkhalf/lsp-rooter.nvim",
+    "ahmedkhalf/project.nvim",
     config = function()
-      if options.builtin.rooter.on_config_done then
-        options.builtin.rooter.on_config_done()
-      end
+      require("core.project").setup()
     end,
+    disable = not options.builtin.project.active,
   },
 
   -- Icons
@@ -139,26 +114,22 @@ return {
 
   -- Status Line and Bufferline
   {
-    "glepnir/galaxyline.nvim",
+    -- "hoob3rt/lualine.nvim",
+    "shadmansaleh/lualine.nvim",
+    -- "Lunarvim/lualine.nvim",
     config = function()
-      require "core.galaxyline"
-      if options.builtin.galaxyline.on_config_done then
-        options.builtin.galaxyline.on_config_done(require "galaxyline")
-      end
+      require("core.lualine").setup()
     end,
-    event = "BufWinEnter",
-    disable = not options.builtin.galaxyline.active,
+    disable = not options.builtin.lualine.active,
   },
 
   {
     "romgrk/barbar.nvim",
     config = function()
-      require "core.bufferline"
-      if options.builtin.bufferline.on_config_done then
-        options.builtin.bufferline.on_config_done()
-      end
+      require("core.bufferline").setup()
     end,
     event = "BufWinEnter",
+    disable = not options.builtin.bufferline.active,
   },
 
   -- Debugging
@@ -167,9 +138,6 @@ return {
     -- event = "BufWinEnter",
     config = function()
       require("core.dap").setup()
-      if options.builtin.dap.on_config_done then
-        options.builtin.dap.on_config_done(require "dap")
-      end
     end,
     disable = not options.builtin.dap.active,
   },
@@ -182,30 +150,23 @@ return {
     disable = not options.builtin.dap.active,
   },
 
-  -- Builtins, these do not load by default
-
   -- Dashboard
   {
     "ChristianChiarulli/dashboard-nvim",
     event = "BufWinEnter",
     config = function()
       require("core.dashboard").setup()
-      if options.builtin.dashboard.on_config_done then
-        options.builtin.dashboard.on_config_done(require "dashboard")
-      end
     end,
     disable = not options.builtin.dashboard.active,
   },
 
+  -- Terminal
   {
     "akinsho/nvim-toggleterm.lua",
     event = "BufWinEnter",
     config = function()
       require("core.terminal").setup()
-      if options.builtin.terminal.on_config_done then
-        options.builtin.terminal.on_config_done(require "toggleterm")
-      end
     end,
     disable = not options.builtin.terminal.active,
   },
-}
+  }

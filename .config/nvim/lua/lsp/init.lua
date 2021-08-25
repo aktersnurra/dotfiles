@@ -5,10 +5,7 @@ function M.config()
   vim.lsp.protocol.CompletionItemKind = options.lsp.completion.item_kind
 
   for _, sign in ipairs(options.lsp.diagnostics.signs.values) do
-    vim.fn.sign_define(
-      sign.name,
-      { texthl = sign.name, text = sign.text, numhl = sign.name }
-    )
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
   require("lsp.handlers").setup()
@@ -37,7 +34,11 @@ local function lsp_highlight_document(client)
 end
 
 local function add_lsp_buffer_keybindings(bufnr)
-  local wk = require "which-key"
+  local status_ok, wk = pcall(require, "which-key")
+  if not status_ok then
+    return
+  end
+
   local keys = {
     ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
@@ -52,14 +53,6 @@ local function add_lsp_buffer_keybindings(bufnr)
     },
   }
   wk.register(keys, { mode = "n", buffer = bufnr })
-end
-
-local function set_smart_cwd(client)
-  local proj_dir = client.config.root_dir
-  if options.lsp.smart_cwd and proj_dir ~= "/" then
-    vim.api.nvim_set_current_dir(proj_dir)
-    require("core.nvimtree").change_tree_dir(proj_dir)
-  end
 end
 
 function M.common_capabilities()
@@ -111,18 +104,10 @@ function M.common_on_init(client, bufnr)
   end
 
   local formatters = options.lang[vim.bo.filetype].formatters
-  if
-    not vim.tbl_isempty(formatters)
-    and formatters[1]["exe"] ~= nil
-    and formatters[1].exe ~= ""
-  then
+  if not vim.tbl_isempty(formatters) and formatters[1]["exe"] ~= nil and formatters[1].exe ~= "" then
     client.resolved_capabilities.document_formatting = false
     Log:get_default().info(
-      string.format(
-        "Overriding language server [%s] with format provider [%s]",
-        client.name,
-        formatters[1].exe
-      )
+      string.format("Overriding language server [%s] with format provider [%s]", client.name, formatters[1].exe)
     )
   end
 end
@@ -134,7 +119,6 @@ function M.common_on_attach(client, bufnr)
   end
   lsp_highlight_document(client)
   add_lsp_buffer_keybindings(bufnr)
-  set_smart_cwd(client)
   require("lsp.null-ls").setup(vim.bo.filetype)
 end
 
@@ -154,6 +138,17 @@ function M.setup(lang)
 
   if lsp.provider ~= nil and lsp.provider ~= "" then
     local lspconfig = require "lspconfig"
+
+    if not lsp.setup.on_attach then
+      lsp.setup.on_attach = M.common_on_attach
+    end
+    if not lsp.setup.on_init then
+      lsp.setup.on_init = M.common_on_init
+    end
+    if not lsp.setup.capabilities then
+      lsp.setup.capabilities = M.common_capabilities()
+    end
+
     lspconfig[lsp.provider].setup(lsp.setup)
   end
 end

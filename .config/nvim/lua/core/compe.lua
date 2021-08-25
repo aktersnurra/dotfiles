@@ -1,8 +1,9 @@
 local M = {}
-local Log = require "core.log"
+
 M.config = function()
   options.builtin.compe = {
-    enabled = true,
+    active = true,
+    on_config_done = nil,
     autocomplete = true,
     debug = false,
     min_length = 1,
@@ -73,11 +74,7 @@ end
 M.setup = function()
   vim.g.vsnip_snippet_dir = options.vsnip_dir
 
-  local status_ok, compe = pcall(require, "compe")
-  if not status_ok then
-    Log:get_default().error "Failed to load compe"
-    return
-  end
+  local compe = require "compe"
 
   compe.setup(options.builtin.compe)
 
@@ -94,6 +91,17 @@ M.setup = function()
     end
   end
 
+  local is_emmet_active = function()
+    local clients = vim.lsp.buf_get_clients()
+
+    for _, client in pairs(clients) do
+      if client.name == "emmet_ls" then
+        return true
+      end
+    end
+    return false
+  end
+
   -- Use (s-)tab to:
   --- move to prev/next item in completion menuone
   --- jump to prev/next snippet's placeholder
@@ -104,8 +112,9 @@ M.setup = function()
       return t "<Plug>(vsnip-jump-next)"
     elseif check_back_space() then
       return t "<Tab>"
+    elseif is_emmet_active() then
+      return vim.fn["compe#complete"]()
     else
-      -- return vim.fn["compe#complete"]() -- < use this if you want <tab> to always offer completion
       return t "<Tab>"
     end
   end
@@ -127,6 +136,10 @@ M.setup = function()
   vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
   vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
   vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+
+  if options.builtin.compe.on_config_done then
+    options.builtin.compe.on_config_done(compe)
+  end
 end
 
 return M

@@ -1,4 +1,5 @@
 local M = {}
+local Log = require "core.log"
 
 local generic_opts_any = { noremap = true, silent = true }
 
@@ -7,6 +8,7 @@ local generic_opts = {
   normal_mode = generic_opts_any,
   visual_mode = generic_opts_any,
   visual_block_mode = generic_opts_any,
+  command_mode = generic_opts_any,
   term_mode = { silent = true },
 }
 
@@ -81,14 +83,8 @@ function M.config()
       ["<A-Right>"] = "<C-\\><C-N><C-w>l",
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
-      ["<C-j>"] = {
-        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
-        { expr = true, noremap = true },
-      },
-      ["<C-k>"] = {
-        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
-        { expr = true, noremap = true },
-      },
+      ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
+      ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
     },
 
     ---@usage change or add keymappings for normal mode
@@ -148,18 +144,13 @@ function M.config()
       ["<A-j>"] = ":m '>+1<CR>gv-gv",
       ["<A-k>"] = ":m '<-2<CR>gv-gv",
     },
+
     ---@usage change or add keymappings for command mode
     command_mode = {
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
-      ["<C-j>"] = {
-        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
-        { expr = true, noremap = true },
-      },
-      ["<C-k>"] = {
-        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
-        { expr = true, noremap = true },
-      },
+      ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
+      ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
     },
   }
 

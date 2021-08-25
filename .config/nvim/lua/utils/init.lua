@@ -46,7 +46,7 @@ end
 
 function utils.generate_settings()
   -- Opens a file in append mode
-  local file = io.open("settings.lua", "w")
+  local file = io.open("lv-settings.lua", "w")
 
   -- sets the default output file as test.lua
   io.output(file)
@@ -88,9 +88,12 @@ function utils.toggle_autoformat()
 end
 
 function utils.reload_config()
-  vim.cmd "source ~/.config/nvim/lua/settings.lua"
-  vim.cmd("source " .. USER_CONFIG_PATH)
-  require("keymappings").setup()
+  require("core.lualine").config()
+
+  local config = require "config"
+  config:load()
+
+  require("keymappings").setup() -- this should be done before loading the plugins
   vim.cmd "source ~/.config/nvim/lua/plugins.lua"
   local plugins = require "plugins"
   local plugin_loader = require("plugin-loader").init()
@@ -129,3 +132,5 @@ function utils.is_file(filename)
 end
 
 return utils
+
+-- TODO: find a new home for these autocommands

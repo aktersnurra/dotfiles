@@ -10,11 +10,7 @@ function Log:new(opts)
   end
 
   local obj = require("plenary.log").new(opts)
-  local path = string.format(
-    "%s/%s.log",
-    vim.api.nvim_call_function("stdpath", { "cache" }),
-    opts.plugin
-  )
+  local path = string.format("%s/%s.log", vim.api.nvim_call_function("stdpath", { "cache" }), opts.plugin)
 
   obj.get_path = function()
     return path
@@ -27,7 +23,7 @@ end
 --- based on Plenary.log
 ---@return log handle
 function Log:get_default()
-  return Log:new { plugin = "nvim", level = options.log.level }
+  return Log:new { plugin = "lunarvim", level = options.log.level }
 end
 
 return Log

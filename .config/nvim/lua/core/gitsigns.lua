@@ -1,5 +1,6 @@
 local M = {}
 local Log = require "core.log"
+
 M.config = function()
   options.builtin.gitsigns = {
     signs = {

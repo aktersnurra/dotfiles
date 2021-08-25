@@ -66,7 +66,7 @@ function M.list_configured(formatter_configs)
 end
 
 function M.setup(filetype, option)
-  if formatters_by_ft[filetype] and not option.force_reload then
+  if not options.lang[filetype] or (formatters_by_ft[filetype] and not option.force_reload) then
     return
   end
 
