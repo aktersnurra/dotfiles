@@ -14,7 +14,7 @@ require("extra.json_schemas").setup()
 
 -- After changing plugin config it is recommended to run :PackerCompile
 options.builtin.compe.active = true
-options.builtin.autopairs.active = false
+options.builtin.autopairs.active = true
 options.builtin.dashboard.active = true
 options.builtin.terminal.active = true
 options.builtin.telescope.active = true

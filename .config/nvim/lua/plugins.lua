@@ -13,7 +13,6 @@ return {
     end,
   },
 
-
   { "nvim-lua/popup.nvim" },
   { "nvim-lua/plenary.nvim" },
 
@@ -25,7 +24,15 @@ return {
     end,
     disable = not options.builtin.telescope.active,
   },
-
+  -- Completion & Snippets
+  {
+    "hrsh7th/nvim-compe",
+    event = "InsertEnter",
+    config = function()
+      require("core.compe").setup()
+    end,
+    disable = not options.builtin.compe.active,
+  },
   {
     "hrsh7th/vim-vsnip",
     -- wants = "friendly-snippets",
@@ -169,4 +176,4 @@ return {
     end,
     disable = not options.builtin.terminal.active,
   },
-  }
+}
