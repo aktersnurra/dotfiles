@@ -1,3 +1,4 @@
+local home_dir = vim.loop.os_homedir()
 CONFIG_PATH = vim.fn.stdpath "config"
 DATA_PATH = vim.fn.stdpath "data"
 CACHE_PATH = vim.fn.stdpath "cache"
@@ -11,7 +12,7 @@ options = {
   line_wrap_cursor_movement = true,
   transparent_window = false,
   format_on_save = true,
-  vsnip_dir = os.getenv "HOME" .. "/.config/snippets",
+  vsnip_dir = home_dir .. "/.config/snippets",
   database = { save_location = "~/.config/nvim_db", auto_execute = 1 },
   keys = {},
 
@@ -336,7 +337,7 @@ options.lang = {
       },
     },
   },
-  docker = {
+  dockerfile = {
     formatters = {},
     linters = {},
     lsp = {
@@ -953,15 +954,16 @@ options.lang = {
     },
   },
   tailwindcss = {
-    active = false,
-    filetypes = {
-      "html",
-      "css",
-      "scss",
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
+    lsp = {
+      active = false,
+      provider = "tailwindcss",
+      setup = {
+        cmd = {
+          DATA_PATH
+            .. "/lspinstall/tailwindcss/node_modules/.bin/tailwindcss-language-server",
+          "--stdio",
+        },
+      },
     },
   },
   terraform = {

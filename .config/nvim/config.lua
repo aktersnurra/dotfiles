@@ -10,7 +10,7 @@ options.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
 
 -- LSP
 options.lsp.diagnostics.virtual_text = false
-require("extra.json_schemas").setup()
+-- require("extra.json_schemas").setup()
 
 -- After changing plugin config it is recommended to run :PackerCompile
 options.builtin.compe.active = true

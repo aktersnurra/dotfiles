@@ -4,6 +4,7 @@ return {
   { "neovim/nvim-lspconfig" },
   { "tamago324/nlsp-settings.nvim" },
   { "jose-elias-alvarez/null-ls.nvim" },
+  { "antoinemadec/FixCursorHold.nvim" }, -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   {
     "kabouzeid/nvim-lspinstall",
     event = "VimEnter",
@@ -102,7 +103,7 @@ return {
     "terrortylor/nvim-comment",
     event = "BufRead",
     config = function()
-      require("nvim_comment").setup()
+      require("core.comment").setup()
     end,
     disable = not options.builtin.comment.active,
   },
@@ -169,7 +170,7 @@ return {
 
   -- Terminal
   {
-    "akinsho/nvim-toggleterm.lua",
+    "akinsho/toggleterm.nvim",
     event = "BufWinEnter",
     config = function()
       require("core.terminal").setup()

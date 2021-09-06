@@ -70,9 +70,7 @@ function utils.toggle_autoformat()
         },
       },
     }
-    if Log:get_default() then
-      Log:get_default().info "Format on save active"
-    end
+    Log:debug "Format on save active"
   end
 
   if not options.format_on_save then
@@ -81,9 +79,7 @@ function utils.toggle_autoformat()
         :autocmd! autoformat
       endif
     ]]
-    if Log:get_default() then
-      Log:get_default().info "Format on save off"
-    end
+    Log:debug "Format on save off"
   end
 end
 
@@ -104,7 +100,7 @@ function utils.reload_config()
   -- vim.cmd ":PackerClean"
   local null_ls = require "lsp.null-ls"
   null_ls.setup(vim.bo.filetype, { force_reload = true })
-  Log:get_default().info "Reloaded configuration"
+  Log:info "Reloaded configuration"
 end
 
 function utils.unrequire(m)
@@ -132,5 +128,3 @@ function utils.is_file(filename)
 end
 
 return utils
-
--- TODO: find a new home for these autocommands

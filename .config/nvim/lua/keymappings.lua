@@ -83,8 +83,14 @@ function M.config()
       ["<A-Right>"] = "<C-\\><C-N><C-w>l",
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
-      ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
-      ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+      ["<C-j>"] = {
+        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
+        { expr = true, noremap = true },
+      },
+      ["<C-k>"] = {
+        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
+        { expr = true, noremap = true },
+      },
     },
 
     ---@usage change or add keymappings for normal mode
@@ -149,8 +155,14 @@ function M.config()
     command_mode = {
       -- navigate tab completion with <c-j> and <c-k>
       -- runs conditionally
-      ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
-      ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
+      ["<C-j>"] = {
+        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
+        { expr = true, noremap = true },
+      },
+      ["<C-k>"] = {
+        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
+        { expr = true, noremap = true },
+      },
     },
   }
 
@@ -159,9 +171,7 @@ function M.config()
     options.keys.normal_mode["<A-Down>"] = options.keys.normal_mode["<C-Down>"]
     options.keys.normal_mode["<A-Left>"] = options.keys.normal_mode["<C-Left>"]
     options.keys.normal_mode["<A-Right>"] = options.keys.normal_mode["<C-Right>"]
-    if Log:get_default() then
-      Log:get_default().info "Activated mac keymappings"
-    end
+    Log:debug "Activated mac keymappings"
   end
 end
 
