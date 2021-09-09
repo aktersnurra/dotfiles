@@ -13,7 +13,6 @@ options.lsp.diagnostics.virtual_text = false
 -- require("extra.json_schemas").setup()
 
 -- After changing plugin config it is recommended to run :PackerCompile
-options.builtin.compe.active = true
 options.builtin.autopairs.active = true
 options.builtin.dashboard.active = true
 options.builtin.terminal.active = true
