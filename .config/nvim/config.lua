@@ -10,7 +10,7 @@ options.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
 
 -- LSP
 options.lsp.diagnostics.virtual_text = false
--- require("extra.json_schemas").setup()
+require("extra.json_schemas").setup()
 
 -- After changing plugin config it is recommended to run :PackerCompile
 options.builtin.autopairs.active = true
@@ -48,6 +48,8 @@ options.builtin.which_key.mappings.f = {
   "<cmd>lua require('lir.float').toggle()<cr>",
   "Files",
 }
+options.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "Vertical Split" }
+options.builtin.which_key.mappings.h = { "<cmd>split<cr>", "Horizontal Split" }
 
 options.builtin.nvimtree.auto_open = 0
 
@@ -119,13 +121,13 @@ options.plugins = {
     end,
   },
 
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("extra.lsp_signature").config()
-    end,
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("extra.lsp_signature").config()
+  --   end,
+  -- },
 
   {
     "unblevable/quick-scope",
