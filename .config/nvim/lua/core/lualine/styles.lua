@@ -12,8 +12,8 @@ styles.clean = {
   style = "lvim",
   options = {
     icons_enabled = true,
-    component_separators = "",
-    section_separators = "",
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
   },
   sections = {
@@ -59,8 +59,8 @@ styles.none = {
   style = "none",
   options = {
     icons_enabled = true,
-    component_separators = "",
-    section_separators = "",
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     disabled_filetypes = {},
   },
   sections = {
@@ -115,8 +115,8 @@ styles.lvim = {
   style = "lvim",
   options = {
     icons_enabled = true,
-    component_separators = "",
-    section_separators = "",
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     disabled_filetypes = { "dashboard" },
   },
   sections = {
