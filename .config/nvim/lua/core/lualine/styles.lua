@@ -5,10 +5,10 @@ local styles = {
   lvim = nil,
   default = nil,
   none = nil,
-  coal = nil,
+  dark = nil,
 }
 
-styles.coal = {
+styles.dark = {
   style = "lvim",
   options = {
     icons_enabled = true,

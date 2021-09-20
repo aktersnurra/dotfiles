@@ -1,6 +1,6 @@
 -- general
 options.format_on_save = true
-options.colorscheme = "coal"
+options.colorscheme = "dark"
 vim.opt.wrap = false
 
 -- Keymappings
@@ -20,7 +20,7 @@ options.builtin.telescope.active = true
 options.builtin.bufferline.active = true
 options.builtin.nvimtree.active = true
 options.builtin.lualine.active = true
-options.builtin.lualine.style = "coal"
+options.builtin.lualine.style = "dark"
 
 -- Whichkey
 options.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
