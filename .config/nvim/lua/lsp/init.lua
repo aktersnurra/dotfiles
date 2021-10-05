@@ -22,25 +22,29 @@ local function lsp_highlight_document(client)
 end
 
 local function add_lsp_buffer_keybindings(bufnr)
-  local status_ok, wk = pcall(require, "which-key")
-  if not status_ok then
-    return
-  end
-
-  local keys = {
-    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
-    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
-    ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
-    ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "Goto references" },
-    ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
-    ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "show signature help" },
-    ["gp"] = { "<cmd>lua require'lsp.peek'.Peek('definition')<CR>", "Peek definition" },
-    ["gl"] = {
-      "<cmd>lua require'lsp.handlers'.show_line_diagnostics()<CR>",
-      "Show line diagnostics",
-    },
+  local mappings = {
+    normal_mode = "n",
+    insert_mode = "i",
+    visual_mode = "v",
   }
-  wk.register(keys, { mode = "n", buffer = bufnr })
+
+  if options.builtin.which_key.active then
+    -- Remap using which_key
+    local status_ok, wk = pcall(require, "which-key")
+    if not status_ok then
+      return
+    end
+    for mode_name, mode_char in pairs(mappings) do
+      wk.register(options.lsp.buffer_mappings[mode_name], { mode = mode_char, buffer = bufnr })
+    end
+  else
+    -- Remap using nvim api
+    for mode_name, mode_char in pairs(mappings) do
+      for key, remap in pairs(options.lsp.buffer_mappings[mode_name]) do
+        vim.api.nvim_buf_set_keymap(bufnr, mode_char, key, remap[1], { noremap = true, silent = true })
+      end
+    end
+  end
 end
 
 function M.common_capabilities()
@@ -71,7 +75,7 @@ local function select_default_formater(client)
   Log:debug("Checking for formatter overriding for " .. client.name)
   local client_filetypes = client.config.filetypes or {}
   for _, filetype in ipairs(client_filetypes) do
-    if not vim.tbl_isempty(lvim.lang[filetype].formatters) then
+    if not vim.tbl_isempty(options.lang[filetype].formatters) then
       Log:debug("Formatter overriding detected. Disabling formatting capabilities for " .. client.name)
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
@@ -123,10 +127,7 @@ function M.setup()
   end
 
   for _, sign in ipairs(options.lsp.diagnostics.signs.values) do
-    vim.fn.sign_define(
-      sign.name,
-      { texthl = sign.name, text = sign.text, numhl = sign.name }
-    )
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
   require("lsp.handlers").setup()
 
