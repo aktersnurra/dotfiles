@@ -162,8 +162,14 @@ M.config = function()
         p = {
           name = "Peek",
           d = { "<cmd>lua require('lsp.peek').Peek('definition')<cr>", "Definition" },
-          t = { "<cmd>lua require('lsp.peek').Peek('typeDefinition')<cr>", "Type Definition" },
-          i = { "<cmd>lua require('lsp.peek').Peek('implementation')<cr>", "Implementation" },
+          t = {
+            "<cmd>lua require('lsp.peek').Peek('typeDefinition')<cr>",
+            "Type Definition",
+          },
+          i = {
+            "<cmd>lua require('lsp.peek').Peek('implementation')<cr>",
+            "Implementation",
+          },
         },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
@@ -179,23 +185,46 @@ M.config = function()
           "<cmd>edit ~/.config/nvim/config.lua<cr>",
           "Edit config.lua",
         },
-        k = { "<cmd>lua require('keymappings').print()<cr>", "View LunarVim's default keymappings" },
+        k = {
+          "<cmd>lua require('keymappings').print()<cr>",
+          "View LunarVim's default keymappings",
+        },
         i = {
           "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>",
           "Toggle nvim Info",
         },
         l = {
           name = "+logs",
-          D = { "<cmd>edit ~/.cache/nvim/lunarvim.log<cr>", "Open the default logfile" },
-          n = { "<cmd>lua require('core.terminal').toggle_log_view('lsp')<cr>", "view lsp log" },
-          N = { "<cmd>edit ~/.cache/nvim/log<cr>", "Open the Neovim logfile" },
-          l = { "<cmd>lua require('core.terminal').toggle_log_view('nvim')<cr>", "view neovim log" },
-          L = { "<cmd>edit ~/.cache/nvim/lsp.log<cr>", "Open the LSP logfile" },
+          d = {
+            "<cmd>lua require('core.terminal').toggle_log_view(require('core.log').get_path())<cr>",
+            "view default log",
+          },
+          D = {
+            "<cmd>lua vim.fn.execute('edit ' .. require('core.log').get_path())<cr>",
+            "Open the default logfile",
+          },
+          l = {
+            "<cmd>lua require('core.terminal').toggle_log_view(vim.lsp.get_log_path())<cr>",
+            "view lsp log",
+          },
+          L = {
+            "<cmd>lua vim.fn.execute('edit ' .. vim.lsp.get_log_path())<cr>",
+            "Open the LSP logfile",
+          },
+          n = {
+            "<cmd>lua require('core.terminal').toggle_log_view(os.getenv('NVIM_LOG_FILE'))<cr>",
+            "view neovim log",
+          },
+          N = { "<cmd>edit $NVIM_LOG_FILE<cr>", "Open the Neovim logfile" },
           p = {
             "<cmd>lua require('core.terminal').toggle_log_view('packer.nvim')<cr>",
             "view packer log",
           },
-          P = { "<cmd>edit ~/.cache/nvim/packer.nvim.log<cr>", "Open the Packer logfile" },
+          P = {
+            "<cmd>exe 'edit '.stdpath('cache').'/packer.nvim.log'<cr>",
+            "Open the Packer logfile",
+          },
+          r = { "<cmd>lua require('utils').reload_config()<cr>", "Reload configurations" },
         },
       },
       s = {

@@ -30,10 +30,40 @@ M.config = function()
     return
   end
   options.builtin.cmp = {
+    confirm_opts = {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
     formatting = {
+      kind_icons = {
+        Class = " ",
+        Color = " ",
+        Constant = "ﲀ ",
+        Constructor = " ",
+        Enum = "練",
+        EnumMember = " ",
+        Event = " ",
+        Field = " ",
+        File = "",
+        Folder = " ",
+        Function = " ",
+        Interface = "ﰮ ",
+        Keyword = " ",
+        Method = " ",
+        Module = " ",
+        Operator = "",
+        Property = " ",
+        Reference = " ",
+        Snippet = " ",
+        Struct = " ",
+        Text = " ",
+        TypeParameter = " ",
+        Unit = "塞",
+        Value = " ",
+        Variable = " ",
+      },
       format = function(entry, vim_item)
-        local icons = require("lsp.kind").icons
-        vim_item.kind = icons[vim_item.kind]
+        vim_item.kind = options.builtin.cmp.formatting.kind_icons[vim_item.kind]
         vim_item.menu = ({
           nvim_lsp = "(LSP)",
           emoji = "(Emoji)",
@@ -78,7 +108,7 @@ M.config = function()
       -- TODO: potentially fix emmet nonsense
       ["<Tab>"] = cmp.mapping(function()
         if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(T "<C-n>", "n")
+          vim.fn.feedkeys(T "<down>", "n")
         elseif luasnip.expand_or_jumpable() then
           vim.fn.feedkeys(T "<Plug>luasnip-expand-or-jump", "")
         elseif check_backspace() then
@@ -94,7 +124,7 @@ M.config = function()
       }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if vim.fn.pumvisible() == 1 then
-          vim.fn.feedkeys(T "<C-p>", "n")
+          vim.fn.feedkeys(T "<up>", "n")
         elseif luasnip.jumpable(-1) then
           vim.fn.feedkeys(T "<Plug>luasnip-jump-prev", "")
         else
@@ -107,10 +137,15 @@ M.config = function()
 
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      },
+      ["<CR>"] = cmp.mapping(function(fallback)
+        if not require("cmp").confirm(options.builtin.cmp.confirm_opts) then
+          if luasnip.jumpable() then
+            vim.fn.feedkeys(T "<Plug>luasnip-jump-next", "")
+          else
+            fallback()
+          end
+        end
+      end),
     },
   }
 end

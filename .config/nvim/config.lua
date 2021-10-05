@@ -10,7 +10,7 @@ options.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
 
 -- LSP
 options.lsp.diagnostics.virtual_text = false
-require("extra.json_schemas").setup()
+-- require("extra.json_schemas").setup()
 
 -- After changing plugin config it is recommended to run :PackerCompile
 options.builtin.autopairs.active = true
@@ -18,7 +18,7 @@ options.builtin.dashboard.active = true
 options.builtin.terminal.active = true
 options.builtin.telescope.active = true
 options.builtin.bufferline.active = true
-options.builtin.nvimtree.active = true
+-- options.builtin.nvimtree.active = true
 options.builtin.lualine.active = true
 options.builtin.lualine.style = "dark"
 
@@ -51,45 +51,13 @@ options.builtin.which_key.mappings.f = {
 options.builtin.which_key.mappings.v = { "<cmd>vsplit<cr>", "Vertical Split" }
 options.builtin.which_key.mappings.h = { "<cmd>split<cr>", "Horizontal Split" }
 
-options.builtin.nvimtree.auto_open = 0
+-- options.builtin.nvimtree.auto_open = 0
 
 -- Treesitter
 options.builtin.treesitter.ensure_installed = "maintained"
 options.builtin.treesitter.autotag.enable = false
 options.builtin.treesitter.playground.enable = false
-
--- Formatters
--- python
-options.lang.python.formatters = {
-  {
-    exe = "black",
-    args = {},
-  },
-}
-
-options.lang.python.linters = {
-  {
-    exe = "flake8",
-    args = {},
-  },
-}
-
-options.lang.python.lsp.on_attach = nil
-
--- lua
-options.lang.lua.formatters = {
-  {
-    exe = "stylua",
-  },
-}
-
---json
-options.lang.json.formatters = {
-  {
-    exe = "prettier",
-    args = {},
-  },
-}
+options.builtin.treesitter.indent.disable = { "python" }
 
 options.plugins = {
   {

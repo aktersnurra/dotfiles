@@ -1,1 +1,6 @@
-require("lsp").setup "json"
+options.lang.json.formatters = {
+  {
+    exe = "prettier",
+    args = {},
+  },
+}

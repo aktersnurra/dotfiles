@@ -6,17 +6,11 @@ return {
   { "jose-elias-alvarez/null-ls.nvim" },
   { "antoinemadec/FixCursorHold.nvim" }, -- Needed while issue https://github.com/neovim/neovim/issues/12587 is still open
   {
-    "kabouzeid/nvim-lspinstall",
-    event = "VimEnter",
-    config = function()
-      local lspinstall = require "core.lspinstall"
-      lspinstall.setup()
-    end,
+    "williamboman/nvim-lsp-installer",
   },
 
   { "nvim-lua/popup.nvim" },
   { "nvim-lua/plenary.nvim" },
-
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
@@ -25,7 +19,7 @@ return {
     end,
     disable = not options.builtin.telescope.active,
   },
-  -- Completion & Snippets
+  -- Install nvim-cmp, and buffer source as a dependency
   {
     "hrsh7th/nvim-cmp",
     config = function()
@@ -39,6 +33,12 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
     },
+    run = function()
+      -- cmp's config requires cmp to be installed to run the first time
+      if not options.builtin.cmp then
+        require("core.cmp").config()
+      end
+    end,
   },
   {
     "rafamadriz/friendly-snippets",
@@ -78,6 +78,7 @@ return {
     end,
     disable = not options.builtin.nvimtree.active,
   },
+
   {
     "lewis6991/gitsigns.nvim",
 

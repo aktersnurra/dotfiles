@@ -1,1 +1,5 @@
-require("lsp").setup "lua"
+options.lang.lua.formatters = {
+  {
+    exe = "stylua",
+  },
+}
