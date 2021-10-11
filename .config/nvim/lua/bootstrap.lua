@@ -1,6 +1,7 @@
 local M = {}
 
-local in_headless = #vim.api.nvim_list_uis() == 0
+package.loaded["utils.hooks"] = nil
+local _, hooks = pcall(require, "utils.hooks")
 
 ---Join path segments that were passed as input
 ---@return string
@@ -71,16 +72,9 @@ end
 ---Update LunarVim
 ---pulls the latest changes from github and, resets the startup cache
 function M:update()
+  hooks.run_pre_update()
   M:update_repo()
-  M:reset_cache()
-  require("lsp.templates").generate_templates()
-  if not in_headless then
-    vim.schedule(function()
-      require("packer").install()
-      -- TODO: add a changelog
-      vim.notify("Update complete", vim.log.levels.INFO)
-    end)
-  end
+  hooks.run_post_update()
 end
 
 local function git_cmd(subcmd)
@@ -125,7 +119,8 @@ function M:update_repo()
 
   local ret = git_cmd(sub_commands.fetch)
   if ret ~= 0 then
-    error "Update failed! Check the log for further information"
+    Log:error "Update failed! Check the log for further information"
+    return
   end
 
   ret = git_cmd(sub_commands.diff)
@@ -138,17 +133,9 @@ function M:update_repo()
   ret = git_cmd(sub_commands.merge)
 
   if ret ~= 0 then
-    error "Error: unable to guarantee data integrity while updating your branch"
-    error "Please pull the changes manually instead."
+    Log:error "Update failed! Please pull the changes manually instead."
+    return
   end
-end
-
----Reset any startup cache files used by Packer and Impatient
----Tip: Useful for clearing any outdated settings
-function M:reset_cache()
-  _G.__luacache.clear_cache()
-  _G.__luacache.save_cache()
-  require("plugin-loader"):cache_reset()
 end
 
 return M

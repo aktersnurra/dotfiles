@@ -21,6 +21,25 @@ local function lsp_highlight_document(client)
   end
 end
 
+local function lsp_code_lens_refresh(client)
+  if options.lsp.code_lens_refresh == false then
+    return
+  end
+
+  if client.resolved_capabilities.code_lens then
+    vim.api.nvim_exec(
+      [[
+      augroup lsp_code_lens_refresh
+        autocmd! * <buffer>
+        autocmd InsertLeave <buffer> lua vim.lsp.codelens.refresh()
+        autocmd InsertLeave <buffer> lua vim.lsp.codelens.display()
+      augroup END
+    ]],
+      false
+    )
+  end
+end
+
 local function add_lsp_buffer_keybindings(bufnr)
   local mappings = {
     normal_mode = "n",
@@ -75,11 +94,10 @@ local function select_default_formater(client)
   Log:debug("Checking for formatter overriding for " .. client.name)
   local client_filetypes = client.config.filetypes or {}
   for _, filetype in ipairs(client_filetypes) do
-    if not vim.tbl_isempty(options.lang[filetype].formatters) then
+    if options.lang[filetype] and #vim.tbl_keys(options.lang[filetype].formatters) > 0 then
       Log:debug("Formatter overriding detected. Disabling formatting capabilities for " .. client.name)
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
-      return
     end
   end
 end
@@ -99,6 +117,7 @@ function M.common_on_attach(client, bufnr)
     Log:debug "Called lsp.on_attach_callback"
   end
   lsp_highlight_document(client)
+  lsp_code_lens_refresh(client)
   add_lsp_buffer_keybindings(bufnr)
 end
 

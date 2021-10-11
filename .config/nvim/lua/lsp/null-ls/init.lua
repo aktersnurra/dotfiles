@@ -13,12 +13,18 @@ function M:setup()
 
   null_ls.config()
   require("lspconfig")["null-ls"].setup(options.lsp.null_ls.setup)
-  for _, filetype in pairs(options.lang) do
-    if filetype.formatters then
-      formatters.setup(filetype.formatters, filetype)
+  for filetype, config in pairs(options.lang) do
+    if not vim.tbl_isempty(config.formatters) then
+      vim.tbl_map(function(c)
+        c.filetypes = { filetype }
+      end, config.formatters)
+      formatters.setup(config.formatters)
     end
-    if filetype.linters then
-      linters.setup(filetype.linters, filetype)
+    if not vim.tbl_isempty(config.linters) then
+      vim.tbl_map(function(c)
+        c.filetypes = { filetype }
+      end, config.formatters)
+      linters.setup(config.linters)
     end
   end
 end

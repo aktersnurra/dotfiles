@@ -10,7 +10,8 @@ M.defaults = {
     endif
   endfunction
   ]],
-  [[command!  NvimInfo lua require('core.info').toggle_popup(vim.bo.filetype)]],
+  [[ command! NvimInfo lua require('core.info').toggle_popup(vim.bo.filetype) ]],
+  [[ command! NvimCacheReset lua require('utils.hooks').reset_cache() ]],
 }
 
 M.load = function(commands)
