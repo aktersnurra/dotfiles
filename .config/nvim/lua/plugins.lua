@@ -90,7 +90,8 @@ return {
 
   -- Whichkey
   {
-    "folke/which-key.nvim",
+    "abzcoding/which-key.nvim",
+    branch = "fix/neovim-6-position",
     config = function()
       require("core.which-key").setup()
     end,
@@ -100,7 +101,7 @@ return {
 
   -- Comments
   {
-    "terrortylor/nvim-comment",
+    "numToStr/Comment.nvim",
     event = "BufRead",
     config = function()
       require("core.comment").setup()
