@@ -1,8 +1,5 @@
 require("bootstrap"):init()
-
-local config = require "config"
--- config:init()
-config:load()
+require("config"):load()
 
 local plugins = require "plugins"
 require("plugin-loader"):load { plugins, options.plugins }

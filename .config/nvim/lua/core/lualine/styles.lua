@@ -9,7 +9,7 @@ local styles = {
 }
 
 styles.dark = {
-  style = "lvim",
+  style = "dark",
   options = {
     icons_enabled = true,
     component_separators = { left = "", right = "" },

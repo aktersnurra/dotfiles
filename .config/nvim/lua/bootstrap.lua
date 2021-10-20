@@ -6,7 +6,6 @@ local _, hooks = pcall(require, "utils.hooks")
 ---Join path segments that were passed as input
 ---@return string
 function _G.join_paths(...)
-  local uv = vim.loop
   local path_sep = "/"
   local result = table.concat({ ... }, path_sep)
   return result

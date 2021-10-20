@@ -1,5 +1,5 @@
 return {
-  templates_dir = join_paths(get_runtime_dir(), "site", "after", "ftplugin"),
+  templates_dir = join_paths(get_config_dir(), "ftplugin"),
   diagnostics = {
     signs = {
       active = true,

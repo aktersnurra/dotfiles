@@ -225,8 +225,8 @@ M.config = function()
             "<cmd>exe 'edit '.stdpath('cache').'/packer.nvim.log'<cr>",
             "Open the Packer logfile",
           },
-          r = { "<cmd>lua require('utils').reload_config()<cr>", "Reload configurations" },
         },
+        r = { "<cmd>lua require('utils').reload_config()<cr>", "Reload configurations" },
       },
       s = {
         name = "Search",

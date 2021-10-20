@@ -54,13 +54,22 @@ local function add_lsp_buffer_keybindings(bufnr)
       return
     end
     for mode_name, mode_char in pairs(mappings) do
-      wk.register(options.lsp.buffer_mappings[mode_name], { mode = mode_char, buffer = bufnr })
+      wk.register(
+        options.lsp.buffer_mappings[mode_name],
+        { mode = mode_char, buffer = bufnr }
+      )
     end
   else
     -- Remap using nvim api
     for mode_name, mode_char in pairs(mappings) do
       for key, remap in pairs(options.lsp.buffer_mappings[mode_name]) do
-        vim.api.nvim_buf_set_keymap(bufnr, mode_char, key, remap[1], { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(
+          bufnr,
+          mode_char,
+          key,
+          remap[1],
+          { noremap = true, silent = true }
+        )
       end
     end
   end
@@ -94,8 +103,13 @@ local function select_default_formater(client)
   Log:debug("Checking for formatter overriding for " .. client.name)
   local client_filetypes = client.config.filetypes or {}
   for _, filetype in ipairs(client_filetypes) do
-    if options.lang[filetype] and #vim.tbl_keys(options.lang[filetype].formatters) > 0 then
-      Log:debug("Formatter overriding detected. Disabling formatting capabilities for " .. client.name)
+    if
+      options.lang[filetype] and #vim.tbl_keys(options.lang[filetype].formatters) > 0
+    then
+      Log:debug(
+        "Formatter overriding detected. Disabling formatting capabilities for "
+          .. client.name
+      )
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
     end
@@ -146,13 +160,18 @@ function M.setup()
   end
 
   for _, sign in ipairs(options.lsp.diagnostics.signs.values) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+    vim.fn.sign_define(
+      sign.name,
+      { texthl = sign.name, text = sign.text, numhl = sign.name }
+    )
   end
   require("lsp.handlers").setup()
 
   if not utils.is_directory(options.lsp.templates_dir) then
     require("lsp.templates").generate_templates()
   end
+
+  Log:info(string.format("%s", options.lsp.templates_dir))
 
   bootstrap_nlsp { config_home = utils.join_paths(get_config_dir(), "lsp-settings") }
 

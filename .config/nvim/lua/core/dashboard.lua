@@ -68,7 +68,7 @@ M.setup = function()
   vim.g.dashboard_session_directory = options.builtin.dashboard.session_directory
 
   local num_plugins_loaded = #vim.fn.globpath(
-    get_runtime_dir() .. "/site/pack/packer/start",
+    get_data_dir() .. "/site/pack/packer/start",
     "*",
     0,
     1

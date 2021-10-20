@@ -10,3 +10,5 @@ wiki/
 pack/
 lua-language-server/
 site/
+package.json
+package-lock.json
