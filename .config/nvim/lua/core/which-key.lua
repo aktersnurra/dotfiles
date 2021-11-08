@@ -61,7 +61,7 @@ M.config = function()
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     vmappings = {
-      ["k"] = { "<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>", "Comment" },
+      ["/"] = { "<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>", "Comment" },
     },
     mappings = {
       ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -69,7 +69,7 @@ M.config = function()
       ["k"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
       ["c"] = { "<cmd>BufferClose!<CR>", "Close Buffer" },
       ["f"] = { "<cmd>Telescope find_files<CR>", "Find File" },
-      ["n"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+      ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
       b = {
         name = "Buffers",
         j = { "<cmd>BufferPick<cr>", "Jump" },
@@ -98,7 +98,7 @@ M.config = function()
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },
         i = { "<cmd>PackerInstall<cr>", "Install" },
-        r = { "<cmd>lua require('utils').reload_config()<cr>", "Reload" },
+        r = { "<cmd>lua require('plugin-loader').recompile()<cr>", "Re-compile" },
         s = { "<cmd>PackerSync<cr>", "Sync" },
         S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
@@ -139,7 +139,10 @@ M.config = function()
 
       l = {
         name = "LSP",
-        a = { "<cmd>lua require('core.telescope').code_actions()<cr>", "Code Action" },
+        a = {
+          "<cmd>lua require('core.telescope').code_actions()<cr>",
+          "Code Action",
+        },
         d = {
           "<cmd>Telescope lsp_document_diagnostics<cr>",
           "Document Diagnostics",
@@ -148,15 +151,15 @@ M.config = function()
           "<cmd>Telescope lsp_workspace_diagnostics<cr>",
           "Workspace Diagnostics",
         },
-        -- f = { "<cmd>silent FormatWrite<cr>", "Format" },
         f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
+        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
         j = {
-          "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = options.lsp.popup_border}})<cr>",
+          "<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = lsp.popup_border}})<cr>",
           "Next Diagnostic",
         },
         k = {
-          "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = options.lsp.popup_border}})<cr>",
+          "<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = lsp.popup_border}})<cr>",
           "Prev Diagnostic",
         },
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
@@ -180,19 +183,23 @@ M.config = function()
           "Workspace Symbols",
         },
       },
-      i = {
-        name = "+nvim",
+      L = {
+        name = "+NeoVim",
         c = {
-          "<cmd>edit ~/.config/nvim/config.lua<cr>",
+          "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>",
           "Edit config.lua",
         },
         k = {
           "<cmd>lua require('keymappings').print()<cr>",
-          "View LunarVim's default keymappings",
+          "View NeoVim's default keymappings",
         },
         i = {
           "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>",
-          "Toggle nvim Info",
+          "Toggle NeoVim Info",
+        },
+        I = {
+          "<cmd>lua require('core.telescope.custom-finders').view_lunarvim_changelog()<cr>",
+          "View NeoVim's changelog",
         },
         l = {
           name = "+logs",
@@ -226,7 +233,8 @@ M.config = function()
             "Open the Packer logfile",
           },
         },
-        r = { "<cmd>lua require('utils').reload_config()<cr>", "Reload configurations" },
+        r = { "<cmd>NvimReload<cr>", "Reload Neovim's configuration" },
+        u = { "<cmd>NvimUpdate<cr>", "Update NeoVim" },
       },
       s = {
         name = "Search",

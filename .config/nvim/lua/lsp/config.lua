@@ -1,5 +1,5 @@
 return {
-  templates_dir = join_paths(get_config_dir(), "ftplugin"),
+  templates_dir = join_paths(get_runtime_dir(), "site", "after", "ftplugin"),
   diagnostics = {
     signs = {
       active = true,
@@ -15,7 +15,6 @@ return {
     underline = true,
     severity_sort = true,
   },
-  override = {},
   document_highlight = true,
   code_lens_refresh = true,
   popup_border = "single",
@@ -41,5 +40,26 @@ return {
   },
   null_ls = {
     setup = {},
+  },
+  override = {
+    "angularls",
+    "ansiblels",
+    "denols",
+    "ember",
+    "emmet_ls",
+    "eslint",
+    "eslintls",
+    "graphql",
+    "jedi_language_server",
+    "ltex",
+    "phpactor",
+    "pylsp",
+    "rome",
+    "sqlls",
+    "sqls",
+    "stylelint_lsp",
+    "tailwindcss",
+    "tflint",
+    "volar",
   },
 }

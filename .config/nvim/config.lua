@@ -20,7 +20,6 @@ options.builtin.telescope.active = true
 options.builtin.bufferline.active = true
 options.builtin.lualine.active = true
 options.builtin.lualine.style = "dark"
-options.builtin.dap.active = false
 
 -- Whichkey
 options.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
@@ -58,33 +57,6 @@ options.builtin.treesitter.ensure_installed = "maintained"
 options.builtin.treesitter.autotag.enable = false
 options.builtin.treesitter.playground.enable = false
 options.builtin.treesitter.indent.disable = { "python" }
-
--- LSP Linters and formatters
-options.lang.json.formatters = {
-  {
-    exe = "prettier",
-  },
-}
-
-options.lang.lua.formatters = {
-  {
-    exe = "stylua",
-  },
-}
-
-options.lang.python.formatters = {
-  {
-    exe = "black",
-  },
-}
-
-options.lang.python.linters = {
-  {
-    exe = "flake8",
-  },
-}
-
-options.lang.sh.linters = { { exe = "shellcheck", args = { "--sverity", "error" } } }
 
 -- Extra plugings
 

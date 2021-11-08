@@ -1,7 +1,6 @@
 local M = {}
 
-package.loaded["utils.hooks"] = nil
-local _, hooks = pcall(require, "utils.hooks")
+local uv = vim.loop
 
 ---Join path segments that were passed as input
 ---@return string
@@ -71,70 +70,11 @@ end
 ---Update LunarVim
 ---pulls the latest changes from github and, resets the startup cache
 function M:update()
+  package.loaded["utils.hooks"] = nil
+  local _, hooks = pcall(require, "utils.hooks")
   hooks.run_pre_update()
   M:update_repo()
   hooks.run_post_update()
-end
-
-local function git_cmd(subcmd)
-  local Job = require "plenary.job"
-  local Log = require "core.log"
-  local repo_dir = join_paths(get_runtime_dir(), "nvim")
-  local args = { "-C", repo_dir }
-  vim.list_extend(args, subcmd)
-
-  local stderr = {}
-  local stdout, ret = Job
-    :new({
-      command = "git",
-      args = args,
-      cwd = repo_dir,
-      on_stderr = function(_, data)
-        table.insert(stderr, data)
-      end,
-    })
-    :sync()
-
-  if not vim.tbl_isempty(stderr) then
-    Log:debug(stderr)
-  end
-
-  if not vim.tbl_isempty(stdout) then
-    Log:debug(stdout)
-  end
-
-  return ret
-end
-
----pulls the latest changes from github
-function M:update_repo()
-  local Log = require "core.log"
-  local sub_commands = {
-    fetch = { "fetch" },
-    diff = { "diff", "--quiet", "@{upstream}" },
-    merge = { "merge", "--ff-only", "--progress" },
-  }
-  Log:info "Checking for updates"
-
-  local ret = git_cmd(sub_commands.fetch)
-  if ret ~= 0 then
-    Log:error "Update failed! Check the log for further information"
-    return
-  end
-
-  ret = git_cmd(sub_commands.diff)
-
-  if ret == 0 then
-    Log:info "nvim is already up-to-date"
-    return
-  end
-
-  ret = git_cmd(sub_commands.merge)
-
-  if ret ~= 0 then
-    Log:error "Update failed! Please pull the changes manually instead."
-    return
-  end
 end
 
 return M

@@ -57,13 +57,14 @@ end
 -- Load key mappings for all provided modes
 -- @param keymaps A list of key mappings for each mode
 function M.load(keymaps)
+  keymaps = keymaps or {}
   for mode, mapping in pairs(keymaps) do
     M.load_mode(mode, mapping)
   end
 end
 
-function M.config()
-  options.keys = {
+function M.get_defaults()
+  local keys = {
     ---@usage change or add keymappings for insert mode
     insert_mode = {
       -- 'jk' for quitting insert mode
@@ -81,16 +82,6 @@ function M.config()
       ["<A-Down>"] = "<C-\\><C-N><C-w>j",
       ["<A-Left>"] = "<C-\\><C-N><C-w>h",
       ["<A-Right>"] = "<C-\\><C-N><C-w>l",
-      -- navigate tab completion with <c-j> and <c-k>
-      -- runs conditionally
-      ["<C-j>"] = {
-        'pumvisible() ? "\\<C-n>" : "\\<C-j>"',
-        { expr = true, noremap = true },
-      },
-      ["<C-k>"] = {
-        'pumvisible() ? "\\<C-p>" : "\\<C-k>"',
-        { expr = true, noremap = true },
-      },
     },
 
     ---@usage change or add keymappings for normal mode
@@ -167,12 +158,14 @@ function M.config()
   }
 
   if vim.fn.has "mac" == 1 then
-    options.keys.normal_mode["<A-Up>"] = options.keys.normal_mode["<C-Up>"]
-    options.keys.normal_mode["<A-Down>"] = options.keys.normal_mode["<C-Down>"]
-    options.keys.normal_mode["<A-Left>"] = options.keys.normal_mode["<C-Left>"]
-    options.keys.normal_mode["<A-Right>"] = options.keys.normal_mode["<C-Right>"]
+    keys.normal_mode["<A-Up>"] = keys.normal_mode["<C-Up>"]
+    keys.normal_mode["<A-Down>"] = keys.normal_mode["<C-Down>"]
+    keys.normal_mode["<A-Left>"] = keys.normal_mode["<C-Left>"]
+    keys.normal_mode["<A-Right>"] = keys.normal_mode["<C-Right>"]
     Log:debug "Activated mac keymappings"
   end
+
+  return keys
 end
 
 function M.print(mode)
@@ -182,11 +175,6 @@ function M.print(mode)
   else
     print(vim.inspect(options.keys))
   end
-end
-
-function M.setup()
-  vim.g.mapleader = (options.leader == "space" and " ") or options.leader
-  M.load(options.keys)
 end
 
 return M

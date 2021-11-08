@@ -1,12 +1,10 @@
 local M = {}
 
 local builtins = {
-  "keymappings",
   "core.which-key",
   "core.gitsigns",
   "core.cmp",
   "core.dashboard",
-  "core.dap",
   "core.terminal",
   "core.telescope",
   "core.treesitter",

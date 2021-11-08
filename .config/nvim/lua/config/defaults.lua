@@ -1,21 +1,19 @@
-local home_dir = vim.loop.os_homedir()
-local utils = require "utils"
-
-options = {
+return {
   leader = "space",
   colorscheme = "dark",
   line_wrap_cursor_movement = true,
   transparent_window = false,
   format_on_save = true,
-  vsnip_dir = utils.join_paths(home_dir, ".config", "snippets"),
-  database = {
-    save_location = utils.join_paths(home_dir, ".config", "nvim_db"),
-    auto_execute = 1,
-  },
   keys = {},
 
   builtin = {},
 
+  plugins = {
+    -- use config.lua for this not put here
+  },
+
+  autocommands = {},
+  lang = {},
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
     level = "warn",
@@ -30,11 +28,7 @@ options = {
         float_opts = {},
       },
     },
+    -- currently disabled due to instabilities
+    override_notify = false,
   },
-  plugins = {
-    -- use config.lua for this not put here
-  },
-
-  autocommands = {},
-  lang = {},
 }

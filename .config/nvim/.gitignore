@@ -12,3 +12,4 @@ lua-language-server/
 site/
 package.json
 package-lock.json
+node_modules/

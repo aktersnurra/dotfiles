@@ -1,11 +1,4 @@
-options.lang.python.formatters = {
-  {
-    exe = "black",
-  },
-}
-
-options.lang.python.linters = {
-  {
-    exe = "flake8",
-  },
-}
+local formatters = require "lsp.null-ls.formatters"
+local linters = require "lsp.null-ls.linters"
+formatters.setup { { exe = "black", filetypes = { "python" } } }
+formatters.setup { { exe = "flake8", filetypes = { "python" } } }
