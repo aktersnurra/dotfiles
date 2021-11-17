@@ -16,6 +16,7 @@ M.defaults = {
   [[ command! NvimUpdate lua require('bootstrap').update() ]],
   [[ command! NvimSyncCorePlugins lua require('plugin-loader'):sync_core_plugins() ]],
   [[ command! NvimReload lua require('config'):reload() ]],
+  [[ command! NvimToggleFormatOnSave lua require('core.autocmds').toggle_format_on_save() ]],
 }
 
 M.load = function(commands)

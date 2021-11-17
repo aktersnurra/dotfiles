@@ -40,6 +40,7 @@ return {
   },
   null_ls = {
     setup = {},
+    config = {},
   },
   override = {
     "angularls",
@@ -55,6 +56,7 @@ return {
     "phpactor",
     "pylsp",
     "rome",
+    "sorbet",
     "sqlls",
     "sqls",
     "stylelint_lsp",

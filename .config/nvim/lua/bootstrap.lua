@@ -1,7 +1,5 @@
 local M = {}
 
-local uv = vim.loop
-
 ---Join path segments that were passed as input
 ---@return string
 function _G.join_paths(...)
@@ -67,7 +65,6 @@ function M:init()
   return self
 end
 
----Update LunarVim
 ---pulls the latest changes from github and, resets the startup cache
 function M:update()
   package.loaded["utils.hooks"] = nil

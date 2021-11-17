@@ -1,5 +1,4 @@
 local utils = {}
-local Log = require "core.log"
 local uv = vim.loop
 
 -- recursive Print (structure, limit, separator)
@@ -58,53 +57,6 @@ function utils.generate_settings()
   io.close(file)
 end
 
--- autoformat
-function utils.toggle_autoformat()
-  if options.format_on_save then
-    require("core.autocmds").define_augroups {
-      autoformat = {
-        {
-          "BufWritePre",
-          "*",
-          ":silent lua vim.lsp.buf.formatting_sync()",
-        },
-      },
-    }
-    Log:debug "Format on save active"
-  end
-
-  if not options.format_on_save then
-    vim.cmd [[
-      if exists('#autoformat#BufWritePre')
-        :autocmd! autoformat
-      endif
-    ]]
-    Log:debug "Format on save off"
-  end
-end
-
-function utils.reload_config()
-  require("core.lualine").config()
-
-  local config = require "config"
-  config:load()
-
-  require("keymappings").setup() -- this should be done before loading the plugins
-  vim.cmd(
-    "source " .. utils.join_paths(get_runtime_dir(), "lua", "plugins.lua")
-  )
-  local plugins = require "plugins"
-  utils.toggle_autoformat()
-  local plugin_loader = require "plugin-loader"
-  plugin_loader:cache_reset()
-  plugin_loader:load { plugins, options.plugins }
-  vim.cmd ":PackerInstall"
-  vim.cmd ":PackerCompile"
-  -- vim.cmd ":PackerClean"
-  require("lsp").setup()
-  Log:info "Reloaded configuration"
-end
-
 function utils.unrequire(m)
   package.loaded[m] = nil
   _G[m] = nil
@@ -147,18 +99,6 @@ end
 function utils.is_directory(path)
   local stat = uv.fs_stat(path)
   return stat and stat.type == "directory" or false
-end
-
-function utils.write_file(path, txt, flag)
-  uv.fs_open(path, flag, 438, function(open_err, fd)
-    assert(not open_err, open_err)
-    uv.fs_write(fd, txt, -1, function(write_err)
-      assert(not write_err, write_err)
-      uv.fs_close(fd, function(close_err)
-        assert(not close_err, close_err)
-      end)
-    end)
-  end)
 end
 
 utils.join_paths = _G.join_paths

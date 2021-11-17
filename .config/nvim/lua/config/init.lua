@@ -20,7 +20,7 @@ end
 -- Define options global variable
 function M:init()
   if vim.tbl_isempty(nvim or {}) then
-    options = require "config.defaults"
+    options = vim.deepcopy(require "config.defaults")
     local home_dir = vim.loop.os_homedir()
     options.vsnip_dir = utils.join_paths(home_dir, ".config", "snippets")
     options.database = {
@@ -112,7 +112,8 @@ function M:reload()
   M:load()
 
   local plugins = require "plugins"
-  utils.toggle_autoformat()
+  local autocmds = require "core.autocmds"
+  autocmds.configure_format_on_save()
   local plugin_loader = require "plugin-loader"
   plugin_loader.cache_clear()
   plugin_loader.load { plugins, options.plugins }

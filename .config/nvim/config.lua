@@ -20,6 +20,7 @@ options.builtin.telescope.active = true
 options.builtin.bufferline.active = true
 options.builtin.lualine.active = true
 options.builtin.lualine.style = "dark"
+options.builtin.project.patterns = { ".git" }
 
 -- Whichkey
 options.builtin.which_key.mappings.l.d = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
@@ -58,6 +59,26 @@ options.builtin.treesitter.autotag.enable = false
 options.builtin.treesitter.playground.enable = false
 options.builtin.treesitter.indent.disable = { "python" }
 
+options.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<cr>", "Zen" }
+options.builtin.which_key.mappings["r"] = {
+  name = "Replace",
+  r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  w = {
+    "<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+    "Replace Word",
+  },
+  f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+}
+
+options.builtin.telescope.on_config_done = function()
+  local actions = require "telescope.actions"
+  options.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
+  options.builtin.telescope.defaults.mappings.i["<C-k>"] =
+    actions.move_selection_previous
+  options.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
+  options.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
+end
+
 -- Extra plugings
 
 options.plugins = {
@@ -82,13 +103,13 @@ options.plugins = {
     end,
   },
 
-  {
-    "pwntester/octo.nvim",
-    event = "BufRead",
-    config = function()
-      require("extra.octo").config()
-    end,
-  },
+  -- {
+  --   "pwntester/octo.nvim",
+  --   event = "BufRead",
+  --   config = function()
+  --     require("extra.octo").config()
+  --   end,
+  -- },
 
   {
     "unblevable/quick-scope",
