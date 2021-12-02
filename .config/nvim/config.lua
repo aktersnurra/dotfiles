@@ -103,14 +103,6 @@ options.plugins = {
     end,
   },
 
-  -- {
-  --   "pwntester/octo.nvim",
-  --   event = "BufRead",
-  --   config = function()
-  --     require("extra.octo").config()
-  --   end,
-  -- },
-
   {
     "unblevable/quick-scope",
     config = function()

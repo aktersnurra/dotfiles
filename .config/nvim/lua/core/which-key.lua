@@ -61,7 +61,10 @@ M.config = function()
     -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
     -- see https://neovim.io/doc/user/map.html#:map-cmd
     vmappings = {
-      ["k"] = { "<ESC><CMD>lua ___comment_gc(vim.fn.visualmode())<CR>", "Comment" },
+      ["k"] = {
+        "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>",
+        "Comment",
+      },
     },
     mappings = {
       ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -189,10 +192,7 @@ M.config = function()
           "<cmd>edit " .. get_config_dir() .. "/config.lua<cr>",
           "Edit config.lua",
         },
-        k = {
-          "<cmd>lua require('keymappings').print()<cr>",
-          "View NeoVim's default keymappings",
-        },
+        k = { "<cmd>Telescope keymaps<cr>", "View NeoVim's keymappings" },
         i = {
           "<cmd>lua require('core.info').toggle_popup(vim.bo.filetype)<cr>",
           "Toggle NeoVim Info",
