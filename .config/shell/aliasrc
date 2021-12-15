@@ -39,3 +39,6 @@ alias \
         p="sudo pacman" \
         config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
         z="zathura" 
+
+# Pushing to multiple git repositories
+alias gua="git remote | xargs -L1 git push --all"
