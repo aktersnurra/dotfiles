@@ -12,6 +12,11 @@ xbanish &		        # Remove mouse when typing
 dwmblocks &             # Status bar
 echo $PATH > /tmp/path.dbg
 
+# pipewire
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+/usr/bin/pipewire-media-session &
+
 # This line autostart an instance of Pulseaudio that does not exit on idle.
 # This is "necessary" on Artix due to a current bug between PA and 
 # Chromium-based browsers where they fail to start PA and use dummy output.
