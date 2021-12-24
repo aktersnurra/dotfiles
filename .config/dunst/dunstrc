@@ -1,27 +1,27 @@
 [global]
     monitor = 0
     follow = keyboard
-    width = 370
-    height = 350
+    width = 256
+    height = 192
     offset = 0x19
-    padding = 2
-    horizontal_padding = 2
+    padding = 1 
+    horizontal_padding = 1
     transparency = 25
-    font = Monospace 12
+    font = Monospace 9
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
-    background = "#1d2021"
-    foreground = "#928374"
+    background = "#202020"
+    foreground = "#D0D0D0"
     timeout = 3
 
 [urgency_normal]
-    foreground = "#ebdbb2"
-    background = "#458588"
+    foreground = "#F2F6F3"
+    background = "#202020"
     timeout = 5
 
 [urgency_critical]
-    background = "#1cc24d"
+    background = "#202020"
     foreground = "#ebdbb2"
-    frame_color = "#fabd2f"
+    frame_color = "#AC4142"
     timeout = 10
