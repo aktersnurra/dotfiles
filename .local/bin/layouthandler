@@ -1,0 +1,10 @@
+#!/bin/sh
+
+layout="$(setxkbmap -query | awk '$1 ~ /layout/ { print $2 }"
+
+case $layout in
+  en_US)
+    setxkbmap -layout se ;;
+  *)
+    setxkbmap -layout en_US
+esac
