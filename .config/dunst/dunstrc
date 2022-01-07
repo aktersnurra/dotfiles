@@ -6,13 +6,13 @@
     offset = 0x19
     padding = 1 
     horizontal_padding = 1
-    transparency = 25
-    font = Monospace 9
+    transparency = 0
+    font = Monospace 8
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
     background = "#202020"
-    foreground = "#D0D0D0"
+    foreground = "#F2F6F3"
     timeout = 3
 
 [urgency_normal]
