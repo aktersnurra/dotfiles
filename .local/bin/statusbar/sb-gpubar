@@ -4,23 +4,23 @@
 
 case $BLOCK_BUTTON in
 	2) setsid -f "$TERMINAL" -e gpuwatch ;;
-	3) notify-send " GPU load module" "The bar represents
+	3) notify-send "󰢮 GPU load module" "The bar represents
 GPU load";;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
 # id total idle
 load=$(nvidia-smi --query-gpu=utilization.memory --format=csv | awk 'FNR == 2 {print $1}')
-printf "GPU: "
+printf ""
 case "$load" in
-  [0-9]) printf "▁";;
-  1[0-9]) printf "▂";;
-  2[0-9]) printf "▃";;
-  3[0-9]) printf "▄";;
-  4[0-9]) printf "▅";;
-  5[0-9]) printf "▆";;
-  6[0-9]) printf "▇";;
-  7[0-9]) printf "█";;
+  [0-9]|1[0-9]) printf "▁";;
+  2[0-9]) printf "▂";;
+  3[0-9]) printf "▃";;
+  4[0-9]) printf "▄";;
+  5[0-9]) printf "▅";;
+  6[0-9]) printf "▆";;
+  7[0-9]) printf "▇";;
+  8[0-9]) printf "█";;
   *) printf "█";;
 esac
 printf "\\n"
