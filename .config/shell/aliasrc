@@ -42,7 +42,7 @@ alias \
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
-alias cua="config remote | xargs -L1 config push --all"
+alias cua="config remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push --all"
 
 # Doas smooth transition
 alias sudo="doas"
