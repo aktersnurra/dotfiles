@@ -42,6 +42,7 @@ alias \
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
+alias cua="config remote | xargs -L1 config push --all"
 
 # Doas smooth transition
 alias sudo="doas"
