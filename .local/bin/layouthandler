@@ -1,10 +1,14 @@
 #!/bin/sh
 
 layout="$(setxkbmap -query | awk '$1 ~ /layout/ { print $2 }')"
+alt_layout=${ALT_KB_LAYOUT?Alternative layout not set!}
+echo "$alt_layout"
 
 case $layout in
-  en_US)
-    setxkbmap -layout se ;;
-  *)
-    setxkbmap -layout en_US
+en_US)
+	setxkbmap -layout "$alt_layout"
+	;;
+*)
+	setxkbmap -layout en_US
+	;;
 esac
