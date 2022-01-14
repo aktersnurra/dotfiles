@@ -25,7 +25,7 @@ export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export LESSHIST="-"
-export ALT_KB_LAYOUT="sv"
+export ALT_KB_LAYOUT="se"
 
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
