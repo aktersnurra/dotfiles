@@ -3,24 +3,28 @@
 # Module showing GPU load as a changing bar.
 
 case $BLOCK_BUTTON in
-	2) setsid -f "$TERMINAL" -e gpuwatch ;;
-	3) notify-send "󰢮 GPU load module" "The bar represents
-GPU load";;
-	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+2) setsid -f "$TERMINAL" -e gpuwatch ;;
+3) notify-send "󰢮 GPU load module" "The bar represents
+GPU utilization and memory allocation" ;;
+6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-# id total idle
-load=$(nvidia-smi --query-gpu=utilization.memory --format=csv | awk 'FNR == 2 {print $1}')
+memutil=$(nvidia-smi --query-gpu=utilization.gpu --format=csv | awk 'FNR == 2 {print $1}')
+gpuutil=$(nvidia-smi --query-gpu=utilization.memory --format=csv | awk 'FNR == 2 {print $1}')
+# temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv | awk 'FNR == 2 {print $1}')
 printf ""
-case "$load" in
-  [0-9]|1[0-9]) printf "▁";;
-  2[0-9]) printf "▂";;
-  3[0-9]) printf "▃";;
-  4[0-9]) printf "▄";;
-  5[0-9]) printf "▅";;
-  6[0-9]) printf "▆";;
-  7[0-9]) printf "▇";;
-  8[0-9]) printf "█";;
-  *) printf "█";;
-esac
+for var in $memutil $gpuutil; do
+	case "$var" in
+	[0-9] | 1[0-9]) printf "▁" ;;
+	2[0-9]) printf "▂" ;;
+	3[0-9]) printf "▃" ;;
+	4[0-9]) printf "▄" ;;
+	5[0-9]) printf "▅" ;;
+	6[0-9]) printf "▆" ;;
+	7[0-9]) printf "▇" ;;
+	8[0-9]) printf "█" ;;
+	*) printf "█" ;;
+	esac
+done
+# printf " $temp°C"
 printf "\\n"
