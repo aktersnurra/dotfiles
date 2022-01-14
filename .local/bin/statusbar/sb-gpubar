@@ -4,7 +4,7 @@
 
 case $BLOCK_BUTTON in
 2) setsid -f "$TERMINAL" -e gpuwatch ;;
-3) notify-send "󰢮 GPU load module" "The bar represents
+3) notify-send "󰢮 GPU load module" "The bars represents
 GPU utilization and memory allocation" ;;
 6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
