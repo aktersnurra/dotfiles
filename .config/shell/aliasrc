@@ -7,38 +7,36 @@
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
 # sudo not required for some system commands.
-for x in mount unmount sv pacman updatedb su reboot ; do
+for x in mount unmount sv pacman updatedb su reboot; do
 	alias $x="sudo $x"
 done
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-        cp="cp -iv" \
-        mv="mv -iv" \
-        rm="rm -viI" \
-        bc="bc -ql" \
-        mkd="mkdir -pv" \
-        ffmpeg="ffmpeg -hide_banner"
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -viI" \
+	bc="bc -ql" \
+	mkd="mkdir -pv" \
+	ffmpeg="ffmpeg -hide_banner"
 
 alias \
-        ls="ls -ahlN --color=auto --group-directories-first" \
-        grep="grep --color=auto" \
-        diff="diff --color=auto" 
-        # ccat="highlight --out-format=ansi"
+	ls="ls -ahlN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto"
+# ccat="highlight --out-format=ansi"
 
 # My aliases for different programs
 alias \
-        lg="lazygit" \
-        gpuwatch="watch -n1 nvidia-smi" \
-        zshconfig="nvim ~/.zshrc" \
-        zrc="nvim ~/.zshrc" \
-        zsource="source $HOME/.config/zsh/.zshrc" \
-        sdn="sudo shutdown -h now" \
-        e="$EDITOR" \
-        v="$EDITOR" \
-        p="sudo pacman" \
-        config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
-        z="zathura" 
+	lg="lazygit" \
+	gpuwatch="watch -n1 nvidia-smi" \
+	zsource="source $HOME/.config/zsh/.zshrc" \
+	sdn="sudo shutdown -h now" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="sudo pacman" \
+	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
+	z="zathura"
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
@@ -46,3 +44,6 @@ alias cua="config remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$
 
 # Doas smooth transition
 alias sudo="doas"
+
+# Update nvim config
+alias cun="(cd $XDG_CONFIG_HOME && config submodule update --recursive --remote)"
