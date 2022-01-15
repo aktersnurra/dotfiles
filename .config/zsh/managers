@@ -1,0 +1,7 @@
+# Language managers
+
+# Init pyenv
+eval "$(pyenv init -)"
+
+# Init fnm (node manager)
+eval "$(fnm env)"
