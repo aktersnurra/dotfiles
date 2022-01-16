@@ -11,7 +11,7 @@ esac
 
 memutil=$(nvidia-smi --query-gpu=utilization.gpu --format=csv | awk 'FNR == 2 {print $1}')
 gpuutil=$(nvidia-smi --query-gpu=utilization.memory --format=csv | awk 'FNR == 2 {print $1}')
-# temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv | awk 'FNR == 2 {print $1}')
+temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv | awk 'FNR == 2 {print $1}')
 printf ""
 for var in $memutil $gpuutil; do
 	case "$var" in
@@ -26,5 +26,5 @@ for var in $memutil $gpuutil; do
 	*) printf "█" ;;
 	esac
 done
-# printf " $temp°C"
+printf " 󰔏$temp°C"
 printf "\\n"
