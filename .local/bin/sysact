@@ -6,9 +6,10 @@ case "$(readlink -f /sbin/init)" in
 	*) ctl='loginctl' ;;
 esac
 
-case "$(printf "󰌾 lock\n󰑐 renew dwm\n󰑙 reboot\n󰤆 shutdown\n󰇄 display off" | dmenu -i -p 'Action: ')" in
+case "$(printf "󰌾 lock\n󰑐 renew dwm\n󰒲 sleep\n󰑙 reboot\n󰤆 shutdown\n󰇄 display off" | dmenu -i -p 'Action: ')" in
 	'󰌾 lock') slock ;;
 	'󰑐 renew dwm') kill -HUP "$(pgrep -u "$USER" "\bdwm$")" ;;
+	'󰒲 sleep') slock $ctl suspend -i ;;
 	'󰑙 reboot') $ctl reboot ;;
 	'󰤆 shutdown') $ctl poweroff ;;
 	'󰇄 display off') xset dpms force off ;;
