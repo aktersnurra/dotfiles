@@ -2,6 +2,7 @@
 
 # Init pyenv
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Init fnm (node manager)
 eval "$(fnm env)"

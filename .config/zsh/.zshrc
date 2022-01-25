@@ -77,4 +77,5 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # Source language managers
-source $ZDOTDIR/functions
+source $ZDOTDIR/managers
+
