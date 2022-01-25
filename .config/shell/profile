@@ -40,6 +40,10 @@ eval "$(pyenv init --path)"
 # cargo runnable
 export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin:$PATH"
 
+# Cuda
+export PATH="/opt/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
+
 # Poetry autocompletion
 fpath+=~/.zfunc
 
