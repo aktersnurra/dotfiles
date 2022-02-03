@@ -7,6 +7,9 @@ export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 
 unsetopt PROMPT_SP
 
+# GPG
+export GPG_TTY=$(tty)
+
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
