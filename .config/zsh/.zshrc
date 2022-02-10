@@ -2,6 +2,9 @@
 # Load plugins first
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
+# GPG
+export GPG_TTY="$(tty)"
+
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
