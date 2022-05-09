@@ -44,6 +44,3 @@ alias cua="config remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$
 
 # Doas smooth transition
 alias sudo="doas"
-
-# Update nvim config
-alias cun="(cd $XDG_CONFIG_HOME && config submodule update --recursive --remote)"
