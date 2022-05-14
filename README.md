@@ -23,12 +23,9 @@ git clone --bare https://gitlab.com/aktersnurra/dotfiles $HOME/dotfiles
 
 Now what?
 
-
-
 ## Python
 
 No words needed, this is the setup:
-
 
 Install:
 
@@ -36,12 +33,12 @@ Install:
 
     ```
     pyenv install 3.9.1
-    
+
     pyenv shell 3.9.1
     ```
 
 * pipx - https://github.com/pipxproject/pipx
-  
+
     ```
     pipx install poetry
 
@@ -49,7 +46,7 @@ Install:
 
     pipx install flake8
 
-    pipx install nox 
+    pipx install nox
     ```
 
 https://cjolowicz.github.io/posts/hypermodern-python-01-setup/
@@ -77,32 +74,3 @@ https://github.com/jesseduffield/lazygit
 ```
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
-
-## NCDU
-
-`sudo apt-get install ncdu`
-
-`brew install ncdu`
-
-## zsh
-
-### Antigen
-
-Install antigen https://github.com/zsh-users/antigen
-
-### purs
-
-https://github.com/aktersnurra/purs
-
-## MacOS
-
-Tiling manager
-
-https://github.com/koekeishiya/yabai
-
-https://github.com/koekeishiya/skhd
-
-# TODO
-* Write install man page
-* Setup dotfiles man like https://www.atlassian.com/git/tutorials/dotfiles 
-* auto install missing packages. 
