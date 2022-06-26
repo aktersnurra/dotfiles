@@ -37,7 +37,10 @@ alias \
 	p="sudo pacman" \
 	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
   npm="fnm" \
-	z="zathura"
+  z="zathura" \
+  mbsync="mbsync -c $MBSYNCRC" \
+  monerod=monerod --data-dir "$XDG_DATA_HOME"/bitmonero \
+  wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
