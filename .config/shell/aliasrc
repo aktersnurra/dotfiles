@@ -36,6 +36,7 @@ alias \
 	v="$EDITOR" \
 	p="sudo pacman" \
 	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
+  npm="fnm" \
 	z="zathura"
 
 # Pushing to multiple git repositories
