@@ -10,10 +10,7 @@ xbanish &		            # Remove mouse when typing
 dwmblocks &                 # Status bar
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
 
-# Auto lock screen after 10 min or 3 sec if mouse is placed in the right lower corner.
-xautolock -time 10 -locker slock -nowlocker slock -detectsleep -corners 000+ -cornerdelay 3 &
-
-autostart="xcompmgr dunst unclutter pipewire pipewire-pulse pipewire-media-session"
+autostart="xcompmgr dunst unclutter pipewire"
 
 for program in $autostart; do
 	pidof -s "$program" || setsid -f "$program"
