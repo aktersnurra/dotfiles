@@ -22,8 +22,8 @@ xterm*disallowedWindowOps: 20,21,SetXProp
 *.color9:       #AC4142
 
 ! green
-*.color2:       #75B5AA
-*.color10:      #75B5AA
+*.color2:       #4f5c32
+*.color10:      #88afa2
 
 ! yellow
 *.color3:       #F4BF75
