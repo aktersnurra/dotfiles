@@ -6,8 +6,11 @@
 setbg &			  # Set the background with the `setbg` script
 dwmblocks &   # Status bar
 remaps &	    # Speed xrate up
+xrdb "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources" & xrdbpid=$!
 
-xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
+# Set dbus environment variable
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+echo "export DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" > /tmp/dsba ; chmod +x /tmp/dsba
 
 autostart="xcompmgr dunst unclutter xbanish pipewire"
 
