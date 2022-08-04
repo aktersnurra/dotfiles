@@ -8,7 +8,7 @@
 
 # sudo not required for some system commands.
 for x in mount unmount sv pacman updatedb su reboot; do
-	alias $x="sudo $x"
+	alias $x="doas $x"
 done
 
 # Verbosity and settings that you pretty much just always are going to want.
