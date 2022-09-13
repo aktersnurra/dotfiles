@@ -41,7 +41,8 @@ alias \
   mbsync="mbsync -c $MBSYNCRC" \
   monerod="monerod --data-dir "$XDG_DATA_HOME"/bitmonero" \
   wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts" \
-  hss="hugo server --noHTTPCache"
+  hss="hugo server --noHTTPCache" \
+  tmux="tmux -u"
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
