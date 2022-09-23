@@ -35,7 +35,7 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
+  dots="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
   npm="fnm" \
   z="zathura" \
   mbsync="mbsync -c $MBSYNCRC" \
