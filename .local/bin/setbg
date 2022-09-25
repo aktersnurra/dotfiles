@@ -5,7 +5,7 @@
 #	If given a file, set that as the new wallpaper.
 
 ## Location of link to wallpaper link.
-bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/wallpaper"
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/wallpaper"
 
 trueloc="$(readlink -f "$1")" &&
 case "$(file --mime-type -b "$trueloc")" in
