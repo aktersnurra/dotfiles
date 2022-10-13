@@ -24,7 +24,6 @@ alias \
 	ls="ls -ahlN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto"
-# ccat="highlight --out-format=ansi"
 
 # My aliases for different programs
 alias \
@@ -46,7 +45,7 @@ alias \
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
-alias cua="config remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push --all"
+alias dua="dots remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$HOME push --all"
 
 # Doas smooth transition
 alias sudo="doas"
