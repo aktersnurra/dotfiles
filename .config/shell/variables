@@ -50,6 +50,7 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # Haskell
 export GHCUP_USE_XDG_DIRS=true
+export PATH="$XDG_DATA_HOME/cabal/bin/fourmolu:$PATH"
 
 # This is the list for lf icons:
 export LF_ICONS="di=:\

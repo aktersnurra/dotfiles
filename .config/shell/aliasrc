@@ -49,3 +49,6 @@ alias dua="dots remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$HO
 
 # Doas smooth transition
 alias sudo="doas"
+
+# Haskell formatter
+alias fourmolu="$HOME/.local/share/cabal/bin/fourmolu"
