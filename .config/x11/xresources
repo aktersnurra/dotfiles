@@ -18,8 +18,8 @@ xterm*disallowedWindowOps: 20,21,SetXProp
 *.color8:       #555555
 
 ! red
-*.color1:       #984936
-*.color9:       #b46958
+*.color1:       #AC4142
+*.color9:       #AC4142
 
 ! green
 *.color2:       #88afa2
@@ -31,7 +31,7 @@ xterm*disallowedWindowOps: 20,21,SetXProp
 
 ! blue
 *.color4:       #A5D6FF
-*.color12:      #A5D6FF
+*.color12:      #7E97AB
 
 ! magenta
 *.color5:       #AA759F
