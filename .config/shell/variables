@@ -27,6 +27,9 @@ export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
 export CABAL_DIR="$XDG_DATA_HOME/cabal"
 export CABAL_BUILDDIR="$XDG_CACHE_HOME/cabal"
 
+# Haskell formatter
+export PATH="$HOME/.local/share/cabal/bin/fourmolu:$PATH"
+
 # Ocaml
 export OPAMROOT="$XDG_CONFIG_HOME/opam"
 
@@ -47,8 +50,9 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin:$PATH"
 
 # Cuda
-export PATH="/opt/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
+export PATH="/opt/cuda-11.7/bin:$PATH"
+export LD_LIBRARY_PATH="/opt/cuda-11.7/extras/CUPTI/lib64:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/opt/cuda-11.7/lib64:$LD_LIBRARY_PATH"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 
 # Haskell

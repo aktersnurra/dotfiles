@@ -8,7 +8,7 @@
 
 # sudo not required for some system commands.
 for x in mount unmount sv pacman updatedb su reboot; do
-	alias $x="doas $x"
+	alias "$x=doas $x"
 done
 
 # Verbosity and settings that you pretty much just always are going to want.
@@ -34,14 +34,24 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-  dots="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
-  npm="fnm" \
-  z="zathura" \
-  mbsync="mbsync -c $MBSYNCRC" \
-  monerod="monerod --data-dir "$XDG_DATA_HOME"/bitmonero" \
-  wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts" \
-  hss="hugo server --noHTTPCache" \
-  tmux="tmux -u"
+	dots="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME" \
+	npm="fnm" \
+	z="zathura" \
+	mbsync="mbsync -c $MBSYNCRC" \
+	monerod="monerod --data-dir ""$XDG_DATA_HOME/bitmonero" \
+	wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts" \
+	hss="hugo server --noHTTPCache" \
+	tmux="tmux -u"
+
+# git
+alias \
+	gw="git worktree" \
+	gc="git commit" \
+	ga="git add" \
+	gm="git merge" \
+	gco="git checkout" \
+	gl="git log" \
+	gb="git branch -a"
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
@@ -49,6 +59,3 @@ alias dua="dots remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$HO
 
 # Doas smooth transition
 alias sudo="doas"
-
-# Haskell formatter
-alias fourmolu="$HOME/.local/share/cabal/bin/fourmolu"
