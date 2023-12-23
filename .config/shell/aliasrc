@@ -51,6 +51,7 @@ alias \
 	gm="git merge" \
 	gco="git checkout" \
 	gl="git log" \
+  gp="git pull" \
 	gb="git branch -a"
 
 # Pushing to multiple git repositories
