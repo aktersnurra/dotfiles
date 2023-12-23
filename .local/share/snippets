@@ -1,43 +1,43 @@
-https://adoptingerlang.org/ tags:erlang
-https://blog.apnic.net/2022/11/02/openbsd-packet-filter-tools/ tags:openbsd
-https://fs.blog/confirmation-bias/ tags:mental models
-https://fs.blog/reading/ tags:mental models
-https://fs.blog/how-to-read-a-book/ tags:mental models
-https://fs.blog/feynman-learning-technique/ tags:mental models
-https://fs.blog/stop-reading-news/ tags:mental models
-https://fs.blog/learning/ tags:mental models
-https://fs.blog/mental-models/ tags:mental models
-https://fs.blog/first-principles/ tags:mental models
-https://reasonabledeviations.com/2022/01/24/reading-philosophy/ tags:mental models
-https://0xax.gitbooks.io/linux-insides/content/Booting/ tags:linux
-https://fsharpforfunandprofit.com/posts/recipe-part2/ tags:functional programming
-https://stevens.netmeister.org/631/ tags:unix
-https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/ tags:lisp
+https://adoptingerlang.org/ :erlang
+https://blog.apnic.net/2022/11/02/openbsd-packet-filter-tools/ :openbsd
+https://fs.blog/confirmation-bias/ :mental models
+https://fs.blog/reading/ :mental models
+https://fs.blog/how-to-read-a-book/ :mental models
+https://fs.blog/feynman-learning-technique/ :mental models
+https://fs.blog/stop-reading-news/ :mental models
+https://fs.blog/learning/ :mental models
+https://fs.blog/mental-models/ :mental models
+https://fs.blog/first-principles/ :mental models
+https://reasonabledeviations.com/2022/01/24/reading-philosophy/ :mental models
+https://0xax.gitbooks.io/linux-insides/content/Booting/ :linux
+https://fsharpforfunandprofit.com/posts/recipe-part2/ :functional programming
+https://stevens.netmeister.org/631/ :unix
+https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/ :lisp
 https://news.ycombinator.com/
-https://blog.jse.li/posts/torrent/ tags:diy,torrents
-https://learnyousomeerlang.com/content tags:erlang
-https://fsharpforfunandprofit.com/ddd/ tags:functional programming,domain-driven design
-https://topology.mitpress.mit.edu/ tags:category theory
-https://en.wikipedia.org/wiki/Homomorphic_encryption tags:security
-https://blog.kellybrazil.com/2019/12/05/microservice-security-design-patterns-for-kubernetes-part-1/ tags:security,k8s
-https://en.wikipedia.org/wiki/The_Voyage_of_Life tags:art
-https://tmewett.com/c-tips/ tags:c
-https://williamyaoh.com/posts/2019-04-25-lens-exercises.html tags:haskell
+https://blog.jse.li/posts/torrent/ :diy,torrents
+https://learnyousomeerlang.com/content :erlang
+https://fsharpforfunandprofit.com/ddd/ :functional programming,domain-driven design
+https://topology.mitpress.mit.edu/ :category theory
+https://en.wikipedia.org/wiki/Homomorphic_encryption :security
+https://blog.kellybrazil.com/2019/12/05/microservice-security-design-patterns-for-kubernetes-part-1/ :security,k8s
+https://en.wikipedia.org/wiki/The_Voyage_of_Life :art
+https://tmewett.com/c-tips/ :c
+https://williamyaoh.com/posts/2019-04-25-lens-exercises.html :haskell
 https://dennybritz.com/posts/probability-monads-from-scratch/
-https://kidger.site/thoughts/just-know-stuff/ tags:neural ode
-https://www.sjc.edu/academic-programs/undergraduate/great-books-reading-list tags:reading list
-https://www.countbayesie.com/blog/2022/8/7/modern-portfolio-theory-and-optimization-with-jax tags:mpt,jax
-https://serokell.io/blog/rust-vs-haskell tags:haskell,rust
-https://explained-from-first-principles.com/ tags:first-principles
-https://explained-from-first-principles.com/email/ tags:first-principles,email
-https://codeforces.com/blog/entry/110801 tags:statistics
-https://bjlkeng.github.io/posts/hamiltonian-monte-carlo/ tags:statistics
-https://missing.csail.mit.edu/ tags:cs-edu
-http://www.jgallant.com/2d-liquid-simulator-with-cellular-automaton-in-unity/ tags:cellular-automaton
-https://beej.us/guide/bgc/html/split/index.html tags:c
-https://matklad.github.io/2023/02/21/why-SAT-is-hard.html tags:sat
-https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/ tags:haskell,parsing
-https://abuseofnotation.github.io/category-theory-illustrated/00_about/ tags:category-theory
+https://kidger.site/thoughts/just-know-stuff/ :neural ode
+https://www.sjc.edu/academic-programs/undergraduate/great-books-reading-list :reading list
+https://www.countbayesie.com/blog/2022/8/7/modern-portfolio-theory-and-optimization-with-jax :mpt,jax
+https://serokell.io/blog/rust-vs-haskell :haskell,rust
+https://explained-from-first-principles.com/ :first-principles
+https://explained-from-first-principles.com/email/ :first-principles,email
+https://codeforces.com/blog/entry/110801 :statistics
+https://bjlkeng.github.io/posts/hamiltonian-monte-carlo/ :statistics
+https://missing.csail.mit.edu/ :cs-edu
+http://www.jgallant.com/2d-liquid-simulator-with-cellular-automaton-in-unity/ :cellular-automaton
+https://beej.us/guide/bgc/html/split/index.html :c
+https://matklad.github.io/2023/02/21/why-SAT-is-hard.html :sat
+https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/ :haskell,parsing
+https://abuseofnotation.github.io/category-theory-illustrated/00_about/ :category-theory
 https://intronetworks.cs.luc.edu/current2/html/
 https://sabrinajewson.org/blog/errors
 https://www.haskell.org/ghc/blog/20200515-ghc-on-arm.html
@@ -48,4 +48,22 @@ https://makefiletutorial.com/#top
 https://julia.quantecon.org/intro.html
 https://archive.org/details/DayAfterRoswell/mode/2up
 http://www.jdawiseman.com/books/pricing-money/Pricing_Money_JDAWiseman.html
-https://electroagenda.com/en/hilbert-transform/ tags:signal-processing
+https://electroagenda.com/en/hilbert-transform/ :signal-processing
+https://bastardkb.com/product/charybdis-nano-kit/ :keyboard
+https://linear.axler.net/ :linear-algebra
+https://www.themarginalian.org/2014/01/03/baloney-detection-kit-carl-sagan/ :bull-shit
+https://castaliafoundation.com/Kubricks-Maze.html :kubrick
+https://probml.github.io/pml-book/book2.html :probabilistic-machine-learning
+https://probml.github.io/dynamax/notebooks/nonlinear_gaussian_ssm/ekf_mlp.html :probabilistic-machine-learning
+https://nipunbatra.github.io/hmm/ :hidden-markov-model
+https://ittavern.com/url-explained-the-fundamentals/
+https://people.eecs.berkeley.edu/~pabbeel/cs287-fa19/
+https://geometrycollective.github.io/monte-carlo/
+https://www.openbsdjumpstart.org/#/
+https://serokell.io/blog/best-haskell-open-source-projects
+https://combustion.inc/
+https://metalpriceapi.com/pricing
+https://hackage.haskell.org/package/lens
+https://en.wikipedia.org/wiki/Convent_of_Christ_(Tomar)
+https://blackjax-devs.github.io/sampling-book/models/RegimeSwitchingModel.html
+http://modernstatisticalworkflow.blogspot.com/2018/02/regime-switching-models-in-stan.html
