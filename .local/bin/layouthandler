@@ -6,12 +6,12 @@ alt_layout="${ALT_KB_LAYOUT?Alternative layout not set!}"
 echo "$layout"
 
 case $layout in
-en_US)
+us)
 	setxkbmap -layout "$alt_layout"
 	notify-send "Layout Changed." "Keyboard set to $alt_layout."
 	;;
 *)
-	setxkbmap -layout en_US
-	notify-send "Layout Changed." "Keyboard set to en_US."
+	setxkbmap -layout us
+	notify-send "Layout Changed." "Keyboard set to us."
 	;;
 esac
