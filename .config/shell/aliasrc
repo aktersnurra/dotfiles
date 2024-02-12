@@ -45,14 +45,15 @@ alias \
 
 # git
 alias \
-	gw="git worktree" \
-	gc="git commit" \
 	ga="git add" \
-	gm="git merge" \
+	gb="git branch -a" \
+	gc="git commit" \
+	gcl="git clone" \
 	gco="git checkout" \
 	gl="git log" \
-  gp="git pull" \
-	gb="git branch -a"
+	gm="git merge" \
+	gw="git worktree" \
+  gp="git pull"
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
