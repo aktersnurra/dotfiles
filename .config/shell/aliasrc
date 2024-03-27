@@ -62,3 +62,5 @@ alias dua="dots remote | xargs -L1 git --git-dir=$HOME/dotfiles/ --work-tree=$HO
 
 # Doas smooth transition
 alias sudo="doas"
+
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
