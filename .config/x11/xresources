@@ -1,3 +1,4 @@
+Xcursor.size: 9
 xterm*selectToClipboard: true
 xterm*disallowedWindowOps: 20,21,SetXProp
 /* *.font:	Monospace:pixelsize=25:antialias=true:autohint=true; */
