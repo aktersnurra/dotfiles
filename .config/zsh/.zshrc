@@ -41,6 +41,13 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.cache/zsh/history
+HISTDUP=erase
+setopt inc_append_history
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 export CLICOLOR=1
 
@@ -81,4 +88,3 @@ bindkey '^e' edit-command-line
 
 # Source language managers
 source $ZDOTDIR/managers
-
