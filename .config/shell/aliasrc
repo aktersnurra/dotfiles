@@ -54,7 +54,8 @@ alias \
 	gm="git merge" \
 	gw="git worktree" \
   gpl="git pull" \
-  gph="git push"
+  gph="git push" \
+  gf="git fetch"
 
 # Pushing to multiple git repositories
 alias gua="git remote | xargs -L1 git push --all"
