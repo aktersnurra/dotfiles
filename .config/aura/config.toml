@@ -1,0 +1,29 @@
+[general]
+cpus = 12
+editor = "nvim"
+doas = true
+language = "en-US"
+noconfirm = false
+
+[aur]
+build = "/home/aktersnurra/.cache/aura/builds"
+cache = "/home/aktersnurra/.cache/aura/cache"
+clones = "/home/aktersnurra/.cache/aura/packages"
+hashes = "/home/aktersnurra/.cache/aura/hashes"
+chroot = []
+ignores = []
+git = false
+hotedit = false
+shellcheck = false
+diff = false
+delmakedeps = false
+clean = false
+warn_unknowns = true
+nocheck = false
+skipdepcheck = false
+reverse = false
+
+[backups]
+snapshots = "/home/aktersnurra/.cache/aura/snapshots"
+automatic = true
+
