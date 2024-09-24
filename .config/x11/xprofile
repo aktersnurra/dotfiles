@@ -3,19 +3,15 @@
 # This file runs when a DM logs you into a graphical session.
 # If you use startx/xinit like a Chad, this file will also be sourced.
 
+xrandr --dpi 96
 setbg &			  # Set the background with the `setbg` script
 dwmblocks &   # Status bar
-remaps &	    # Speed xrate up
 xrdb "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources" & xrdbpid=$!
 
-# Set dbus environment variable
-eval "$(dbus-launch --sh-syntax --exit-with-session)"
-echo "export DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" > /tmp/dsba ; chmod +x /tmp/dsba
-
-autostart="xcompmgr dunst unclutter xbanish pipewire"
+autostart="xcompmgr dunst unclutter xbanish pipewire remapd"
 
 for program in $autostart; do
-	pidof -s "$program" || setsid -f "$program"
+	pidof -sx "$program" || "$program" &
 done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
