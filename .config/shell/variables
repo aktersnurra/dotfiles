@@ -31,8 +31,10 @@ export CABAL_CONFIG="$XDG_CONFIG_HOME/cabal/config"
 export CABAL_DIR="$XDG_DATA_HOME/cabal"
 export CABAL_BUILDDIR="$XDG_CACHE_HOME/cabal"
 
-# Haskell formatter
-export PATH="$HOME/.local/share/cabal/bin/fourmolu:$PATH"
+# Haskell
+export GHCUP_USE_XDG_DIRS=true
+export PATH="$XDG_DATA_HOME/cabal/bin/fourmolu:$PATH"
+
 
 # Ocaml
 export OPAMROOT="$XDG_CONFIG_HOME/opam"
@@ -43,11 +45,7 @@ export ALT_KB_LAYOUT="se"
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 
-# pyenv
-export PYENV_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
 # Rust
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
@@ -60,10 +58,6 @@ export PATH="/opt/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/opt/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-
-# Haskell
-export GHCUP_USE_XDG_DIRS=true
-export PATH="$XDG_DATA_HOME/cabal/bin/fourmolu:$PATH"
 
 # Ollama models path
 export OLLAMA_MODELS="/storage2/projects/ollama/models"
