@@ -62,6 +62,10 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 # Ollama models path
 export OLLAMA_MODELS="/storage2/projects/ollama/models"
 
+# Huggingface
+export HF_HUB_DISABLE_TELEMETRY=1
+export HF_HOME="/storage2/huggingface"
+
 # This is the list for lf icons:
 export LF_ICONS="di=:\
 fi=:\

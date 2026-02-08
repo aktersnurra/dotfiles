@@ -1,46 +1,41 @@
 Xcursor.size: 9
 xterm*selectToClipboard: true
 xterm*disallowedWindowOps: 20,21,SetXProp
-/* *.font:	Monospace:pixelsize=25:antialias=true:autohint=true; */
-/* *.fontalt0:Braille:pixelsize=24:antialias=true:autohint=true; */
-/* *.fontalt1:JoyPixels:pixelsize=24:antialias=true:autohint=true; */
-! *.termname: st-256color
 
 ! colors
 
 ! special
-
 *.background: #151515
-*.foreground: white
-*.cursorColor: white
+*.foreground: #D8D8D8
+*.cursorColor: #D8D8D8
 
 ! black
-*.color0:       #202020
-*.color8:       #555555
+*.color0:       #3A3A3A
+*.color8:       #686868
 
 ! red
 *.color1:       #AC4142
-*.color9:       #AC4142
+*.color9:       #CC6666
 
 ! green
-*.color2:       #88afa2
-*.color10:      #90A959
+*.color2:       #90A959
+*.color10:      #A8C474
 
 ! yellow
 *.color3:       #F4BF75
-*.color11:      #F4BF75
+*.color11:      #F7D89A
 
 ! blue
-*.color4:       #A5D6FF
+*.color4:       #6B8BAE
 *.color12:      #7E97AB
 
 ! magenta
 *.color5:       #AA759F
-*.color13:      #AA759F
+*.color13:      #C9A0DC
 
 ! cyan
 *.color6:       #75B5AA
-*.color14:      #75B5AA
+*.color14:      #A3D4CC
 
 ! white
 *.color7:       #D0D0D0

@@ -45,6 +45,7 @@ alias \
 
 # git
 alias \
+	gst="git status" \
 	ga="git add" \
 	gb="git branch -a" \
 	gc="git commit" \
