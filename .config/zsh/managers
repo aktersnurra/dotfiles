@@ -4,5 +4,8 @@
 eval "$(fnm env)"
 
 # Ocaml
-[[ ! -r /home/aktersnurra/.opam/opam-init/init.zsh ]] || source /home/aktersnurra/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r '/home/aktersnurra/.config/opam/opam-init/init.zsh' ]] || source '/home/aktersnurra/.config/opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 eval "$(opam env)"
+
+# zoxide
+eval "$(zoxide init zsh --cmd cd)"

@@ -1,0 +1,15 @@
+[default_session]
+startup_command = "nvim ."
+
+[[session]]
+name = "ocvx"
+path = "~/projects/ocvx"
+
+[[session]]
+name = "ocvx-portfolio"
+path = "~/projects/ocvx-portfolio"
+
+[[session]]
+name = "dotfiles"
+path = "~/.config"
+startup_command = "nvim tmux/tmux.conf"
