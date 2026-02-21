@@ -12,4 +12,3 @@ path = "~/projects/ocvx-portfolio"
 [[session]]
 name = "dotfiles"
 path = "~/.config"
-startup_command = "nvim tmux/tmux.conf"
