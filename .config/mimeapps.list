@@ -9,3 +9,4 @@ image/png=img.desktop;
 image/jpeg=img.desktop;
 image/gif=img.desktop;
 inode/directory=file.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop

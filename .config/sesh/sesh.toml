@@ -1,14 +1,32 @@
 [default_session]
-startup_command = "nvim ."
+startup_command = ""
 
 [[session]]
 name = "ocvx"
 path = "~/projects/ocvx"
+startup_command = "nvim ."
 
 [[session]]
 name = "ocvx-portfolio"
 path = "~/projects/ocvx-portfolio"
+startup_command = "nvim ."
 
 [[session]]
-name = "dotfiles"
+name = "cfg:dotfiles"
 path = "~/.config"
+startup_command = "nvim ."
+
+[[session]]
+name = "cfg:sesh"
+path = "~/.config/sesh"
+startup_command = "nvim sesh.toml"
+
+[[session]]
+name = "cfg:tmux"
+path = "~/.config/tmux"
+startup_command = "nvim tmux.conf"
+
+[[session]]
+name = "cfg:nvim"
+path = "~/.config/nvim"
+startup_command = "nvim ."

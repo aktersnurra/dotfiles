@@ -35,6 +35,7 @@ export CABAL_BUILDDIR="$XDG_CACHE_HOME/cabal"
 export GHCUP_USE_XDG_DIRS=true
 export PATH="$XDG_DATA_HOME/cabal/bin/fourmolu:$PATH"
 
+export PATH="/home/aktersnurra/.local/share/pi-node/current/bin:$PATH"
 
 # Ocaml
 export OPAMROOT="$XDG_CONFIG_HOME/opam"
